@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 14:08:15 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/08 15:58:16 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ void	ft_cub3d(char *input)
 	ft_map_init(&map);
 	ft_parser(input, &map);
 	ft_print_result(&map);
+	init_data(&data);
 	init_screen(&data);
-	// events_init(&structname);
-	render_screen(&data);
+	init_events(&data);
+	mlx_loop(data.mlx_ptr);
+	// render_screen(&data);
 	// mlx_loop(structname.mlx_ptr);
 	// mlx_clean(&structrname);
 	// exit(EXIT_SUCCESS);

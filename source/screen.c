@@ -6,35 +6,42 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/08 14:30:22 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/08 15:57:38 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_screen(t_data *data)
+void	init_data(t_data *data)
+{
+	data->res_x = 300;
+	data->res_y = 200;
+	data->bbp = 4;
+}
+
+int	init_screen(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return (NULL)
-	data->mlx_win = mlx_new_window(data->mlx, data->res_x, data->res_y, "Cube3D");
-	mlx_loop(data->mlx_ptr);
+		return (1);
+	data->win_ptr = mlx_new_window(data->mlx_ptr, data->res_x, data->res_y, "Cube3D");
 	if (data->win_ptr == NULL)
 	{
 		mlx_destroy_display(data->mlx_ptr);
-		free(frac->mlx_ptr);
-		return (NULL);
+		free(data->mlx_ptr);
+		return (1);
 	}
-	data->img_ptr = mlx_new_image(frac->mlx_ptr, data->res_x, data->res_y);
-	if (frac->img_ptr == NULL)
+	data->img_ptr = mlx_new_image(data->mlx_ptr, data->res_x, data->res_y);
+	if (data->img_ptr == NULL)
 	{
-		mlx_destroy_window(frac->mlx_ptr, frac->win_ptr);
-		mlx_destroy_display(frac->mlx_ptr);
-		free(frac->mlx_ptr);
-		return (NULL);
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+		return (1);
 	}
 	// data->buff = mlx_get_data_addr(data->img_ptr, &frac->pixel_bits,
 	// 		&frac->line_len, &frac->endian);
+	return (0);
 }
 
 void	render_screen(t_data *data)
@@ -55,6 +62,6 @@ void	render_screen(t_data *data)
 		}
 		j++;
 	}
-	mlx_put_image_to_window(frac->mlx_ptr, frac->win_ptr, frac->img_ptr,
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr,
 		0, 0);
 }
