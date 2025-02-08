@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 13:44:20 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/08 14:29:12 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,23 @@ typedef struct s_2D
 	int		value;
 }			t_2D;
 
+typedef struct s_data
+{
+	void	mlx_ptr;
+	void	win_ptr;
+	void	img_ptr;
+	int		res_y;
+	int		res_x;
+}			t_data;
+
 /* Parser */
 int			ft_skip(char *line, int i);
 int			ft_strlen2(char *line, int i);
 void		ft_parser(char *input, t_map *map);
+
+/* Screen */
+void		render_screen(t_data *data);
+void		init_screen(t_data *data);
+
 
 #endif

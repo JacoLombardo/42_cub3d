@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 12:38:48 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:08:15 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,17 @@ void	ft_map_init(t_map *map)
 void	ft_cub3d(char *input)
 {
 	t_map	map;
-
+	t_data	data;
+	
 	ft_map_init(&map);
 	ft_parser(input, &map);
 	ft_print_result(&map);
+	init_screen(&data);
+	// events_init(&structname);
+	render_screen(&data);
+	// mlx_loop(structname.mlx_ptr);
+	// mlx_clean(&structrname);
+	// exit(EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
