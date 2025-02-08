@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 12:38:20 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:47:37 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,6 @@ void	ft_add(t_map *map, char *line, int i, char element)
 		map->c = copy;
 }
 
-void	ft_elements(t_map *map, char *line, int *count)
-{
-	int	i;
-
-	i = 0;
-	if (line[i] == ' ')
-		i = ft_skip(line, i);
-	if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E')
-		ft_add(map, line, ft_skip(line, i + 2), line[i]);
-	else if (line[i] == 'F' || line[i] == 'C')
-		ft_add(map, line, ft_skip(line, i + 1), line[i]);
-	(*count)++;
-}
-
 void	ft_map(t_map *map, char *line)
 {
 	int	len;
@@ -73,20 +59,23 @@ void	ft_map(t_map *map, char *line)
 	map->map[len] = NULL;
 }
 
-int	ft_filled(t_map *map)
+void	ft_handle_line(t_map *map, char *line)
 {
-	if (map->no && map->so && map->we && map->ea && map->c && map->f)
-		return (1);
-	else
-		return (0);
-}
+	int	i;
 
-void	ft_handle_line(t_map *map, char *line, int *count)
-{
+	i = 0;
 	if (line[0] == '\n')
 		return ;
 	if (!ft_filled(map))
-		ft_elements(map, line, count);
+	{
+		if (line[i] == ' ')
+			i = ft_skip(line, i);
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
+			|| line[i] == 'E')
+			ft_add(map, line, ft_skip(line, i + 2), line[i]);
+		else if (line[i] == 'F' || line[i] == 'C')
+			ft_add(map, line, ft_skip(line, i + 1), line[i]);
+	}
 	else
 		ft_map(map, line);
 }
@@ -94,14 +83,8 @@ void	ft_handle_line(t_map *map, char *line, int *count)
 void	ft_parser(char *input, t_map *map)
 {
 	int		fd;
-	int		count;
 	char	*line;
 
-	// char	**mapx;
-	count = 0;
-	/* mapx = (char **)malloc(1 * sizeof(char *));
-	mapx[0] = NULL;
-	map->map = mapx; */
 	fd = open(input, O_RDONLY);
 	if (fd < 0)
 		return ;
@@ -110,7 +93,7 @@ void	ft_parser(char *input, t_map *map)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		ft_handle_line(map, line, &count);
+		ft_handle_line(map, line);
 	}
 	close(fd);
 }

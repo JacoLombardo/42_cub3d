@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 13:47:07 by jalombar         ###   ########.fr       */
+/*   Created: 2025/02/08 13:48:32 by jalombar          #+#    #+#             */
+/*   Updated: 2025/02/08 13:49:16 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	ft_skip(char *line, int i)
+void	ft_print_map(t_map *map)
 {
-	while (line[i] == ' ')
-		i++;
-	return (i);
-}
+	int	i;
 
-int	ft_strlen2(char *line, int i)
-{
-	int	len;
-
-	len = 0;
-	while (line[i] && line[i] != '\n' && line[i] != ' ')
+	i = 0;
+	ft_printf("NO: %s\n", map->no);
+	ft_printf("SO: %s\n", map->so);
+	ft_printf("WE: %s\n", map->we);
+	ft_printf("EA: %s\n", map->ea);
+	ft_printf("Ceiling: %s\n", map->c);
+	ft_printf("Floor: %s\n", map->f);
+	ft_printf("\nMAP: \n\n");
+	while (map->map[i])
 	{
+		ft_printf("%s\n", map->map[i]);
 		i++;
-		len++;
 	}
-	return (len);
-}
-
-int	ft_filled(t_map *map)
-{
-	if (map->no && map->so && map->we && map->ea && map->c && map->f)
-		return (1);
-	else
-		return (0);
 }

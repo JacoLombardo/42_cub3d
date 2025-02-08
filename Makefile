@@ -14,7 +14,10 @@ CC = cc
 FLAGS = -I -g -Wall -Werror -Wextra
 LIBFT_FLAGS = -L$(LIBFT_PATH) -lft -g
 MINILIBX_FLAGS	= -L$(MINILIBX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
-SRCS = cub3d.c source/parser.c source/parser_utils.c
+SRCS = cub3d.c \
+		source/parser.c \
+		source/parser_utils.c \
+		source/test.c
 HEADER = cub3d.h
 NAME = cub3d
 LIBFT_PATH = libraries/libft

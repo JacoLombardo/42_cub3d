@@ -6,30 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 12:38:48 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:51:35 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
-
-void	ft_print_result(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("NO: %s\n", map->no);
-	ft_printf("SO: %s\n", map->so);
-	ft_printf("WE: %s\n", map->we);
-	ft_printf("EA: %s\n", map->ea);
-	ft_printf("Ceiling: %s\n", map->c);
-	ft_printf("Floor: %s\n", map->f);
-	ft_printf("\nMAP: \n\n");
-	while (map->map[i])
-	{
-		ft_printf("%s\n", map->map[i]);
-		i++;
-	}
-}
 
 void	ft_map_init(t_map *map)
 {
@@ -52,7 +33,7 @@ void	ft_cub3d(char *input)
 
 	ft_map_init(&map);
 	ft_parser(input, &map);
-	ft_print_result(&map);
+	//ft_print_map(&map);
 }
 
 int	main(int argc, char **argv)

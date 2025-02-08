@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 11:30:39 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:49:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ typedef struct s_2D
 /* Parser */
 int			ft_skip(char *line, int i);
 int			ft_strlen2(char *line, int i);
+int			ft_filled(t_map *map);
 void		ft_parser(char *input, t_map *map);
+
+/* Test */
+void		ft_print_map(t_map *map);
 
 #endif
