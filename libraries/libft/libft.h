@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:17:58 by jalombar          #+#    #+#             */
-/*   Updated: 2024/11/14 13:59:04 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/08 10:34:20 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void					ft_putchar_fd(char c, int fd);
 void					ft_putstr_fd(char *s, int fd);
 void					ft_putendl_fd(char *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
+void					*ft_realloc(void *ptr, size_t old_size,
+							size_t new_size);
 
 /* LINKED LIST */
 typedef struct s_list
