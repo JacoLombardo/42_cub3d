@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 12:31:03 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/08 12:33:15 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/08 15:22:16 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	put_str_error(char* s, int exit_code)
+int	put_str_error(char *s, int exit_code)
 {
 	ft_putendl_fd(s, 2);
 	exit (exit_code);
 }
+

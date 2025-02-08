@@ -6,26 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 13:51:35 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/08 15:29:27 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
-
-void	ft_map_init(t_map *map)
-{
-	char	**mapx;
-
-	mapx = (char **)malloc(1 * sizeof(char *));
-	mapx[0] = NULL;
-	map->map = mapx;
-	map->no = NULL;
-	map->so = NULL;
-	map->we = NULL;
-	map->ea = NULL;
-	map->c = NULL;
-	map->f = NULL;
-}
 
 void	ft_cub3d(char *input)
 {
@@ -34,6 +19,12 @@ void	ft_cub3d(char *input)
 	ft_map_init(&map);
 	ft_parser(input, &map);
 	//ft_print_map(&map);
+	/* init(&structname);
+	events_init(&structname);
+	render_screen(&structname);
+	mlx_loop(structname.mlx_ptr);
+	mlx_clean(&structrname); */
+	ft_free_map(&map);
 }
 
 int	main(int argc, char **argv)
