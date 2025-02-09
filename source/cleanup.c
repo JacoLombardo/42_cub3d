@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:05:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 11:30:32 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:28:37 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,15 @@ void	ft_free_config(t_config *config)
 	if (config->f)
 		free(config->f);
 	ft_free_tab(config->map);
+	free(config->player);
 }
 
-void	ft_parser_cleanup(t_config *config, char *line, int fd)
+void	ft_parser_cleanup(t_config *config, char *line, int fd, char *type)
 {
-	perror("[Error] Malloc fail");
+	if (ft_strcmp(type, "malloc"))
+		write(2, "[Error] Malloc fail\n", 21);
+	else if (ft_strcmp(type, "map"))
+		write(2, "[Error] Invalid map\n", 21);
 	if (config)
 		ft_free_config(config);
 	if (line)

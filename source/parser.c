@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 11:33:10 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:31:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	ft_elements(t_config *config, char *line, int fd)
 	if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E')
 	{
 		if (!ft_add(config, line, ft_skip(line, i + 2), line[i]))
-			ft_parser_cleanup(config, line, fd);
+			ft_parser_cleanup(config, line, fd, "malloc");
 	}
 	else if (line[i] == 'F' || line[i] == 'C')
 	{
 		if (!ft_add(config, line, ft_skip(line, i + 1), line[i]))
-			ft_parser_cleanup(config, line, fd);
+			ft_parser_cleanup(config, line, fd, "malloc");
 	}
 }
 
@@ -67,14 +67,19 @@ void	ft_map(t_config *config, char *line, int fd)
 	config->map = ft_realloc(config->map, (len * sizeof(char **)), ((len + 1)
 				* sizeof(char **)));
 	if (!config->map)
-		ft_parser_cleanup(config, line, fd);
+		ft_parser_cleanup(config, line, fd, "malloc");
 	if (line[line_len - 1] == '\n')
 		config->map[len - 1] = ft_strndup(line, line_len - 1);
 	else
 		config->map[len - 1] = ft_strdup(line);
-	if (!config->map[len - 1])
-		ft_parser_cleanup(config, line, fd);
 	config->map[len] = NULL;
+	if (!config->map[len - 1])
+		ft_parser_cleanup(config, line, fd, "malloc");
+	else if (ft_check_for_player(config, config->map, len - 1))
+	{
+		printf("diocane\n");
+		ft_parser_cleanup(config, line, fd, "map");
+	}
 }
 
 void	ft_handle_line(t_config *config, char *line, int fd)
@@ -97,7 +102,7 @@ t_config	*ft_parser(char *input, t_config *config)
 
 	fd = open(input, O_RDONLY);
 	if (fd < 0)
-		ft_parser_cleanup(config, NULL, fd);
+		ft_parser_cleanup(config, NULL, fd, "map");
 	while (1)
 	{
 		line = get_next_line(fd);

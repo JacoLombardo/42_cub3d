@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:12:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 11:32:47 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:17:19 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**ft_map_clone(t_config *config)
 	height = ft_tab_len(config->map);
 	new_map = (char **)malloc((height + 1) * sizeof(char *));
 	if (!new_map)
-		ft_parser_cleanup(config, NULL, -1);
+		ft_parser_cleanup(config, NULL, -1, "malloc");
 	while (i < height)
 	{
 		new_map[i] = ft_strdup(config->map[i]);
@@ -31,7 +31,7 @@ char	**ft_map_clone(t_config *config)
 			while (--i >= 0)
 				free(new_map[i]);
 			free(new_map);
-			ft_parser_cleanup(config, NULL, -1);
+			ft_parser_cleanup(config, NULL, -1, "malloc");
 		}
 		i++;
 	}
@@ -48,10 +48,18 @@ int	ft_texture_check(char *texture)
 
 int	ft_elements_check(t_config *config, char **map)
 {
+	int	x;
+	int	y;
+
+	x = config->player->x;
+	y = config->player->y;
 	if (ft_texture_check(config->no) || ft_texture_check(config->so)
 		|| ft_texture_check(config->we) || ft_texture_check(config->ea))
 		return (1);
 	else if (!config->c || !config->f)
+		return (1);
+	else if (map[x - 1][y] == ' ' || map[x][y - 1] == ' ' || map[x
+		+ 1][y] == ' ' || map[x][y + 1] == ' ')
 		return (1);
 	else
 		return (0);
@@ -64,10 +72,8 @@ void	ft_flood_fill(char **map, int x, int y, t_config *config)
 		return ;
 	if (map[x][y] == ' ')
 	{
-		write(2, "[Error] Invalid map\n", 21);
 		ft_free_tab(map);
-		ft_free_config(config);
-		exit (1);
+		ft_parser_cleanup(config, NULL, -1, "map");
 	}
 	map[x][y] = 'F';
 	ft_flood_fill(map, x + 1, y, config);
@@ -83,12 +89,10 @@ void	ft_map_check(char **map, t_config *config)
 
 	i = 0;
 	j = 0;
-	if (ft_elements_check(config, map))
+	if (ft_elements_check(config, map) || config->player->x == -1)
 	{
-		write(2, "[Error] Invalid map\n", 21);
 		ft_free_tab(map);
-		ft_free_config(config);
-		exit(1);
+		ft_parser_cleanup(config, NULL, -1, "map");
 	}
 	while (map[i])
 	{

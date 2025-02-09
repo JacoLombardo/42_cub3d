@@ -22,7 +22,8 @@ SRCS = cub3d.c \
 		source/map_check.c \
 		source/parser.c \
 		source/parser_utils.c \
-		source/test.c
+		source/test.c \
+		source/utils.c
 HEADER = cub3d.h
 NAME = cub3d
 LIBFT_PATH = libraries/libft
