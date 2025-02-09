@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 12:31:03 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/08 15:22:16 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:40:55 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,3 @@ int	put_str_error(char *s, int exit_code)
 	ft_putendl_fd(s, 2);
 	exit (exit_code);
 }
-

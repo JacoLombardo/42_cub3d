@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 15:20:16 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:08:42 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,17 @@ int	ft_skip(char *line, int i)
 	return (i);
 }
 
-void	ft_element_sort(t_map *map, char *copy, char element)
+int	ft_tab_len(char **tab)
+{
+	int	len;
+
+	len = 0;
+	while (tab[len])
+		len++;
+	return (len);
+}
+
+void	ft_element_sort(t_config *map, char *copy, char element)
 {
 	if (element == 'N')
 		map->no = copy;
@@ -48,7 +58,7 @@ int	ft_strlen2(char *line, int i)
 	return (len);
 }
 
-int	ft_filled(t_map *map)
+int	ft_filled(t_config *map)
 {
 	if (map->no && map->so && map->we && map->ea && map->c && map->f)
 		return (1);
