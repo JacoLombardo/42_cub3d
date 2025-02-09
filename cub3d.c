@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 16:14:16 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/09 12:24:41 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	ft_cub3d(char *input)
 {
-	t_map	map;
-	t_data	data;
-	
-	ft_map_init(&map);
-	ft_parser(input, &map);
-	ft_print_result(&map);
+	t_config	config;
+
+	ft_config_init(&config);
+	ft_parser(input, &config);
+	ft_print_config(&config);
 	init_data(&data);
 	init_screen(&data);
 	init_events(&data);
@@ -29,6 +28,7 @@ void	ft_cub3d(char *input)
 	// mlx_clean(&structrname);
 	// exit(EXIT_SUCCESS);
 	ft_free_map(&map);
+>>>>>>> main
 }
 
 int	main(int argc, char **argv)
@@ -36,8 +36,8 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		ft_cub3d(argv[1]);
 	else if (argc < 2)
-		write(2, "ERROR: Too few parameters, try ./cub3d [MAP NAME.cub]\n", 55);
+		write(2, "[ERROR] Too few parameters, try ./cub3d [MAP NAME.cub]\n", 55);
 	else
-		write(2, "ERROR: Too many parameters, try ./cub3d [MAP NAME.cub]\n", 56);
+		write(2, "[ERROR] Too many parameters, try ./cub3d [MAP NAME.cub]\n", 56);
 	return (0);
 }

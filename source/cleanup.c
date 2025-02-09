@@ -6,47 +6,59 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:05:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 15:26:49 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:28:37 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	ft_free_map(t_map *map)
+void	ft_free_tab(char **tab)
 {
 	int	i;
 
 	i = 0;
-	if (map->no)
-		free(map->no);
-	if (map->so)
-		free(map->so);
-	if (map->we)
-		free(map->we);
-	if (map->ea)
-		free(map->ea);
-	if (map->c)
-		free(map->c);
-	if (map->f)
-		free(map->f);
-	if (map->map[0])
+	if (!tab)
+		return ;
+	while (tab[i])
 	{
-		while (map->map[i])
-		{
-			free(map->map[i]);
-			i++;
-		}
+		free(tab[i]);
+		i++;
 	}
-	free(map->map);
+	free(tab);
 }
 
-void	ft_parser_cleanup(t_map *map, char *line, int fd)
+void	ft_free_config(t_config *config)
 {
-	perror("[Error] Malloc fail");
-	if (map)
-		ft_free_map(map);
+	int	i;
+
+	i = 0;
+	if (config->no)
+		free(config->no);
+	if (config->so)
+		free(config->so);
+	if (config->we)
+		free(config->we);
+	if (config->ea)
+		free(config->ea);
+	if (config->c)
+		free(config->c);
+	if (config->f)
+		free(config->f);
+	ft_free_tab(config->map);
+	free(config->player);
+}
+
+void	ft_parser_cleanup(t_config *config, char *line, int fd, char *type)
+{
+	if (ft_strcmp(type, "malloc"))
+		write(2, "[Error] Malloc fail\n", 21);
+	else if (ft_strcmp(type, "map"))
+		write(2, "[Error] Invalid map\n", 21);
+	if (config)
+		ft_free_config(config);
 	if (line)
 		free(line);
-	close(fd);
+	if (fd > 0)
+		close(fd);
 	exit(1);
 }

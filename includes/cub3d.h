@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 16:15:49 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/09 12:18:18 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,24 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
 
-typedef struct s_map
+typedef struct s_player
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
-	char	**map;
-}			t_map;
+	int			x;
+	int			y;
+	char		direction;
+}				t_player;
 
-typedef struct s_2D
+typedef struct s_config
 {
-	int		x;
-	int		y;
-	int		value;
-}			t_2D;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
+	char		**map;
+	t_player	*player;
+}				t_config;
 
 typedef struct s_data
 {
@@ -50,18 +51,27 @@ typedef struct s_data
 }			t_data;
 
 /* Cleanup */
-void		ft_free_map(t_map *map);
-void		ft_parser_cleanup(t_map *map, char *line, int fd);
+void			ft_free_tab(char **tab);
+void			ft_free_config(t_config *config);
+void			ft_parser_cleanup(t_config *config, char *line, int fd,
+					char *type);
 
 /* Init */
-t_map		*ft_map_init(t_map *map);
+t_config		*ft_config_init(t_config *config);
+
+/* Map Check */
+char			**ft_map_clone(t_config *map);
+void			ft_map_check(char **map, t_config *config);
 
 /* Parser */
-int			ft_skip(char *line, int i);
-void		ft_element_sort(t_map *map, char *copy, char element);
-int			ft_strlen2(char *line, int i);
-int			ft_filled(t_map *map);
-void		ft_parser(char *input, t_map *map);
+t_config		*ft_parser(char *input, t_config *config);
+
+/* Parser Utils */
+int				ft_skip(char *line, int i);
+void			ft_element_sort(t_config *map, char *copy, char element);
+int				ft_strlen2(char *line, int i);
+int				ft_filled(t_config *map);
+int				ft_check_for_player(t_config *config, char **map, int len);
 
 /* Screen */
 int			init_screen(t_data *data);
@@ -74,6 +84,9 @@ void		init_events(t_data *data);
 int			event_close_win(t_data *data);
 
 /* Test */
-void		ft_print_map(t_map *map);
+void			ft_print_config(t_config *config);
+
+/* Utils */
+int				ft_tab_len(char **tab);
 
 #endif

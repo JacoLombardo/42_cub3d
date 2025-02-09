@@ -6,13 +6,13 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/08 15:27:48 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:31:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_map	*ft_add(t_map *map, char *line, int i, char element)
+t_config	*ft_add(t_config *config, char *line, int i, char element)
 {
 	int		j;
 	int		len;
@@ -32,11 +32,11 @@ t_map	*ft_add(t_map *map, char *line, int i, char element)
 		j++;
 	}
 	copy[j] = '\0';
-	ft_element_sort(map, copy, element);
-	return (map);
+	ft_element_sort(config, copy, element);
+	return (config);
 }
 
-void	ft_elements(t_map *map, char *line, int fd)
+void	ft_elements(t_config *config, char *line, int fd)
 {
 	int	i;
 
@@ -45,66 +45,73 @@ void	ft_elements(t_map *map, char *line, int fd)
 		i = ft_skip(line, i);
 	if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E')
 	{
-		if (!ft_add(map, line, ft_skip(line, i + 2), line[i]))
-			ft_parser_cleanup(map, line, fd);
+		if (!ft_add(config, line, ft_skip(line, i + 2), line[i]))
+			ft_parser_cleanup(config, line, fd, "malloc");
 	}
 	else if (line[i] == 'F' || line[i] == 'C')
 	{
-		if (!ft_add(map, line, ft_skip(line, i + 1), line[i]))
-			ft_parser_cleanup(map, line, fd);
+		if (!ft_add(config, line, ft_skip(line, i + 1), line[i]))
+			ft_parser_cleanup(config, line, fd, "malloc");
 	}
 }
 
-void	ft_map(t_map *map, char *line, int fd)
+void	ft_map(t_config *config, char *line, int fd)
 {
 	int	len;
 	int	line_len;
 
 	len = 1;
 	line_len = ft_strlen(line);
-	while (map->map[len - 1])
+	while (config->map[len - 1])
 		len++;
-	map->map = ft_realloc(map->map, (len * sizeof(char **)), ((len + 1)
+	config->map = ft_realloc(config->map, (len * sizeof(char **)), ((len + 1)
 				* sizeof(char **)));
-	if (!map->map)
-		ft_parser_cleanup(map, line, fd);
+	if (!config->map)
+		ft_parser_cleanup(config, line, fd, "malloc");
 	if (line[line_len - 1] == '\n')
-		map->map[len - 1] = ft_strndup(line, line_len - 1);
+		config->map[len - 1] = ft_strndup(line, line_len - 1);
 	else
-		map->map[len - 1] = ft_strdup(line);
-	if (!map->map[len - 1])
-		ft_parser_cleanup(map, line, fd);
-	map->map[len] = NULL;
+		config->map[len - 1] = ft_strdup(line);
+	config->map[len] = NULL;
+	if (!config->map[len - 1])
+		ft_parser_cleanup(config, line, fd, "malloc");
+	else if (ft_check_for_player(config, config->map, len - 1))
+	{
+		printf("diocane\n");
+		ft_parser_cleanup(config, line, fd, "map");
+	}
 }
 
-void	ft_handle_line(t_map *map, char *line, int fd)
+void	ft_handle_line(t_config *config, char *line, int fd)
 {
 	int	i;
 
 	i = 0;
 	if (line[0] == '\n')
 		return ;
-	if (!ft_filled(map))
-		ft_elements(map, line, fd);
+	if (!ft_filled(config))
+		ft_elements(config, line, fd);
 	else
-		ft_map(map, line, fd);
+		ft_map(config, line, fd);
 }
 
-void	ft_parser(char *input, t_map *map)
+t_config	*ft_parser(char *input, t_config *config)
 {
 	int		fd;
 	char	*line;
 
 	fd = open(input, O_RDONLY);
 	if (fd < 0)
-		ft_parser_cleanup(map, NULL, fd);
+		ft_parser_cleanup(config, NULL, fd, "map");
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		ft_handle_line(map, line, fd);
+		ft_handle_line(config, line, fd);
 		free(line);
 	}
 	close(fd);
+	ft_map_check(ft_map_clone(config), config);
+	return (config);
 }

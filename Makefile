@@ -19,9 +19,11 @@ SRCS = cub3d.c \
 		source/error.c \
 		source/events.c \
 		source/init.c \
+		source/map_check.c \
 		source/parser.c \
 		source/parser_utils.c \
-		source/test.c
+		source/test.c \
+		source/utils.c
 HEADER = cub3d.h
 NAME = cub3d
 LIBFT_PATH = libraries/libft
@@ -38,11 +40,11 @@ $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_PATH)
 
 $(MINILIBX):
-	$(MAKE) -C $(MINILIBX_PATH)
+	@$(MAKE) -C $(MINILIBX_PATH)
 
 clean:
 	@$(MAKE) -s -C $(LIBFT_PATH) clean
-	$(MAKE) -C $(MINILIBX_PATH) clean
+	@$(MAKE) -C $(MINILIBX_PATH) clean
 
 fclean: clean
 	@$(MAKE) -s -C $(LIBFT_PATH) fclean
