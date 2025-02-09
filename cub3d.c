@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
 /*   Updated: 2025/02/09 12:24:41 by jalombar         ###   ########.fr       */
@@ -19,12 +19,16 @@ void	ft_cub3d(char *input)
 	ft_config_init(&config);
 	ft_parser(input, &config);
 	ft_print_config(&config);
-	/* init(&structname);
-	events_init(&structname);
-	render_screen(&structname);
-	mlx_loop(structname.mlx_ptr);
-	mlx_clean(&structrname); */
-	ft_free_config(&config);
+	init_data(&data);
+	init_screen(&data);
+	init_events(&data);
+	mlx_loop(data.mlx_ptr);
+	// render_screen(&data);
+	// mlx_loop(structname.mlx_ptr);
+	// mlx_clean(&structrname);
+	// exit(EXIT_SUCCESS);
+	ft_free_map(&map);
+>>>>>>> main
 }
 
 int	main(int argc, char **argv)

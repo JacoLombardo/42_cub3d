@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
 /*   Updated: 2025/02/09 12:18:18 by jalombar         ###   ########.fr       */
@@ -18,6 +18,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
 
 typedef struct s_player
 {
@@ -37,6 +39,16 @@ typedef struct s_config
 	char		**map;
 	t_player	*player;
 }				t_config;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_ptr;
+	int		res_y;
+	int		res_x;
+	int		bbp; // = 4
+}			t_data;
 
 /* Cleanup */
 void			ft_free_tab(char **tab);
@@ -60,6 +72,16 @@ void			ft_element_sort(t_config *map, char *copy, char element);
 int				ft_strlen2(char *line, int i);
 int				ft_filled(t_config *map);
 int				ft_check_for_player(t_config *config, char **map, int len);
+
+/* Screen */
+int			init_screen(t_data *data);
+void		render_screen(t_data *data);
+void		init_data(t_data *data);
+
+/* Events */
+int			events_keyboard(int keycode, t_data *data);
+void		init_events(t_data *data);
+int			event_close_win(t_data *data);
 
 /* Test */
 void			ft_print_config(t_config *config);
