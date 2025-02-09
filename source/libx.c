@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   libx.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/09 14:46:23 by jalombar         ###   ########.fr       */
+/*   Created: 2025/02/09 14:02:43 by jalombar          #+#    #+#             */
+/*   Updated: 2025/02/09 16:05:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	ft_event_close_win(t_data *data)
+void	ft_close_libx(t_data *data)
 {
-	mlx_loop_end(data->mlx);
-	return (0);
+	//mlx_destroy_image(data->mlx data->image->img);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 }
 
-int	ft_events_keyboard(int keycode, t_data *data)
+void	ft_mlx_pixel_put(t_image *image, int x, int y, int color)
 {
-	if (keycode == XK_Escape)
-		ft_event_close_win(data);
-	return (0);
+	char	*dst;
+
+	dst = image->addr + (y * image->line_length + x * (image->bbp / 8));
+	*(unsigned int *)dst = color;
 }
+

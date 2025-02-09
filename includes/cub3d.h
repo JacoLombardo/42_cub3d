@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 12:18:18 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:42:55 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,23 @@
 
 # include "../libraries/libft/libft.h"
 # include "../libraries/minilibx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
+
+# define WIDTH 960
+# define HEIGHT 720
+/* # define WIDTH 1920
+# define HEIGHT 1080 */
+# define BBP 4
+# define STD_COLOR 0xFFFFFF
+# define BLUE 0x0000FF
+# define RED 0xFF0000
+# define COS 0.707105
+# define SIN 0.707108
+# define ESC 65307
 
 typedef struct s_player
 {
@@ -40,15 +52,21 @@ typedef struct s_config
 	t_player	*player;
 }				t_config;
 
+typedef struct s_image
+{
+	void		*img;
+	char		*addr;
+	int			bbp;
+	int			line_length;
+	int			endian;
+}				t_image;
+
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	int		res_y;
-	int		res_x;
-	int		bbp; // = 4
-}			t_data;
+	void		*mlx;
+	void		*win;
+	t_image		*image;
+}				t_data;
 
 /* Cleanup */
 void			ft_free_tab(char **tab);
@@ -56,8 +74,15 @@ void			ft_free_config(t_config *config);
 void			ft_parser_cleanup(t_config *config, char *line, int fd,
 					char *type);
 
+/* Events */
+int				ft_event_close_win(t_data *data);
+int				ft_events_keyboard(int keycode, t_data *data);
+
 /* Init */
 t_config		*ft_config_init(t_config *config);
+void			ft_data_init(t_data *data);
+void			ft_events_init(t_data *data);
+int				ft_libx_init(t_data *data);
 
 /* Map Check */
 char			**ft_map_clone(t_config *map);
@@ -74,19 +99,22 @@ int				ft_filled(t_config *map);
 int				ft_check_for_player(t_config *config, char **map, int len);
 
 /* Screen */
-int			init_screen(t_data *data);
-void		render_screen(t_data *data);
-void		init_data(t_data *data);
+int				init_screen(t_data *data);
+void			render_screen(t_data *data);
+void			init_data(t_data *data);
 
 /* Events */
-int			events_keyboard(int keycode, t_data *data);
-void		init_events(t_data *data);
-int			event_close_win(t_data *data);
+int				ft_events_keyboard(int keycode, t_data *data);
+int				ft_event_close_win(t_data *data);
 
 /* Test */
 void			ft_print_config(t_config *config);
 
 /* Utils */
 int				ft_tab_len(char **tab);
+
+void	ft_create_img(t_config *config, t_data *data);
+void	ft_mlx_pixel_put(t_image *data, int x, int y, int color);
+char	**transpose_map(char **map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 12:28:54 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:47:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	ft_check_for_player(t_config *config, char **map, int len)
 			printf("inside\n");
 			if (config->player->x == -1)
 			{
-				config->player->x = len;
-				config->player->y = i;
+				config->player->x = i;
+				config->player->y = len;
 				config->player->direction = map[len][i];
 			}
 			else
