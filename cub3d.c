@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 12:24:41 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:18:47 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_cub3d(char *input)
 {
 	t_config	config;
+	t_data		data;
 
 	ft_config_init(&config);
 	ft_parser(input, &config);
@@ -28,7 +29,6 @@ void	ft_cub3d(char *input)
 	// mlx_clean(&structrname);
 	// exit(EXIT_SUCCESS);
 	ft_free_map(&map);
->>>>>>> main
 }
 
 int	main(int argc, char **argv)
