@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/08 16:16:50 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/09 15:11:59 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,19 @@ int	event_close_win(t_data *data)
 	return (0);
 }
 
-int events_keyboard(int keycode, t_data *data)
+int events_keyboard(int keycode, t_data *data, t_player *player)
 {
 	if (keycode == XK_Escape)
 		event_close_win(data);
+	if (keycode == XK_W)
+	{
+		player->pos_x += player->dir_x;
+		player->pos_y += player->dir_y;
+	}
+	if (keycode == XK_S)
+	{
+		player->pos_x -= player->dir_x;
+		player->pos_y -= player->dir_y;
+	}
 	return (0);
 }

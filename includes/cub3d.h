@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 12:18:18 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:51:06 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,24 @@
 # include <unistd.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
+#include <sys/time.h>
+#include <sys/wait.h>
 
 typedef struct s_player
 {
-	int			x;
-	int			y;
-	char		direction;
+	int			pos_x;
+	int			pos_y;
+	double		dir_x;
+	double		dir_y;
+	char		orientation;
 }				t_player;
+
+typedef struct s_ray
+{
+	double		dir_x;
+	double		dir_y;
+	double		dis;
+}				t_ray;
 
 typedef struct s_config
 {
