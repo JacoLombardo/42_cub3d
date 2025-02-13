@@ -19,11 +19,15 @@ SRCS = cub3d.c \
 		source/error.c \
 		source/events.c \
 		source/init.c \
+		source/libx.c \
 		source/map_check.c \
 		source/parser.c \
 		source/parser_utils.c \
+		source/screen.c \
 		source/test.c \
-		source/utils.c
+		source/transpose.c \
+		source/utils.c \
+		source/fdf/draw.c
 HEADER = cub3d.h
 NAME = cub3d
 LIBFT_PATH = libraries/libft

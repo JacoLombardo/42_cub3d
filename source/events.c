@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/09 15:11:59 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/09 14:46:23 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_events(t_data *data)
+int	ft_event_close_win(t_data *data)
 {
-	mlx_hook(data->win_ptr, DestroyNotify, 0, event_close_win, data);
-	mlx_key_hook(data->win_ptr, events_keyboard, data);
-	// mlx_mouse_hook(data->win_ptr, events_mouse_press, data);
-}
-int	event_close_win(t_data *data)
-{
-	mlx_loop_end(data->mlx_ptr);
+	mlx_loop_end(data->mlx);
 	return (0);
 }
 

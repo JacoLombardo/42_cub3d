@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen.c                                           :+:      :+:    :+:   */
+/*   libx.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/09 15:50:33 by nboer            ###   ########.fr       */
+/*   Created: 2025/02/09 14:02:43 by jalombar          #+#    #+#             */
+/*   Updated: 2025/02/09 16:05:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	render_screen(t_data *data)
+void	ft_close_libx(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	mlx_clear_window(data->mlx, data->win);
-	while (j < HEIGHT)
-	{
-		i = 0;
-		while (i < WIDTH)
-		{
-			//calc_pixel(i, j, data);
-			i++;
-		}
-		j++;
-	}
-	mlx_put_image_to_window(data->mlx, data->win, data->image,
-		0, 0);
+	//mlx_destroy_image(data->mlx data->image->img);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 }
 
-long long	get_time(void)
+void	ft_mlx_pixel_put(t_image *image, int x, int y, int color)
 {
-	struct timeval	time;
+	char	*dst;
 
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+	dst = image->addr + (y * image->line_length + x * (image->bbp / 8));
+	*(unsigned int *)dst = color;
 }
+
