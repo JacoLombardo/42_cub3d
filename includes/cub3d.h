@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 15:42:55 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:51:06 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,26 @@
 # define COS 0.707105
 # define SIN 0.707108
 # define ESC 65307
+#include <X11/X.h>
+#include <X11/keysym.h>
+#include <sys/time.h>
+#include <sys/wait.h>
 
 typedef struct s_player
 {
-	int			x;
-	int			y;
-	char		direction;
+	int			pos_x;
+	int			pos_y;
+	double		dir_x;
+	double		dir_y;
+	char		orientation;
 }				t_player;
+
+typedef struct s_ray
+{
+	double		dir_x;
+	double		dir_y;
+	double		dis;
+}				t_ray;
 
 typedef struct s_config
 {

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/09 14:22:50 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:50:33 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ void	render_screen(t_data *data)
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->image,
 		0, 0);
+}
+
+long long	get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }

@@ -18,9 +18,19 @@ int	ft_event_close_win(t_data *data)
 	return (0);
 }
 
-int	ft_events_keyboard(int keycode, t_data *data)
+int events_keyboard(int keycode, t_data *data, t_player *player)
 {
 	if (keycode == XK_Escape)
-		ft_event_close_win(data);
+		event_close_win(data);
+	if (keycode == XK_W)
+	{
+		player->pos_x += player->dir_x;
+		player->pos_y += player->dir_y;
+	}
+	if (keycode == XK_S)
+	{
+		player->pos_x -= player->dir_x;
+		player->pos_y -= player->dir_y;
+	}
 	return (0);
 }
