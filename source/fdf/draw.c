@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:57:43 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 16:28:34 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:16:07 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,3 @@ void	ft_create_img(t_config *config, t_data *data)
 		x++;
 	}
 }
-
