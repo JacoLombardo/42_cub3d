@@ -25,7 +25,6 @@ SRCS = cub3d.c \
 		source/parser_utils.c \
 		source/screen.c \
 		source/test.c \
-		source/transpose.c \
 		source/utils.c \
 		source/fdf/draw.c
 HEADER = cub3d.h

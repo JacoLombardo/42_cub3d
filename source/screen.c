@@ -6,13 +6,13 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/09 15:50:33 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/13 16:34:04 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	render_screen(t_data *data)
+void	ft_render_screen(t_data *data)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ void	render_screen(t_data *data)
 		0, 0);
 }
 
-long long	get_time(void)
+long long	ft_get_time(void)
 {
 	struct timeval	time;
 

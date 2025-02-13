@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:05:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 12:28:37 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:39:16 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,44 @@ void	ft_free_config(t_config *config)
 	if (config->f)
 		free(config->f);
 	ft_free_tab(config->map);
-	free(config->player);
+	if (config->player)
+		free(config->player);
+}
+
+void	ft_free_data(t_data *data)
+{
+	if (data->image->img)
+		mlx_destroy_image(data->mlx, data->image->img);
+	if (data->image)
+		free(data->image);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
 }
 
 void	ft_parser_cleanup(t_config *config, char *line, int fd, char *type)
 {
-	if (ft_strcmp(type, "malloc"))
-		write(2, "[Error] Malloc fail\n", 21);
-	else if (ft_strcmp(type, "map"))
-		write(2, "[Error] Invalid map\n", 21);
+	if (!ft_strcmp(type, "malloc"))
+		ft_putendl_fd("[Error] Malloc fail", 2);
+	else if (!ft_strcmp(type, "map"))
+		ft_putendl_fd("[Error] Invalid map", 2);
 	if (config)
 		ft_free_config(config);
 	if (line)
 		free(line);
 	if (fd > 0)
 		close(fd);
+	exit(1);
+}
+
+void	ft_libx_cleanup(t_data *data, t_config *config)
+{
+	ft_putendl_fd("[Error] Minilibx init failed", 2);
+	ft_free_data(data);
+	ft_free_config(config);
 	exit(1);
 }

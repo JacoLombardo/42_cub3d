@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 12:31:32 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:02:12 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ void	ft_elements(t_config *config, char *line, int fd)
 	}
 }
 
+/* ft_map first checks how many rows of map we have parsed already,
+	to calcuale the len. Then reallocate the memory to add one more row and duplicate the line,
+	while checking if the player is in the line. */
+
 void	ft_map(t_config *config, char *line, int fd)
 {
 	int	len;
@@ -75,12 +79,12 @@ void	ft_map(t_config *config, char *line, int fd)
 	config->map[len] = NULL;
 	if (!config->map[len - 1])
 		ft_parser_cleanup(config, line, fd, "malloc");
-	else if (ft_check_for_player(config, config->map, len - 1))
-	{
-		printf("diocane\n");
+	else if (ft_check_n_player(config, config->map, len - 1))
 		ft_parser_cleanup(config, line, fd, "map");
-	}
 }
+
+/* ft_handle_line checks if the config elements are not filled,
+	and in that case keeps filling them, otherwise it starts parsing the map */
 
 void	ft_handle_line(t_config *config, char *line, int fd)
 {
@@ -112,6 +116,8 @@ t_config	*ft_parser(char *input, t_config *config)
 		free(line);
 	}
 	close(fd);
+	if (!ft_filled(config) || !config->map[0])
+		ft_parser_cleanup(config, line, fd, "map");
 	ft_map_check(ft_map_clone(config), config);
 	return (config);
 }

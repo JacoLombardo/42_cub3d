@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/09 15:47:32 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:58:07 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ int	ft_filled(t_config *map)
 		return (0);
 }
 
-int	ft_check_for_player(t_config *config, char **map, int len)
+/* ft_check_n_player checks if the map is invalid (if contains chars not allowed) and also if there is the player in it,
+	adding and extra check if the player was already set before */
+
+int	ft_check_n_player(t_config *config, char **map, int len)
 {
 	int	i;
 
@@ -68,12 +71,11 @@ int	ft_check_for_player(t_config *config, char **map, int len)
 		else if (map[len][i] == 'N' || map[len][i] == 'S' || map[len][i] == 'W'
 			|| map[len][i] == 'E')
 		{
-			printf("inside\n");
-			if (config->player->x == -1)
+			if (config->player->pos_x == -1)
 			{
-				config->player->x = i;
-				config->player->y = len;
-				config->player->direction = map[len][i];
+				config->player->pos_x = len;
+				config->player->pos_y = i;
+				config->player->orientation = map[len][i];
 			}
 			else
 				return (1);

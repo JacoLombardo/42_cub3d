@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:57:43 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/13 14:16:07 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:04:14 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,16 @@ void	ft_create_img(t_config *config, t_data *data)
 	int			x;
 	int			y;
 
-	x = 0;
-	while (x < ft_tab_len(config->map))
+	y = 0;
+	while (y < ft_tab_len(config->map))
 	{
-		y = 0;
-		while (y < (int)ft_strlen(config->map[x]))
+		x = 0;
+		while (x < (int)ft_strlen(config->map[y]))
 		{
-			if (config->map[x][y] == '1')
+			if (config->map[y][x] == '1')
 				ft_mlx_pixel_put(data->image, x * 10, y * 10, 16777215);
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 }
