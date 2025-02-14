@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/13 17:28:56 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:42:59 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,42 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <math.h>
 # include <stdio.h>
 # include <sys/time.h>
 # include <sys/wait.h>
 # include <unistd.h>
 
-/* WIDTH and HEIGHT: screen resolution */
 /* # define WIDTH 960
 # define HEIGHT 720 */
 # define WIDTH 1280
 # define HEIGHT 720
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
-/* GRID: grid size (width and height) */
-# define GRID 100
-/* Field of View (FOV): The total horizontal viewing angle of the camera
-	(in this case in radiants) */
-# define FOV 1.5708
+# define GRID 10
+# define FOV 60
+# define M_PI 3.14159265358979323846
+//# define FOV 90
 # define ESC 65307
 
 /* Cleanup */
+void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
+void		ft_init_cleanup(t_data *data, t_config *config, char *type);
+
+/* Cleanup Utils */
 void		ft_free_tab(char **tab);
 void		ft_free_config(t_config *config);
 void		ft_free_data(t_data *data);
-void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
-void		ft_libx_cleanup(t_data *data, t_config *config);
 
 /* Events */
 int			ft_event_close_win(t_data *data);
 int			ft_events_keyboard(int keycode, t_data *data, t_player *player);
 
 /* Init */
-t_config	*ft_config_init(t_config *config);
+void		ft_config_init(t_config *config);
 void		ft_data_init(t_data *data, t_config *config);
 void		ft_events_init(t_data *data);
-void		ft_libx_init(t_data *data, t_config *config);
+void		ft_libx_init(t_data *data);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
@@ -61,6 +62,12 @@ void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
 /* Map Check */
 char		**ft_map_clone(t_config *map);
 void		ft_map_check(char **map, t_config *config);
+
+/* Math */
+double		ft_dtor(double degrees);
+double		ft_get_tan(double degrees);
+double		ft_calc_xa(t_ray *ray);
+double		ft_calc_ya(t_ray *ray);
 
 /* Parser */
 t_config	*ft_parser(char *input, t_config *config);

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/13 16:42:11 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:58:26 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_cub3d(char *input)
 	// mlx_loop(structname.mlx_ptr);
 	// mlx_clean(&structrname);
 	// exit(EXIT_SUCCESS);
-	ft_free_config(&config);
+	ft_free_data(&data);
 }
 
 int	main(int argc, char **argv)

@@ -1,0 +1,7 @@
+DOCS
+
+Raycasting tutorial
+https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/
+
+Raycasting in grid
+https://theshoemaker.de/posts/ray-casting-in-2d-grids

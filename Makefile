@@ -16,11 +16,13 @@ LIBFT_FLAGS = -L$(LIBFT_PATH) -lft -g
 MINILIBX_FLAGS	= -L$(MINILIBX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 SRCS = cub3d.c \
 		source/cleanup.c \
+		source/cleanup_utils.c \
 		source/error.c \
 		source/events.c \
 		source/init.c \
 		source/libx.c \
 		source/map_check.c \
+		source/math.c \
 		source/parser.c \
 		source/parser_utils.c \
 		source/screen.c \

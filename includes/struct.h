@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/13 17:23:34 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:06:07 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ typedef struct s_ray
 {
 	double		dir_x;
 	double		dir_y;
+	double		xa;
+	double		ya;
 	double		dis;
+	double		angle;
 }				t_ray;
 
 typedef struct s_config
@@ -56,6 +59,9 @@ typedef struct s_data
 	void		*win;
 	t_image		*image;
 	double		ray_angle;
+	t_config	*config;
+	t_player	*player;
+	t_ray		**rays;
 }				t_data;
 
 #endif

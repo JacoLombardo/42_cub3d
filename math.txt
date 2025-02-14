@@ -1,0 +1,31 @@
+MATH
+
+FOV (Field of View): The total horizontal viewing angle of the camera
+WIDTH: width of the screen (and of the projection plane) in pixel (or units)
+HEIGHT: height of the screen (and of the projection plane) in pixel (or units)
+GRID: grid size in pixel
+M_PI: mathematical constant that represents the value of π (pi)
+TAN: tangent of the angle
+
+
+
+Incremental angle for ray casting (to be able to print one pixel per ray)
+
+ANGLE = FOV / WIDTH
+
+
+
+Starting angle for the first ray
+
+ANGLE = 90 - (FOV / 2)
+
+
+
+Measures of triangle (a is the angle of the ray in this case), the first formula is to obtain
+the adjacent side (horizontal intersection), the second the opposite (vertical intersection)
+
+TAN(a) = (GRID / 2) / Xa
+Xa = (GRID / 2) / TAN(a)
+
+TAN(a) = Ya / (GRID / 2)
+Ya = (GRID / 2) * TAN(a)
