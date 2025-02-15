@@ -6,11 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/13 14:44:36 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:07:29 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	ft_event_close_win(t_data *data)
 {

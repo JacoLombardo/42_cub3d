@@ -6,11 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:05:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/14 12:05:40 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:07:24 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	ft_parser_cleanup(t_config *config, char *line, int fd, char *type)
 {

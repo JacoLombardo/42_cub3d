@@ -6,11 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:12:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/13 16:13:15 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:07:40 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 char	**ft_map_clone(t_config *config)
 {

@@ -6,6 +6,8 @@ HEIGHT: height of the screen (and of the projection plane) in pixel (or units)
 GRID: grid size in pixel
 M_PI: mathematical constant that represents the value of π (pi)
 TAN: tangent of the angle
+DIR_Y: y orientation of the ray
+DIR_X: x orientation of the ray
 
 
 
@@ -29,3 +31,10 @@ Xa = (GRID / 2) / TAN(a)
 
 TAN(a) = Ya / (GRID / 2)
 Ya = (GRID / 2) * TAN(a)
+
+
+
+Calculation of coordinates of a point (on the ray)
+
+A.y = (rounded_down(P.y) * GRID) + DIR_Y
+A.x = P.x + ((P.y - (A.y / GRID)) / tan(ray_angle))

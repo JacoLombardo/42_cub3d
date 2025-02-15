@@ -6,12 +6,22 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/14 15:06:07 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 11:40:01 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+typedef struct s_2D
+{
+	int		x;
+	int		y;
+	double	xa;
+	double	ya;
+	double	dis_x;
+	double	dis_y;
+}				t_2D;
 
 typedef struct s_player
 {
@@ -30,6 +40,8 @@ typedef struct s_ray
 	double		ya;
 	double		dis;
 	double		angle;
+	t_2D		*hori_int;
+	t_2D		*vert_int;
 }				t_ray;
 
 typedef struct s_config

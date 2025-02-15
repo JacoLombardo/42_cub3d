@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:07:18 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/14 15:13:36 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:39:35 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ double	ft_calc_xa(t_ray *ray)
 	else
 		direction = 1;
 	xa = ((GRID / 2) / ft_get_tan(ray->angle)) * direction;
+	ray->xa = xa;
 	return (xa);
 }
 
@@ -60,5 +61,6 @@ double	ft_calc_ya(t_ray *ray)
 	else
 		direction = 1;
 	ya = ((GRID / 2) * ft_get_tan(ray->angle)) * direction;
+	ray->ya = ya;
 	return (ya);
 }

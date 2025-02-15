@@ -6,35 +6,30 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/14 15:16:07 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:31:04 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	ft_check_wall(t_ray *ray, t_data *data, double x, double y)
+void	ft_cast_ray(t_ray *ray, t_data *data)
 {
-	
+	ray->dir_x = 0;
+	ray->dir_y = 0;
+	ray->dis = 0;
+	ray->hori_int = NULL;
+	ray->vert_int = NULL;
+	ft_hori_intersection(ray, data);
+	ft_vert_intersection(ray, data);
+	if (ft_farer(ray->hori_int, ray->vert_int))
+		printf("wall vert\n");
+		//ft_print_wall(ray->hori_int);
+	else
+		printf("wall hori\n");
+		//ft_print_wall(ray->vert_int);
 }
 
-void	ft_cast_ray(t_ray *ray, t_data *data, double xa, double ya)
-{
-	double	x_new;
-	double	y_new;
-
-	x_new = xa;
-	y_new = ya;
-
-	while (1)
-	{
-		if (ft_check_wall(ray, data, x_new, y_new))
-			break ;
-		x_new += xa;
-		y_new += ya;
-	}
-}
-
-void	ft_init_ray(double pos_x, double pos_y, t_data *data)
+void	ft_init_rays(t_data *data)
 {
 	int		i;
 	double	start_angle;
@@ -42,6 +37,7 @@ void	ft_init_ray(double pos_x, double pos_y, t_data *data)
 	t_ray	*temp;
 
 	i = 0;
+	start_angle = FOV / 2;
 	rays = (t_ray **)malloc(WIDTH * sizeof(t_ray *));
 	while (i < WIDTH)
 	{
@@ -51,7 +47,8 @@ void	ft_init_ray(double pos_x, double pos_y, t_data *data)
 		// double cameraX = 2 * x / double(w) - 1;
 		// double rayDirX = dirX + planeX * cameraX;
 		// double rayDirY = dirY + planeY * cameraX;
-		ft_cast_ray(rays[i], data, ft_calc_xa(rays[i]), ft_calc_ya(rays[i]));
+		ft_cast_ray(rays[i], data);
 		i++;
 	}
+	ft_free_rays(rays);
 }

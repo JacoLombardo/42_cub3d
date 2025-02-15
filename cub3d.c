@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/14 11:58:26 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:32:17 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void	ft_cub3d(char *input)
 	ft_parser(input, &config);
 	//ft_print_config(&config);
 	ft_data_init(&data, &config);
-	ft_create_img(&config, &data);
-	mlx_put_image_to_window(data.mlx, data.win, data.image->img, 0, 0);
-	mlx_loop(data.mlx);
+	ft_init_rays(&data);
+	//ft_create_img(&config, &data);
+	//mlx_put_image_to_window(data.mlx, data.win, data.image->img, 0, 0);
+	//mlx_loop(data.mlx);
 
 	/* ft_create_img(matrix, size, &image);
 	mlx_put_image_to_window(vars.mlx, vars.win, image.img, 0, 0);

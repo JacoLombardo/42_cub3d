@@ -6,11 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:45:26 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/14 12:06:16 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:07:18 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	ft_free_tab(char **tab)
 {
@@ -64,4 +64,19 @@ void	ft_free_data(t_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
+}
+
+void	ft_free_rays(t_ray **rays)
+{
+	int	i;
+
+	i = 0;
+	while (rays[i])
+	{
+		free(rays[i]->hori_int);
+		free(rays[i]->vert_int);
+		free(rays[i]);
+		i++;
+	}
+	free(rays);
 }

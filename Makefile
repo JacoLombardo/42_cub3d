@@ -15,20 +15,23 @@ FLAGS = -I -g -Wall -Werror -Wextra
 LIBFT_FLAGS = -L$(LIBFT_PATH) -lft -g
 MINILIBX_FLAGS	= -L$(MINILIBX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 SRCS = cub3d.c \
-		source/cleanup.c \
-		source/cleanup_utils.c \
+		source/cleanup/cleanup.c \
+		source/cleanup/cleanup_utils.c \
+		source/libx/draw.c \
+		source/libx/events.c \
+		source/libx/libx.c \
+		source/libx/screen.c \
+		source/parsing/map_check.c \
+		source/parsing/parser.c \
+		source/parsing/parser_utils.c \
+		source/rays/intersections.c \
+		source/rays/raycast.c \
 		source/error.c \
-		source/events.c \
 		source/init.c \
-		source/libx.c \
-		source/map_check.c \
 		source/math.c \
-		source/parser.c \
-		source/parser_utils.c \
-		source/screen.c \
 		source/test.c \
 		source/utils.c \
-		source/fdf/draw.c
+		
 HEADER = cub3d.h
 NAME = cub3d
 LIBFT_PATH = libraries/libft

@@ -6,11 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/13 15:58:07 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:07:43 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	ft_skip(char *line, int i)
 {
