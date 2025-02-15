@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:45:26 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 12:07:18 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:20:47 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	ft_free_data(t_data *data)
 {
 	if (data->player)
 		free(data->player);
+	if (data->plane)
+		free(data->plane);
 	if (data->image->img)
 		mlx_destroy_image(data->mlx, data->image->img);
 	if (data->image)
