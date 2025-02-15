@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/15 12:31:04 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:33:55 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_init_rays(t_data *data)
 	t_ray	*temp;
 
 	i = 0;
-	start_angle = FOV / 2;
+	start_angle = 90 - (FOV / 2);
 	rays = (t_ray **)malloc(WIDTH * sizeof(t_ray *));
 	while (i < WIDTH)
 	{
