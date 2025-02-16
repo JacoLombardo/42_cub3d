@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 16:53:36 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/16 16:49:11 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ void		ft_vert_intersection(t_ray *ray, t_data *data);
 void		ft_cast_ray(t_ray *ray, t_data *data);
 void		ft_init_rays(t_data *data);
 
+
+/* Print */
+int			get_wall_height(float ray_distance);
 
 /* Init */
 void		ft_config_init(t_config *config);

@@ -19,6 +19,7 @@ SRCS = cub3d.c \
 		source/cleanup/cleanup_utils.c \
 		source/libx/draw.c \
 		source/libx/events.c \
+		source/libx/print.c \
 		source/libx/libx.c \
 		source/libx/screen.c \
 		source/parsing/map_check.c \

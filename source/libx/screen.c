@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   screen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/15 16:53:16 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/16 16:56:07 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 void	calc_pixel(t_data *data, int posY, int posX, int wall_height)
 {
@@ -41,7 +40,7 @@ void	ft_render_screen(t_data *data)
 		wall_y = get_wall_height(50); //should pass data->rays[i]->dis
 		while (i < HEIGHT)
 		{
-			calc_pixel(i, j, data, wall_y);
+			calc_pixel(data, i, j, wall_y);
 			i++;
 		}
 		j++;

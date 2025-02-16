@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 16:48:10 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/16 17:37:06 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_data_init(t_data *data, t_config *config)
 	data->player = NULL;
 	data->image = NULL;
 	data->player = config->player;
-	ft_set_player_dir(data);
+	// ft_set_player_dir(data);
 	ft_libx_init(data);
 }
 
