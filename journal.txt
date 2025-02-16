@@ -4,3 +4,10 @@ JOURNAL
 Happy Valentine's Day! 😂 
 
 15.02.2025
+
+16.02.2025
+Fixed segfault error; in data_init data->image was set to NULL and therefore
+no longer accessible. 
+Would be convenient for now to keep the functions for initializing and printing to screen
+as seperate functions in cub3d.c so that we can easily comment out eachothers
+code for debugging.

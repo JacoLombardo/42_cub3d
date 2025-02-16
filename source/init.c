@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 15:02:07 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:30:35 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	ft_data_init(t_data *data, t_config *config)
 	data->player = config->player;
 	ft_set_player_dir(data);
 	ft_plane_init(data);
-	ft_libx_init(data);
 }
 
 void	ft_events_init(t_data *data)
@@ -126,6 +125,4 @@ void	ft_libx_init(t_data *data)
 	if (!data->image->addr)
 		ft_init_cleanup(data, NULL, "libx");
 	ft_events_init(data);
-	// data->buff = mlx_get_data_addr(data->img, &frac->pixel_bits,
-	// 		&frac->line_len, &frac->endian);
 }

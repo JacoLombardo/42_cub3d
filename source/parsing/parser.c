@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 12:07:48 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:46:38 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	ft_map(t_config *config, char *line, int fd)
 
 void	ft_handle_line(t_config *config, char *line, int fd)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
+	// i = 0
 	if (line[0] == '\n')
 		return ;
 	if (!ft_filled(config))

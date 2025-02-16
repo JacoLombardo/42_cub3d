@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 15:02:26 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:19:33 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ void	ft_cub3d(char *input)
 	t_config	config;
 	t_data		data;
 
-	ft_config_init(&config);
-	ft_parser(input, &config);
-	//ft_print_config(&config);
+	// ft_config_init(&config);
+	// ft_parser(input, &config);
+	// ft_print_config(&config);
+	// ft_data_init(&data, &config);
+	// ft_init_rays(&data);
+	
+	(void) input;
 	ft_data_init(&data, &config);
-	ft_init_rays(&data);
-	//ft_create_img(&config, &data);
-	//mlx_put_image_to_window(data.mlx, data.win, data.image->img, 0, 0);
-	//mlx_loop(data.mlx);
+	ft_libx_init(&data);
+	ft_events_init(&data);
+	ft_render_screen(&data);
+	mlx_put_image_to_window(data.mlx, data.win, data.image->img, 0, 0);
+	mlx_loop(data.mlx);
 
 	/* ft_create_img(matrix, size, &image);
 	mlx_put_image_to_window(vars.mlx, vars.win, image.img, 0, 0);
 	mlx_key_hook(vars.win, ft_handle_hooks, &vars);
 	mlx_hook(vars.win, 17, 0, ft_close_window, &vars);
 	mlx_loop(vars.mlx); */
-	
-	// render_screen(&data);
-	// mlx_loop(structname.mlx_ptr);
-	// mlx_clean(&structrname);
-	// exit(EXIT_SUCCESS);
 	ft_free_data(&data);
 }
 

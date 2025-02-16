@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:45:26 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 16:20:47 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:47:12 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	ft_free_tab(char **tab)
 
 void	ft_free_config(t_config *config)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
+	// i = 0;
 	if (config->no)
 		free(config->no);
 	if (config->so)

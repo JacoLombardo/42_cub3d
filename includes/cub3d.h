@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 15:01:08 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:49:11 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@
 # define M_PI 3.14159265358979323846
 # define ESC 65307
 
+# define RED 0xFF0000
+# define BLUE 0x00FF00
+# define GREEN 0x0000FF
+
 /* Cleanup */
 void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
 void		ft_init_cleanup(t_data *data, t_config *config, char *type);
@@ -46,7 +50,6 @@ void		ft_free_tab(char **tab);
 void		ft_free_config(t_config *config);
 void		ft_free_data(t_data *data);
 void		ft_free_rays(t_ray **rays);
-
 
 /* Draw */
 void		ft_create_img(t_config *config, t_data *data);
@@ -61,7 +64,7 @@ void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
 /* Screen */
 void		ft_render_screen(t_data *data);
 long long	ft_get_time(void);
-
+void		my_pixel_put(t_data *data, int posY, int posX, int color);
 
 /* Map Check */
 char		**ft_map_clone(t_config *map);
@@ -89,6 +92,9 @@ void		ft_vert_intersection(t_ray *ray, t_data *data);
 void		ft_cast_ray(t_ray *ray, t_data *data, int pixel);
 void		ft_init_rays(t_data *data);
 
+
+/* Print */
+int			get_wall_height(float ray_distance);
 
 /* Init */
 void		ft_config_init(t_config *config);

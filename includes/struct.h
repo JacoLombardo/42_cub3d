@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 14:45:53 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:20:17 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_image
 	int			bbp;
 	int			line_length;
 	int			endian;
+	char		*buff;
 }				t_image;
 
 typedef struct s_data
