@@ -10,6 +10,11 @@ DIR_Y: y orientation of the ray
 DIR_X: x orientation of the ray
 
 
+Calculation of the distance of the player from the projection plane
+
+DIS = (WIDTH / 2) / TAN(FOV / 2)
+
+
 
 Incremental angle for ray casting (to be able to print one pixel per ray)
 
@@ -36,5 +41,15 @@ Ya = (GRID / 2) * TAN(a)
 
 Calculation of coordinates of a point (on the ray)
 
+vertical:
 A.y = (rounded_down(P.y) * GRID) + DIR_Y
 A.x = P.x + ((P.y - (A.y / GRID)) / tan(ray_angle))
+
+
+
+Calculation of the projection plane data
+
+PLANE_SIZE = TAN(FOV / 2)
+
+PLANE_X = PLAYER_DIR_X * PLANE_SIZE
+PLANE_Y = -PLAYER_DIR_X * PLANE_SIZE

@@ -25,10 +25,10 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-/* # define WIDTH 960
-# define HEIGHT 720 */
-# define WIDTH 1280
+# define WIDTH 960
 # define HEIGHT 720
+/* # define WIDTH 1280
+# define HEIGHT 720 */
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
 # define GRID 10
@@ -82,14 +82,14 @@ int			ft_check_n_player(t_config *config, char **map, int len);
 
 
 /* Intersections */
-int			ft_check_wall(t_2D *intersection, t_data *data);
-t_2D		*ft_hori_coordinates(t_ray *ray, t_data *data, int first);
-t_2D		*ft_vert_coordinates(t_ray *ray, t_data *data, int first);
+int			ft_check_wall(t_intersect *intersection, t_data *data);
+t_intersect	*ft_hori_coordinates(t_ray *ray, t_data *data, int first);
+t_intersect	*ft_vert_coordinates(t_ray *ray, t_data *data, int first);
 void		ft_hori_intersection(t_ray *ray, t_data *data);
 void		ft_vert_intersection(t_ray *ray, t_data *data);
 
 /* Raycast */
-void		ft_cast_ray(t_ray *ray, t_data *data);
+void		ft_cast_ray(t_ray *ray, t_data *data, int pixel);
 void		ft_init_rays(t_data *data);
 
 
@@ -113,7 +113,7 @@ void		ft_print_config(t_config *config);
 
 /* Utils */
 int			ft_tab_len(char **tab);
-int			ft_farer(t_2D *p1, t_2D *p2);
+int			ft_closer(t_intersect *p1, t_intersect *p2, t_data *data);
 
 
 

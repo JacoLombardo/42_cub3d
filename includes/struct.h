@@ -17,16 +17,30 @@ typedef struct s_2D
 {
 	int		x;
 	int		y;
+}				t_2D;
+
+typedef struct s_intersect
+{
+	int		x;
+	int		y;
 	double	xa;
 	double	ya;
 	double	dis_x;
 	double	dis_y;
-}				t_2D;
+}				t_intersect;
+
+typedef struct s_plane
+{
+	int		x;
+	int		y;
+	double	size;
+}				t_plane;
 
 typedef struct s_player
 {
 	int			pos_x;
 	int			pos_y;
+	int			view_angle;
 	double		dir_x;
 	double		dir_y;
 	char		orientation;
@@ -36,12 +50,13 @@ typedef struct s_ray
 {
 	double		dir_x;
 	double		dir_y;
+	double		pos;
 	double		xa;
 	double		ya;
 	double		dis;
 	double		angle;
-	t_2D		*hori_int;
-	t_2D		*vert_int;
+	t_intersect	*hori_int;
+	t_intersect	*vert_int;
 }				t_ray;
 
 typedef struct s_config
@@ -74,6 +89,7 @@ typedef struct s_data
 	double		ray_angle;
 	t_config	*config;
 	t_player	*player;
+	t_plane		*plane;
 	t_ray		**rays;
 }				t_data;
 

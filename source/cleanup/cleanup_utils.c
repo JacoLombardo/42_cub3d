@@ -53,6 +53,8 @@ void	ft_free_data(t_data *data)
 {
 	if (data->player)
 		free(data->player);
+	if (data->plane)
+		free(data->plane);
 	if (data->image->img)
 		mlx_destroy_image(data->mlx, data->image->img);
 	if (data->image)

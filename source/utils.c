@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:07:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 12:16:21 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/15 14:55:55 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@ int	ft_tab_len(char **tab)
 	return (len);
 }
 
-int	ft_farer(t_2D *p1, t_2D *p2)
+int	ft_closer(t_intersect *p1, t_intersect *p2, t_data *data)
 {
-	int	d1;
-	int	d2;
+	double	d1;
+	double	d2;
 
-	d1 = (p1->xa * p1->xa) + (p1->ya * p1->ya);
-	d2 = (p2->xa * p2->xa) + (p2->ya * p2->ya);
-	if (d1 > d2)
+	d1 = 0;
+	d2 = 0;
+	d1 = sqrt(pow(data->player->pos_x - p1->x, 2) + pow(data->player->pos_y
+				- p1->y, 2));
+	d1 = sqrt(pow(data->player->pos_x - p2->x, 2) + pow(data->player->pos_y
+				- p2->y, 2));
+	if (d1 < d2)
 		return (1);
 	else
 		return (0);
