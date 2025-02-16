@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/16 16:56:07 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/16 18:17:48 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_render_screen(t_data *data)
 	while (j < WIDTH)
 	{
 		i = 0;
-		wall_y = get_wall_height(50); //should pass data->rays[i]->dis
+		wall_y = get_wall_height(1); //should pass data->rays[i]->dis
 		while (i < HEIGHT)
 		{
 			calc_pixel(data, i, j, wall_y);
@@ -45,7 +45,7 @@ void	ft_render_screen(t_data *data)
 		}
 		j++;
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->image,
+	mlx_put_image_to_window(data->mlx, data->win, data->image->img,
 		0, 0);
 }
 
@@ -54,7 +54,7 @@ void	my_pixel_put(t_data *data, int posY, int posX, int color)
 	int	offset;
 
 	offset = (posY * data->image->line_length) + (posX * (data->image->bbp / 8));
-	*(unsigned int *)(data->image->addr + offset) = color; //error prone
+	*(unsigned int *)(data->image->addr + offset) = color;
 }
 
 long long	ft_get_time(void)

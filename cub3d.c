@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/16 17:37:10 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/16 18:17:13 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ void	ft_cub3d(char *input)
 	t_config	config;
 	t_data		data;
 
-	(void) input;
-	(void) config;
-	// ft_config_init(&config);
-	// ft_parser(input, &config);
-	//ft_print_config(&config);
+	ft_config_init(&config);
+	ft_parser(input, &config);
+	ft_print_config(&config);
 	ft_data_init(&data, &config);
-	// ft_init_rays(&data);
-	// ft_create_img(&config, &data);
+	ft_init_rays(&data);
+	
+	ft_libx_init(&data);
 	ft_events_init(&data);
 	ft_render_screen(&data);
 	mlx_put_image_to_window(data.mlx, data.win, data.image->img, 0, 0);
