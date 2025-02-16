@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/16 18:17:48 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/16 18:23:00 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	calc_pixel(t_data *data, int posY, int posX, int wall_height)
 	
 	remain_pix = HEIGHT - wall_height;
 	if (posY < (remain_pix / 2))
-		my_pixel_put(data, posY, posX, BLUE);
+		my_pixel_put(data, posY, posX, BLUE); //FLOOR
 	else if (posY > (HEIGHT / 2) + (remain_pix / 2))
-		my_pixel_put(data, posY, posX, GREEN);
+		my_pixel_put(data, posY, posX, GREEN); // CEILING
 	else
-		my_pixel_put(data, posY, posX, RED);
+		my_pixel_put(data, posY, posX, RED); //WALL
 }
 	
 void	ft_render_screen(t_data *data)
@@ -37,7 +37,7 @@ void	ft_render_screen(t_data *data)
 	while (j < WIDTH)
 	{
 		i = 0;
-		wall_y = get_wall_height(1); //should pass data->rays[i]->dis
+		wall_y = get_wall_height(2); //should pass data->rays[i]->dis
 		while (i < HEIGHT)
 		{
 			calc_pixel(data, i, j, wall_y);
