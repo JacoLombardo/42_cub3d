@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/16 16:49:11 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/18 16:32:00 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-# define WIDTH 960
-# define HEIGHT 720
+# define WIDTH 320
+# define HEIGHT 200
+/* # define WIDTH 960
+# define HEIGHT 720 */
 /* # define WIDTH 1280
 # define HEIGHT 720 */
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
-# define GRID 10
+# define GRID 64
 # define FOV 60
 //# define FOV 90
 # define M_PI 3.14159265358979323846
@@ -44,15 +46,17 @@
 /* Cleanup */
 void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
 void		ft_init_cleanup(t_data *data, t_config *config, char *type);
+void		ft_game_cleanup(t_data *data, char *type);
 
 /* Cleanup Utils */
 void		ft_free_tab(char **tab);
 void		ft_free_config(t_config *config);
-void		ft_free_data(t_data *data);
 void		ft_free_rays(t_ray **rays);
+void		ft_free_data(t_data *data);
 
 /* Draw */
 void		ft_create_img(t_config *config, t_data *data);
+void		ft_print_wall(t_intersect *point, t_data *data);
 
 /* Events */
 int			ft_event_close_win(t_data *data);
@@ -80,18 +84,19 @@ int			ft_strlen2(char *line, int i);
 int			ft_filled(t_config *map);
 int			ft_check_n_player(t_config *config, char **map, int len);
 
-
 /* Intersections */
 int			ft_check_wall(t_intersect *intersection, t_data *data);
-t_intersect	*ft_hori_coordinates(t_ray *ray, t_data *data, int first);
-t_intersect	*ft_vert_coordinates(t_ray *ray, t_data *data, int first);
+void		ft_hori_inter_coord(t_ray *ray, t_data *data, int first);
+void		ft_vert_inter_coord(t_ray *ray, t_data *data, int first);
 void		ft_hori_intersection(t_ray *ray, t_data *data);
 void		ft_vert_intersection(t_ray *ray, t_data *data);
 
 /* Raycast */
-void		ft_cast_ray(t_ray *ray, t_data *data, int pixel);
+// void		ft_cast_ray(t_ray *ray, t_data *data, int pixel);
 void		ft_init_rays(t_data *data);
 
+/* Ray Utils */
+int			ft_check_wall(t_intersect *intersection, t_data *data);
 
 /* Print */
 int			get_wall_height(float ray_distance);
@@ -113,8 +118,7 @@ void		ft_print_config(t_config *config);
 
 /* Utils */
 int			ft_tab_len(char **tab);
+double		ft_distance(t_intersect *p, t_data *data);
 int			ft_closer(t_intersect *p1, t_intersect *p2, t_data *data);
-
-
 
 #endif

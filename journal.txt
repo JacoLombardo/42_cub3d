@@ -3,8 +3,6 @@ JOURNAL
 14.02.2025
 Happy Valentine's Day! 😂 
 
-15.02.2025
-
 16.02.2025
 Fixed segfault error; in data_init data->image was set to NULL and therefore
 no longer accessible. 

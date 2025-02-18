@@ -27,6 +27,7 @@ SRCS = cub3d.c \
 		source/parsing/parser_utils.c \
 		source/rays/intersections.c \
 		source/rays/raycast.c \
+		source/rays/ray_utils.c \
 		source/error.c \
 		source/init.c \
 		source/math.c \

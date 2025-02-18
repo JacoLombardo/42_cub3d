@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 16:20:17 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/18 15:42:23 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_2D
 
 typedef struct s_intersect
 {
-	int		x;
-	int		y;
+	double	x;
+	double	y;
 	double	xa;
 	double	ya;
 	double	dis_x;
@@ -38,8 +38,8 @@ typedef struct s_plane
 
 typedef struct s_player
 {
-	int			pos_x;
-	int			pos_y;
+	double		pos_x;
+	double		pos_y;
 	int			view_angle;
 	double		dir_x;
 	double		dir_y;

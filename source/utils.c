@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:07:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 14:55:55 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:15:25 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ int	ft_tab_len(char **tab)
 	while (tab[len])
 		len++;
 	return (len);
+}
+
+double	ft_distance(t_intersect *p, t_data *data)
+{
+	double	dx;
+	double	dy;
+	double	distance;
+
+	dx = p->x - data->player->pos_x;
+	dy = p->y - data->player->pos_y;
+	distance = sqrt(dx * dx + dy * dy);
+	return (distance);
 }
 
 int	ft_closer(t_intersect *p1, t_intersect *p2, t_data *data)

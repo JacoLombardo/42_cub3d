@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:45:26 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/16 16:47:12 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/18 16:32:45 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void	ft_free_tab(char **tab)
 
 void	ft_free_config(t_config *config)
 {
-	// int	i;
-
-	// i = 0;
 	if (config->no)
 		free(config->no);
 	if (config->so)
@@ -49,12 +46,31 @@ void	ft_free_config(t_config *config)
 		free(config->player);
 }
 
+void	ft_free_rays(t_ray **rays)
+{
+	int	i;
+
+	i = 0;
+	while (rays[i])
+	{
+		if (rays[i]->hori_int)
+			free(rays[i]->hori_int);
+		if (rays[i]->vert_int)
+			free(rays[i]->vert_int);
+		free(rays[i]);
+		i++;
+	}
+	free(rays);
+}
+
 void	ft_free_data(t_data *data)
 {
 	if (data->player)
 		free(data->player);
 	if (data->plane)
 		free(data->plane);
+	if (data->rays)
+		ft_free_rays(data->rays);
 	if (data->image->img)
 		mlx_destroy_image(data->mlx, data->image->img);
 	if (data->image)
@@ -66,19 +82,4 @@ void	ft_free_data(t_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-}
-
-void	ft_free_rays(t_ray **rays)
-{
-	int	i;
-
-	i = 0;
-	while (rays[i])
-	{
-		free(rays[i]->hori_int);
-		free(rays[i]->vert_int);
-		free(rays[i]);
-		i++;
-	}
-	free(rays);
 }

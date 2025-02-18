@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/16 18:30:35 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/18 16:00:59 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,31 @@ void	ft_config_init(t_config *config)
 	config->f = NULL;
 }
 
-void	ft_set_player_dir(t_data *data)
+void	ft_set_player_dir(t_player *player)
 {
-	if (data->player->orientation == 'N')
+	if (player->orientation == 'N')
 	{
-		data->player->dir_x = 0;
-		data->player->dir_y = -1;
+		player->dir_x = 0;
+		player->dir_y = -1;
+		player->view_angle = 90;
 	}
-	else if (data->player->orientation == 'S')
+	else if (player->orientation == 'S')
 	{
-		data->player->dir_x = 0;
-		data->player->dir_y = 1;
+		player->dir_x = 0;
+		player->dir_y = 1;
+		player->view_angle = 270;
 	}
-	else if (data->player->orientation == 'W')
+	else if (player->orientation == 'W')
 	{
-		data->player->dir_x = -1;
-		data->player->dir_y = 0;
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->dir_y = 180;
 	}
-	else if (data->player->orientation == 'E')
+	else if (player->orientation == 'E')
 	{
-		data->player->dir_x = 1;
-		data->player->dir_y = 0;
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->dir_y = 0;
 	}
 }
 
@@ -93,12 +97,12 @@ void	ft_data_init(t_data *data, t_config *config)
 	data->image = image;
 	data->mlx = NULL;
 	data->win = NULL;
-	data->ray_angle = FOV / WIDTH;
+	data->ray_angle = (double)FOV / WIDTH;
 	data->config = config;
 	data->player = NULL;
 	data->image = image;
 	data->player = config->player;
-	ft_set_player_dir(data);
+	ft_set_player_dir(data->player);
 	ft_plane_init(data);
 }
 

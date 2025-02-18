@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:12:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 12:07:40 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:07:18 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	ft_elements_check(t_config *config, char **map)
 	int	x;
 	int	y;
 
-	x = config->player->pos_x;
-	y = config->player->pos_y;
+	x = config->player->pos_x / GRID;
+	y = config->player->pos_y / GRID;
 	if (ft_texture_check(config->no) || ft_texture_check(config->so)
 		|| ft_texture_check(config->we) || ft_texture_check(config->ea))
 		return (1);

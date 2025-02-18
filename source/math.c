@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:07:18 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/15 15:38:05 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:41:38 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ double	ft_get_tan(double degrees)
 	double	radiants;
 	double	tan_nb;
 
+	if (degrees == 90 || degrees == 270)
+		return (1);
 	radiants = degrees * (M_PI / 180.0);
 	tan_nb = tan(radiants);
 	return (tan_nb);
