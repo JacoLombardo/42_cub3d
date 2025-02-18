@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 16:32:00 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:53:19 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define RED 0xFF0000
 # define BLUE 0x00FF00
 # define GREEN 0x0000FF
+# define REFRESH_RATE 16 //16 = 60 FPS, 30 fps = 33
 
 /* Cleanup */
 void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
@@ -67,6 +68,7 @@ void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 /* Screen */
 void		ft_render_screen(t_data *data);
+void		ft_refresh_screen(t_data *data);
 long long	ft_get_time(void);
 void		my_pixel_put(t_data *data, int posY, int posX, int color);
 

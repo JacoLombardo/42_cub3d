@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/18 10:31:13 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:45:19 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ void	calc_pixel(t_data *data, int posY, int posX, int wall_height)
 
 void	ft_render_screen(t_data *data)
 {
+	while (1)
+	{
+		if (ft_get_time() - data->image->t_lastframe > REFRESH_RATE)
+			ft_refresh_screen(data);
+	}
+}
+
+void	ft_refresh_screen(t_data *data)
+{
 	int	i;
 	int	j;
 	int	wall_y;
@@ -37,6 +46,7 @@ void	ft_render_screen(t_data *data)
 	while (j < WIDTH)
 	{
 		i = 0;
+		// cast_ray(data->rays[i]);
 		wall_y = get_wall_height(2); // should pass data->rays[i]->dis
 		while (i < HEIGHT)
 		{
