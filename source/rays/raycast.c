@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/19 18:11:23 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 18:53:07 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 	//printf("\nVERTICAL\n");
 	ft_vert_intersection(ray, data);
 	//printf("\n");
-	if (ray->vert_int->oor || ft_distance2(ray->hori_int, data->player, ray->angle) < ft_distance2(ray->vert_int, data->player, ray->angle))
+	if (!ray->vert_int || ray->vert_int->oor || ft_distance2(ray->hori_int, data->player, ray->angle) 
+			< ft_distance2(ray->vert_int, data->player, ray->angle))
 	{
 		//printf("Printing wall for horizontal intersection\n\n");
 		ray->hori_int->dis = ft_distance2(ray->hori_int, data->player, ray->angle);
