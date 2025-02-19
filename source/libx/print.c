@@ -3,31 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/19 14:07:33 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 14:25:39 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int get_wall_height(double ray_distance)
+int	get_wall_height(double ray_distance)
 {
 	if (ray_distance <= 0.1)
 		ray_distance = 0.1;
-	return ((int) (HEIGHT / ray_distance));
+	return ((int)(HEIGHT / ray_distance * 3));
 }
 
 void	ft_print_wall(t_intersect *wall_int, t_ray *ray, t_data *data)
 {
-	int	pix_y;
-	int	wall_height;
+	int		pix_y;
+	int		wall_height;
 	double	dis;
 
-	printf("dis_x = %f\n", ray->vert_int->dis_x);
-	printf("dis_y = %f\n\n", ray->vert_int->dis_x);
-	dis = sqrt((wall_int->dis_x * wall_int->dis_x) + (wall_int->dis_y * wall_int->dis_y));
+	dis = wall_int->dis;
 	wall_height = get_wall_height(dis);
 	pix_y = 0;
 	while (pix_y < HEIGHT)
@@ -46,6 +44,7 @@ void	ft_print_wall(t_intersect *wall_int, t_ray *ray, t_data *data)
 // 		ft_game_cleanup(&data, "texture");
 // 	tex->img = mlx_xpm_file_to_image(data->mlx, "includes/assets/wall.xpm",
 // 			&(tex->width), &(tex->height));
-// 	tex->addr = mlx_get_data_addr(tex->img, tex->bpp, tex->line_length, tex->endian);
+// 	tex->addr = mlx_get_data_addr(tex->img, tex->bpp, tex->line_length,
+			//tex->endian);
 // 	data->texture = tex;
 // }

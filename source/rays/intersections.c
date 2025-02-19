@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 11:11:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 14:08:58 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:43:35 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	ft_hori_intersection(t_ray *ray, t_data *data)
 		ft_game_cleanup(data, "malloc");
 	ray->hori_int = intersection;
 	ft_set_intersect(ray->hori_int, ray, 'h');
-	//printf("xa: %f, ya: %f\n", ray->hori_int->xa, ray->hori_int->ya);
+	printf("xa: %f, ya: %f\n", ray->hori_int->xa, ray->hori_int->ya);
 	ft_hori_inter_coord(ray, data, 1);
 	while (1)
 	{
@@ -116,7 +116,7 @@ void	ft_vert_intersection(t_ray *ray, t_data *data)
 		ft_game_cleanup(data, "malloc");
 	ray->vert_int = intersection;
 	ft_set_intersect(ray->vert_int, ray, 'v');
-	//printf("xa: %f, ya: %f\n", ray->vert_int->xa, ray->vert_int->ya);
+	printf("xa: %f, ya: %f\n", ray->vert_int->xa, ray->vert_int->ya);
 	ft_vert_inter_coord(ray, data, 1);
 	while (1)
 	{

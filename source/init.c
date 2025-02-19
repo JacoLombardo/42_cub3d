@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 14:02:58 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 14:39:02 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void	ft_set_player_dir(t_player *player)
 	{
 		player->dir_x = -1;
 		player->dir_y = 0;
-		player->dir_y = 180;
+		player->view_angle = 180;
 	}
 	else if (player->orientation == 'E')
 	{
 		player->dir_x = 1;
 		player->dir_y = 0;
-		player->dir_y = 0;
+		player->view_angle = 0;
 	}
 }
 
