@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/19 14:13:38 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:11:23 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 	{
 		//printf("Printing wall for horizontal intersection\n\n");
 		ray->hori_int->dis = ft_distance2(ray->hori_int, data->player, ray->angle);
-		ft_print_wall(ray->hori_int, ray, data);
+		ft_print_wall('h', ray->hori_int, ray, data);
 	}
 	else if (ray->hori_int->oor || ft_distance2(ray->hori_int, data->player, ray->angle) > ft_distance2(ray->vert_int, data->player, ray->angle))
 	{
 		//printf("Printing wall for vertical intersection\n\n");
 		ray->vert_int->dis = ft_distance2(ray->vert_int, data->player, ray->angle);
-		ft_print_wall(ray->vert_int, ray, data);
+		ft_print_wall('v',ray->vert_int, ray, data);
 	}
 }
 
@@ -58,7 +58,7 @@ void	ft_init_rays(t_data *data)
 	t_ray	*ray;
 
 	i = 0;
-	start_angle = data->player->view_angle - (FOV / 2);
+	start_angle = data->player->view_angle - (FOV / 2); //radians or degrees?
 	rays = (t_ray **)malloc(WIDTH * sizeof(t_ray *));
 	if (!rays)
 		ft_game_cleanup(data, "malloc");
@@ -70,7 +70,7 @@ void	ft_init_rays(t_data *data)
 			ft_game_cleanup(data, "malloc");
 		ray->pixel = i + 1;
 		ray->angle = start_angle + (data->ray_angle * i);
-		//ray->angle = start_angle + ((double)i / WIDTH) * FOV;
+		// ray->angle = start_angle + ((double)i / WIDTH) * FOV;
 		rays[i] = ray;
 		//printf("%i-", i);
 		ft_cast_ray(rays[i], data);

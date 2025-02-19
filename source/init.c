@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 14:02:58 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 18:24:11 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ void	ft_plane_init(t_data *data)
 	if (!plane)
 		ft_init_cleanup(data, NULL, "malloc");
 	plane->size = ft_get_tan(FOV / 2);
-	plane->x = data->player->dir_x * plane->size;
-	plane->y = data->player->dir_y * plane->size;
+	// plane->x = data->player->dir_x * plane->size;
+	// plane->y = data->player->dir_y * plane->size;
+	plane->x = -data->player->dir_y * plane->size;
+	plane->y = data->player->dir_x * plane->size;
 	data->plane = plane;
 }
 

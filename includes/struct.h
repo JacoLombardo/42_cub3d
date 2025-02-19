@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 14:16:13 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:14:02 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_player
 	double		dir_x;
 	double		dir_y;
 	char		orientation;
+	int			mv_forward;
+	int			mv_back;
 }				t_player;
 
 typedef struct s_ray
@@ -56,6 +58,7 @@ typedef struct s_ray
 	double		xa;
 	double		ya;
 	double		dis;
+	double		dis_perp;
 	double		angle;
 	t_intersect	*hori_int;
 	t_intersect	*vert_int;

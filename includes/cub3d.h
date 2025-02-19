@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 13:59:35 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:22:40 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-# define WIDTH 320
-# define HEIGHT 200
+// # define WIDTH 320
+// # define HEIGHT 200
 /* # define WIDTH 960
 # define HEIGHT 720 */
-/* # define WIDTH 1280
-# define HEIGHT 720 */
+ # define WIDTH 1280
+# define HEIGHT 720
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
 # define GRID 64
@@ -56,7 +56,7 @@ void		ft_free_data(t_data *data);
 
 /* Draw */
 void		ft_create_img(t_config *config, t_data *data);
-void		ft_print_wall(t_intersect *point, t_ray *ray, t_data *data);
+void		ft_print_wall(char closest, t_intersect *wall_int, t_ray *ray, t_data *data);
 
 /* Events */
 int			ft_event_close_win(t_data *data);

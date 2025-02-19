@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/19 14:03:10 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 17:11:43 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	calc_pixel(t_data *data, int posY, int posX, int wall_height)
 		my_pixel_put(data, posY, posX, GREEN); // CEILING
 	else
 		my_pixel_put(data, posY, posX, RED); // WALL
+		// make color brightness distinction between walls up/down and left/right to read better
 }
 
 void	my_pixel_put(t_data *data, int posY, int posX, int color)
