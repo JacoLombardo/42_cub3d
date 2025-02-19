@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/18 21:45:19 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/19 10:13:24 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,14 @@ void	ft_render_screen(t_data *data)
 void	ft_refresh_screen(t_data *data)
 {
 	int	i;
-	int	j;
 	int	wall_y;
 
 	i = 0;
-	j = 0;
-	mlx_clear_window(data->mlx, data->win);
-	while (j < WIDTH)
+	wall_y = get_wall_height(data->rays[i]->dis);
+	while (i < HEIGHT)
 	{
-		i = 0;
-		// cast_ray(data->rays[i]);
-		wall_y = get_wall_height(2); // should pass data->rays[i]->dis
-		while (i < HEIGHT)
-		{
-			calc_pixel(data, i, j, wall_y);
-			i++;
-		}
-		j++;
+		calc_pixel(data, i, wall_y);
+		i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->image->img, 0, 0);
 }
