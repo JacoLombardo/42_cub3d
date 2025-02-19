@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 14:30:52 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 19:09:18 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_cub3d(char *input)
 
 	ft_config_init(&config);
 	ft_parser(input, &config);
-	ft_print_config(&config);
+	//ft_print_config(&config);
 	ft_data_init(&data, &config);
 	ft_libx_init(&data);
 	// ft_textures_init(&data);

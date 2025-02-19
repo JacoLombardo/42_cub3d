@@ -6,13 +6,13 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/19 18:10:43 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 19:08:07 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int get_wall_height(double ray_distance)
+int	get_wall_height(double ray_distance)
 {
 	if (ray_distance <= 0.1)
 		ray_distance = 0.1;
@@ -21,6 +21,8 @@ int get_wall_height(double ray_distance)
 
 void	ft_print_wall(char closest, t_intersect *wall_int, t_ray *ray, t_data *data)
 {
+	int		pix_y;
+	int		wall_height;
 	int		pix_y;
 	int		wall_height;
 	double	dis;
@@ -48,6 +50,7 @@ void	ft_print_wall(char closest, t_intersect *wall_int, t_ray *ray, t_data *data
 // 		ft_game_cleanup(&data, "texture"); //<- needs update
 // 	tex->img = mlx_xpm_file_to_image(data->mlx, "includes/assets/wall.xpm",
 // 			&(tex->width), &(tex->height));
-// 	tex->addr = mlx_get_data_addr(tex->img, tex->bpp, tex->line_length, tex->endian);
+// 	tex->addr = mlx_get_data_addr(tex->img, tex->bpp, tex->line_length,
+			//tex->endian);
 // 	data->texture = tex;
 // }
