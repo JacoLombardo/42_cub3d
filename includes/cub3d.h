@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 21:53:19 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/19 11:05:22 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@
 # define RED 0xFF0000
 # define BLUE 0x00FF00
 # define GREEN 0x0000FF
-# define REFRESH_RATE 16 //16 = 60 FPS, 30 fps = 33
 
 /* Cleanup */
 void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
@@ -67,10 +66,10 @@ int			ft_events_keyboard(int keycode, t_data *data, t_player *player);
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 /* Screen */
-void		ft_render_screen(t_data *data);
 void		ft_refresh_screen(t_data *data);
 long long	ft_get_time(void);
 void		my_pixel_put(t_data *data, int posY, int posX, int color);
+void		calc_pixel(t_data *data, int posY, int posX, int wall_height);
 
 /* Map Check */
 char		**ft_map_clone(t_config *map);
@@ -101,7 +100,8 @@ void		ft_init_rays(t_data *data);
 int			ft_check_wall(t_intersect *intersection, t_data *data);
 
 /* Print */
-int			get_wall_height(float ray_distance);
+int			get_wall_height(double ray_distance);
+
 
 /* Init */
 void		ft_config_init(t_config *config);
