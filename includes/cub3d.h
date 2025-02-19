@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 16:32:00 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:16:49 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		ft_free_data(t_data *data);
 
 /* Draw */
 void		ft_create_img(t_config *config, t_data *data);
-void		ft_print_wall(t_intersect *point, t_data *data);
+void		ft_print_wall(t_intersect *point, t_ray *ray, t_data *data);
 
 /* Events */
 int			ft_event_close_win(t_data *data);
@@ -92,7 +92,7 @@ void		ft_hori_intersection(t_ray *ray, t_data *data);
 void		ft_vert_intersection(t_ray *ray, t_data *data);
 
 /* Raycast */
-// void		ft_cast_ray(t_ray *ray, t_data *data, int pixel);
+void		ft_cast_ray(t_ray *ray, t_data *data);
 void		ft_init_rays(t_data *data);
 
 /* Ray Utils */

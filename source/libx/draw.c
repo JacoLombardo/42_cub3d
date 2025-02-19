@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:57:43 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 16:25:38 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:16:38 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,9 @@ void	ft_create_img(t_config *config, t_data *data)
 	}
 }
 
-void	ft_print_wall(t_intersect *point, t_data *data)
+void	ft_print_wall(t_intersect *point, t_ray *ray, t_data *data)
 {
 	(void)point;
+	(void)ray;
 	(void)data;
 }

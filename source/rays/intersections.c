@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 11:11:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 16:33:26 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:58:59 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_hori_inter_coord(t_ray *ray, t_data *data, int first)
 		ray->hori_int->x = data->player->pos_x + (data->player->pos_y
 				- ray->hori_int->y) / ft_get_tan(ray->angle);
 		/* ray->hori_int->x = data->player->pos_x + (data->player->pos_y
-				- ray->hori_int->y) * cos(ray->angle) / sin(ray->angle); */
+				- ray->hori_int->y) * cos(ft_dtor(ray->angle)) / sin(ft_dtor(ray->angle)); */
 	}
 	else
 	{
@@ -49,7 +49,7 @@ void	ft_vert_inter_coord(t_ray *ray, t_data *data, int first)
 		ray->vert_int->y = data->player->pos_y + (data->player->pos_x
 				- ray->vert_int->x) / ft_get_tan(ray->angle);
 		/* ray->vert_int->y = data->player->pos_y + (data->player->pos_x
-				- ray->vert_int->x) * sin(ray->angle) / cos(ray->angle); */
+				- ray->vert_int->x) * sin(ft_dtor(ray->angle)) / cos(ft_dtor(ray->angle)); */
 	}
 	else
 	{
@@ -65,6 +65,11 @@ t_intersect	*ft_set_intersect(t_ray *ray, t_data *data, char type)
 	point = (t_intersect *)malloc(1 * sizeof(t_intersect));
 	if (!point)
 		ft_game_cleanup(data, "malloc");
+	/* int map_x = (int)pos_x;
+	int map_y = (int)pos_y;
+	
+	double delta_dist_x = fabs(1 / ray_dir_x);
+	double delta_dist_y = fabs(1 / ray_dir_y); */
 	if (type == 'h')
 	{
 		//point->xa = GRID * cos(ray->angle);

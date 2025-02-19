@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 15:42:23 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:08:31 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	int			pixel;
 	double		dir_x;
 	double		dir_y;
 	double		pos;
