@@ -48,6 +48,7 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	int			pixel;
 	double		dir_x;
 	double		dir_y;
 	double		pos;
