@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/19 11:54:05 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/19 14:03:10 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	calc_pixel(t_data *data, int posY, int posX, int wall_height)
 {
-	int wall_top;
+	int	wall_top;
 	int	wall_bot;
-	
+
 	wall_top = (HEIGHT / 2) + (wall_height / 2);
 	wall_bot = (HEIGHT / 2) - (wall_height / 2);
 	if (posY < wall_bot)
@@ -31,7 +31,7 @@ void	my_pixel_put(t_data *data, int posY, int posX, int color)
 {
 	int	offset;
 
-	offset = (posY * data->image->line_length) + (posX * (data->image->bbp
+	offset = (posY * data->image->line_length) + (posX * (data->image->bpp
 				/ 8));
 	*(unsigned int *)(data->image->addr + offset) = color;
 }
