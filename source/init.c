@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 16:00:59 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:02:58 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	ft_data_init(t_data *data, t_config *config)
 		ft_init_cleanup(data, NULL, "malloc");
 	image->img = NULL;
 	image->addr = NULL;
-	image->bbp = 0;
+	image->bpp = 0;
 	image->line_length = 0;
 	image->endian = 0;
 	data->image = image;
@@ -124,9 +124,8 @@ void	ft_libx_init(t_data *data)
 	data->image->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (data->image->img == NULL)
 		ft_init_cleanup(data, NULL, "libx");
-	data->image->addr = mlx_get_data_addr(data->image->img, &data->image->bbp,
+	data->image->addr = mlx_get_data_addr(data->image->img, &data->image->bpp,
 			&data->image->line_length, &data->image->endian);
 	if (!data->image->addr)
 		ft_init_cleanup(data, NULL, "libx");
-	ft_events_init(data);
 }

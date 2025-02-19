@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:57:43 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 11:16:38 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:06:06 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,4 @@ void	ft_create_img(t_config *config, t_data *data)
 		}
 		y++;
 	}
-}
-
-void	ft_print_wall(t_intersect *point, t_ray *ray, t_data *data)
-{
-	(void)point;
-	(void)ray;
-	(void)data;
 }

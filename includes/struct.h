@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 13:54:05 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:16:13 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,22 @@ typedef struct s_image
 {
 	void		*img;
 	char		*addr;
-	int			bbp;
+	int			bpp;
 	int			line_length;
 	int			endian;
 	char		*buff;
 }				t_image;
+
+typedef struct s_texture
+{
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_length;
+	int			width;
+	int			height;
+	int			endian;
+}				t_texture;
 
 typedef struct s_data
 {
@@ -91,6 +102,7 @@ typedef struct s_data
 	t_image		*image;
 	double		ray_angle;
 	t_config	*config;
+	t_texture	*texture;
 	t_player	*player;
 	t_plane		*plane;
 	t_ray		**rays;
