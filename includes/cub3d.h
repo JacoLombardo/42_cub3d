@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 11:16:49 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:59:35 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ void		ft_print_config(t_config *config);
 
 /* Utils */
 int			ft_tab_len(char **tab);
-double		ft_distance(t_intersect *p, t_data *data);
-int			ft_closer(t_intersect *p1, t_intersect *p2, t_data *data);
+double		ft_distance(t_intersect *p, t_player *player);
 
 #endif

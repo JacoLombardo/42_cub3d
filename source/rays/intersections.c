@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 11:11:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 11:58:59 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:08:58 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ void	ft_hori_inter_coord(t_ray *ray, t_data *data, int first)
 	if (first)
 	{
 		ray->hori_int->y = floor(data->player->pos_y / GRID) * GRID + dir_y;
-		ray->hori_int->x = data->player->pos_x + (data->player->pos_y
-				- ray->hori_int->y) / ft_get_tan(ray->angle);
-		/* ray->hori_int->x = data->player->pos_x + (data->player->pos_y
-				- ray->hori_int->y) * cos(ft_dtor(ray->angle)) / sin(ft_dtor(ray->angle)); */
+		if (ft_get_tan(ray->angle) > 0.0001)
+		{
+			ray->hori_int->x = data->player->pos_x + (data->player->pos_y
+					- ray->hori_int->y) / ft_get_tan(ray->angle);
+		}
+		else
+			ray->hori_int->x = data->player->pos_x;
 	}
 	else
 	{
@@ -46,10 +49,13 @@ void	ft_vert_inter_coord(t_ray *ray, t_data *data, int first)
 	if (first)
 	{
 		ray->vert_int->x = floor(data->player->pos_x / GRID) * GRID + dir_x;
-		ray->vert_int->y = data->player->pos_y + (data->player->pos_x
-				- ray->vert_int->x) / ft_get_tan(ray->angle);
-		/* ray->vert_int->y = data->player->pos_y + (data->player->pos_x
-				- ray->vert_int->x) * sin(ft_dtor(ray->angle)) / cos(ft_dtor(ray->angle)); */
+		if (ft_get_tan(ray->angle) > 0.0001)
+		{
+			ray->vert_int->y = data->player->pos_y + (data->player->pos_x
+					- ray->vert_int->x) / ft_get_tan(ray->angle);
+		}
+		else
+			ray->vert_int->y = data->player->pos_y;
 	}
 	else
 	{
@@ -58,71 +64,64 @@ void	ft_vert_inter_coord(t_ray *ray, t_data *data, int first)
 	}
 }
 
-t_intersect	*ft_set_intersect(t_ray *ray, t_data *data, char type)
+void	ft_set_intersect(t_intersect *intersection, t_ray *ray, char type)
 {
-	t_intersect	*point;
-
-	point = (t_intersect *)malloc(1 * sizeof(t_intersect));
-	if (!point)
-		ft_game_cleanup(data, "malloc");
-	/* int map_x = (int)pos_x;
-	int map_y = (int)pos_y;
-	
-	double delta_dist_x = fabs(1 / ray_dir_x);
-	double delta_dist_y = fabs(1 / ray_dir_y); */
 	if (type == 'h')
 	{
-		//point->xa = GRID * cos(ray->angle);
-		point->xa = GRID / ft_get_tan(ray->angle);
+		intersection->xa = GRID / ft_get_tan(ray->angle);
 		if (ray->dir_y < 0)
-			point->ya = -GRID;
+			intersection->ya = -GRID;
 		else
-			point->ya = GRID;
+			intersection->ya = GRID;
 	}
 	else
 	{
-		//point->ya = GRID * sin(ray->angle);
-		point->ya = GRID * ft_get_tan(ray->angle);
+		intersection->ya = GRID * ft_get_tan(ray->angle);
 		if (ray->dir_x < 0)
-			point->xa = -GRID;
+			intersection->xa = -GRID;
 		else
-			point->xa = GRID;
+			intersection->xa = GRID;
 	}
-	point->x = 0;
-	point->y = 0;
-	return (point);
+	intersection->type = type;
+	intersection->oor = 0;
+	intersection->x = 0;
+	intersection->y = 0;
 }
 
 void	ft_hori_intersection(t_ray *ray, t_data *data)
 {
-	ray->hori_int = ft_set_intersect(ray, data, 'h');
-	ray->hori_int->dis_x = ray->hori_int->xa;
-	ray->hori_int->dis_y = ray->hori_int->ya;
-	printf("xa: %f, ya: %f\n", ray->hori_int->xa, ray->hori_int->ya);
+	t_intersect	*intersection;
+
+	intersection = (t_intersect *)malloc(1 * sizeof(t_intersect));
+	if (!intersection)
+		ft_game_cleanup(data, "malloc");
+	ray->hori_int = intersection;
+	ft_set_intersect(ray->hori_int, ray, 'h');
+	//printf("xa: %f, ya: %f\n", ray->hori_int->xa, ray->hori_int->ya);
 	ft_hori_inter_coord(ray, data, 1);
 	while (1)
 	{
 		if (ft_check_wall(ray->hori_int, data))
 			return ;
 		ft_hori_inter_coord(ray, data, 0);
-		ray->hori_int->dis_x += ray->hori_int->xa;
-		ray->hori_int->dis_y += ray->hori_int->ya;
 	}
 }
 
 void	ft_vert_intersection(t_ray *ray, t_data *data)
 {
-	ray->vert_int = ft_set_intersect(ray, data, 'v');
-	ray->vert_int->dis_x = ray->vert_int->xa;
-	ray->vert_int->dis_y = ray->vert_int->ya;
-	printf("xa: %f, ya: %f\n", ray->vert_int->xa, ray->vert_int->ya);
+	t_intersect	*intersection;
+
+	intersection = (t_intersect *)malloc(1 * sizeof(t_intersect));
+	if (!intersection)
+		ft_game_cleanup(data, "malloc");
+	ray->vert_int = intersection;
+	ft_set_intersect(ray->vert_int, ray, 'v');
+	//printf("xa: %f, ya: %f\n", ray->vert_int->xa, ray->vert_int->ya);
 	ft_vert_inter_coord(ray, data, 1);
 	while (1)
 	{
 		if (ft_check_wall(ray->vert_int, data))
 			return ;
 		ft_vert_inter_coord(ray, data, 0);
-		ray->vert_int->dis_x += ray->vert_int->xa;
-		ray->vert_int->dis_y += ray->vert_int->ya;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 11:08:31 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:54:05 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ typedef struct s_intersect
 	double	y;
 	double	xa;
 	double	ya;
-	double	dis_x;
-	double	dis_y;
+	double	dis;
+	int		oor;
+	char	type;
 }				t_intersect;
 
 typedef struct s_plane
@@ -69,6 +70,7 @@ typedef struct s_config
 	char		*f;
 	char		*c;
 	char		**map;
+	int			map_height;
 	t_player	*player;
 }				t_config;
 

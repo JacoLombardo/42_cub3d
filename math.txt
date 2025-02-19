@@ -41,9 +41,13 @@ Ya = (GRID / 2) * TAN(a)
 
 Calculation of coordinates of a point (on the ray)
 
-vertical:
+horizontal:
 A.y = (rounded_down(P.y) * GRID) + DIR_Y
-A.x = P.x + ((P.y - (A.y / GRID)) / tan(ray_angle))
+A.x = P.x + ((P.y - A.y) / tan(ray_angle))
+
+vertical:
+A.x = (rounded_down(P.x) * GRID) + DIR_X
+A.y = P.y + ((P.x - A.x) / tan(ray_angle))
 
 
 
