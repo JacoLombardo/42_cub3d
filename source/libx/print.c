@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 14:44:17 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:37:29 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_print_wall(t_ray *ray, t_data *data)
 	int		pix_y;
 	int		wall_height;
 
-	//wall_height = get_wall_height(ray->perp_wall_dist);
-	wall_height = (int)(WALL_HEIGHT / (ray->perp_wall_dist) * WIDTH);
+	//wall_height = get_wall_height(ray->perp_wall_dist) * SCALING_FACTOR;
+	wall_height = (int)(WALL_HEIGHT / (ray->perp_wall_dist) * WIDTH) * SCALING_FACTOR;
 	pix_y = 0;
 	while (pix_y < HEIGHT)
 	{
@@ -34,31 +34,15 @@ void	ft_print_wall(t_ray *ray, t_data *data)
 	}
 }
 
-void	ft_print_wall2(int side, int pixel, double dis_perp, t_data *data)
-{
-	int		pix_y;
-	int		wall_height;
-
-	//wall_height = get_wall_height(dis_perp / GRID);
-	wall_height = (int)(WALL_HEIGHT / (dis_perp / GRID) * WIDTH);
-	pix_y = 0;
-	while (pix_y < HEIGHT)
-	{
-		calc_pixel(side, data, pix_y, pixel, wall_height);
-		pix_y++;
-	}
-}
-
-int darken_color(int color, double factor)
+int	darken_color(int color, double factor)
 {
 	int	r;
 	int	g;
 	int	b;
-	
+
 	r = ((color >> 16) & 0xFF) * factor;
 	g = ((color >> 8) & 0xFF) * factor;
 	b = (color & 0xFF) * factor;
-	
-	return (r << 16) | (g << 8) | b;
+	return ((r << 16) | (g << 8) | b);
 }
 
