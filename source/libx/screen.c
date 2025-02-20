@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 13:01:06 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:13:07 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ void	calc_pixel(int side, t_data *data, int posY, int posX, int wall_height)
 	{
 		factor = 1;
 		if (side)
-		// if (data->player->mv_forward)
 			factor = 1.5;
 		my_pixel_put(data, posY, posX, darken_color(RED, factor)); // WALL
 	}
-		// make color brightness distinction between walls up/down and left/right to read better
 }
 
 void	my_pixel_put(t_data *data, int posY, int posX, int color)

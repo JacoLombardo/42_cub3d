@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 13:29:03 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:15:51 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,6 +296,6 @@ void	ft_init_rays(t_data *data)
 		i++;
 	}
 	printf("FINISHED\n");
-	//ft_free_rays(rays);
+	// ft_free_rays(rays);
 	//data->rays = NULL;
 }
