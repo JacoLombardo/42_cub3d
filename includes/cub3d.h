@@ -60,6 +60,7 @@ void		ft_create_img(t_config *config, t_data *data);
 /* Events */
 int			ft_event_close_win(t_data *data);
 int			ft_events_keyboard(int keycode, t_data *data);
+void		ft_rotate_player(t_player *player, double angle_increment);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);

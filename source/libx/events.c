@@ -12,6 +12,21 @@
 
 #include "../../includes/cub3d.h"
 
+void	ft_rotate_player(t_player *player, double angle_increment)
+{
+	double	old_dir_x;
+	double	old_dir_y;
+	double	cos_incr_angle;
+	double	sin_incr_angle;
+
+	old_dir_x = player->dir_x;
+	old_dir_y = player->dir_y;
+	cos_incr_angle = cos(angle_increment);
+	sin_incr_angle = sin(angle_increment);
+	player->dir_x = old_dir_x * cos_incr_angle - old_dir_y * sin_incr_angle;
+	player->dir_y = old_dir_x * sin_incr_angle + old_dir_y * cos_incr_angle;
+}
+
 int	ft_event_close_win(t_data *data)
 {
 	mlx_loop_end(data->mlx);
@@ -76,33 +91,11 @@ int	ft_events_keyboard(int keycode, t_data *data)
 		ft_move_player('u', data, data->config->map);
 	if (keycode == XK_Down || keycode == XK_s)
 		ft_move_player('d', data, data->config->map);
-	if (keycode == XK_Left || keycode == XK_a)
-	{
-		ft_set_player_dir(ft_move_orientation('l', data->player), data->player);
-		ft_render_screen(data);
+	if (keycode == XK_d || keycode == XK_Right)
+		ft_rotate_player(data->player, ft_dtor(3.0));
+	if (keycode == XK_a || keycode == XK_Left)
+		ft_rotate_player(data->player, ft_dtor(-3.0));
 	}
-	if (keycode == XK_Right || keycode == XK_d)
-	{
-		ft_set_player_dir(ft_move_orientation('r', data->player), data->player);
-		ft_render_screen(data);
-	}
-	if (keycode == XK_W)
-		data->player->mv_forward = 1;
-	if (keycode == XK_S)
-		data->player->mv_back = 1;
+	ft_render_screen(data);
 	return (0);
 }
-
-// void	update_game(t_data *data, t_player *player)
-// {
-// 	if (player->mv_forward)
-// 	{
-// 		player->pos_x += player->dir_x;
-// 		player->pos_y += player->dir_y;
-// 	}
-// 	if (player->mv_back)
-// 	{
-// 		player->pos_x -= player->dir_x;
-// 		player->pos_y -= player->dir_y;
-// 	}
-// }
