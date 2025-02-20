@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 19:05:36 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:42:33 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,6 @@ void	ft_config_init(t_config *config)
 	config->f = NULL;
 }
 
-void	ft_set_player_dir(t_player *player)
-{
-	if (player->orientation == 'N')
-	{
-		player->dir_x = 0;
-		player->dir_y = -1;
-		player->view_angle = 90;
-	}
-	else if (player->orientation == 'S')
-	{
-		player->dir_x = 0;
-		player->dir_y = 1;
-		player->view_angle = 270;
-	}
-	else if (player->orientation == 'W')
-	{
-		player->dir_x = -1;
-		player->dir_y = 0;
-		player->view_angle = 180;
-	}
-	else if (player->orientation == 'E')
-	{
-		player->dir_x = 1;
-		player->dir_y = 0;
-		player->view_angle = 0;
-	}
-}
-
 void	ft_plane_init(t_data *data)
 {
 	t_plane	*plane;
@@ -76,11 +48,9 @@ void	ft_plane_init(t_data *data)
 	plane = (t_plane *)malloc(1 * sizeof(t_plane));
 	if (!plane)
 		ft_init_cleanup(data, NULL, "malloc");
-	plane->size = ft_get_tan(FOV / 2);
-	// plane->x = data->player->dir_x * plane->size;
-	// plane->y = data->player->dir_y * plane->size;
-	plane->x = -data->player->dir_y * plane->size;
-	plane->y = data->player->dir_x * plane->size;
+	plane->size = tan(FOV / 2);
+	plane->x = data->player->dir_y * plane->size;
+	plane->y = -data->player->dir_x * plane->size;
 	data->plane = plane;
 }
 
@@ -104,7 +74,6 @@ void	ft_data_init(t_data *data, t_config *config)
 	data->player = NULL;
 	data->image = image;
 	data->player = config->player;
-	ft_set_player_dir(data->player);
 	ft_plane_init(data);
 }
 

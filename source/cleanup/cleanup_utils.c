@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:45:26 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 16:32:45 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:39:14 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ void	ft_free_rays(t_ray **rays)
 	i = 0;
 	while (rays[i])
 	{
-		if (rays[i]->hori_int)
-			free(rays[i]->hori_int);
-		if (rays[i]->vert_int)
-			free(rays[i]->vert_int);
 		free(rays[i]);
 		i++;
 	}

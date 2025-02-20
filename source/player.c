@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 12:07:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 13:38:10 by jalombar         ###   ########.fr       */
+/*   Created: 2025/02/20 13:29:47 by jalombar          #+#    #+#             */
+/*   Updated: 2025/02/20 13:36:21 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	ft_tab_len(char **tab)
+void	ft_set_player_dir(char orientation, t_player *player)
 {
-	int	len;
-
-	len = 0;
-	while (tab[len])
-		len++;
-	return (len);
+	player->orientation = orientation;
+	if (player->orientation == 'N')
+	{
+		player->dir_x = 0;
+		player->dir_y = -1;
+	}
+	else if (player->orientation == 'S')
+	{
+		player->dir_x = 0;
+		player->dir_y = 1;
+	}
+	else if (player->orientation == 'W')
+	{
+		player->dir_x = -1;
+		player->dir_y = 0;
+	}
+	else if (player->orientation == 'E')
+	{
+		player->dir_x = 1;
+		player->dir_y = 0;
+	}
 }
-
-double	ft_distance(int p1_x, int p1_y, int p2_x, int p2_y)
-{
-	double	dx;
-	double	dy;
-	double	distance;
-
-	dx = p1_x - p2_x;
-	dy = p1_y - p2_y;
-	distance = sqrt(dx * dx + dy * dy);
-	return (distance);
-}
-
