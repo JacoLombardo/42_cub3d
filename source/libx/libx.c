@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:02:43 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 14:36:39 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:46:38 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	ft_move_orientation(char direction, t_player *player)
 		return ('N');
 	else if (player->orientation == 'E' && direction == 'r')
 		return ('S');
+	return ('I');
 }
 
 void	ft_update_image(t_data *data)
