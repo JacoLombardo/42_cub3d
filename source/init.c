@@ -6,14 +6,13 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 13:42:33 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:32:03 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 /* Init of both main structures and minilibx */
-
 void	ft_config_init(t_config *config)
 {
 	char		**map;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 14:37:53 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:44:17 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_wall_height(double ray_distance)
 {
 	if (ray_distance <= 0.1)
 		ray_distance = 0.1;
-	return ((int) (HEIGHT / ray_distance));
+	return ((int)(HEIGHT / ray_distance));
 }
 
 void	ft_print_wall(t_ray *ray, t_data *data)
