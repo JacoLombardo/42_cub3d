@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 14:36:50 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:47:44 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int			ft_check_n_player(t_config *config, char **map, int len);
 int			get_wall_height(double ray_distance);
 int 		darken_color(int color, double factor);
 void		ft_print_wall(t_ray *ray, t_data *data);
+void		ft_render_screen(t_data *data);
 
 /* Init */
 void		ft_config_init(t_config *config);
