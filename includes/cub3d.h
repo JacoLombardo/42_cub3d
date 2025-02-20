@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 18:11:44 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 19:07:57 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
 # define GRID 64
-# define STEP 32
+# define STEP 2
 # define WALL_HEIGHT 1.0
 # define FOV 1.0471975512
 # define SCALING_FACTOR 0.6

@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 18:25:16 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 19:06:08 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ void	ft_rotate_player(t_player *player, double angle_increment)
 
 int	ft_key_press(int keycode, t_data *data)
 {
+	printf("key pressed: %i\n", keycode);
 	if (keycode == XK_Escape)
 		ft_event_close_win(data);
-	data->keys[keycode] = 1;
+	if (keycode < 256)
+		data->keys[keycode] = 1;
 	return (0);
 }
 
 int	ft_key_release(int keycode, t_data *data)
 {
-	data->keys[keycode] = 0;
+	printf("key released: %i\n", keycode);
+	if (keycode < 256)
+		data->keys[keycode] = 0;
 	return (0);
 }
 
