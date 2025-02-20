@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 15:43:47 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 16:12:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
 # define GRID 64
+# define STEP 32
 # define WALL_HEIGHT 1.0
-//# define FOV 60
 # define FOV 1.0471975512
-//# define FOV 90
-# define M_PI 3.14159265358979323846
-# define ESC 65307
+# define SCALING_FACTOR 0.6
 
 # define RED 0xFF0000
 # define BLUE 0x00FF00

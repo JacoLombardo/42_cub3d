@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 14:41:45 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:04:15 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,13 @@ void	ft_cub3d(char *input)
 
 	ft_config_init(&config);
 	ft_parser(input, &config);
-	//ft_print_config(&config);
+	ft_print_config(&config);
 	ft_data_init(&data, &config);
 	ft_libx_init(&data);
 	// ft_textures_init(&data);
 	ft_events_init(&data);
 	ft_update_image(&data);
-	/* ft_init_rays(&data);
-	mlx_clear_window(data.mlx, data.win);
-	mlx_put_image_to_window(data.mlx, data.win, data.image->img, 0, 0); */
 	mlx_loop(data.mlx);
-
-	/* ft_create_img(matrix, size, &image);
-	mlx_put_image_to_window(vars.mlx, vars.win, image.img, 0, 0);
-	mlx_key_hook(vars.win, ft_handle_hooks, &vars);
-	mlx_hook(vars.win, 17, 0, ft_close_window, &vars);
-	mlx_loop(vars.mlx); */
 	ft_free_data(&data);
 }
 
