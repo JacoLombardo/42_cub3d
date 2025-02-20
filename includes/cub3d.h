@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 14:58:05 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:43:47 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		ft_create_img(t_config *config, t_data *data);
 /* Events */
 int			ft_event_close_win(t_data *data);
 int			ft_events_keyboard(int keycode, t_data *data);
+void		ft_rotate_player(t_player *player, double angle_increment);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
