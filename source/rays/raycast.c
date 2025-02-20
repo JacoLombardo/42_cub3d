@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 11:23:53 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:29:03 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,8 +259,8 @@ void castRay(t_ray *ray, t_data *data)
     } else {
         perpWallDist = (mapY - data->player->pos_y / GRID + (1 - stepY) / 2) / rayDirY;
     }
-	printf("wall hit at x: %i, y: %i and perpwall: %f\n", mapX, mapY, perpWallDist);
-	ft_print_wall2(ray->pixel, perpWallDist * GRID, data);
+	// printf("wall hit at x: %i, y: %i and perpwall: %f\n", mapX, mapY, perpWallDist);
+	ft_print_wall2(side, ray->pixel, perpWallDist * GRID, data);
 }
 
 void	ft_init_rays(t_data *data)
@@ -284,7 +284,7 @@ void	ft_init_rays(t_data *data)
 		ray->pixel = i + 1;
 		//ray->angle = start_angle + (data->ray_angle * i);
 		//rays[i] = ray;
-		printf("%i-", i);
+		// printf("%i-", i);
 		//ft_cast_ray(rays[i], data);
 
 		ray->angle = atan2(data->player->dir_y, data->player->dir_x) + (i / (double)WIDTH - 0.5f) * FOV;

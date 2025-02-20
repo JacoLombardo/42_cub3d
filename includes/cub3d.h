@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 11:06:59 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:16:35 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_print_wall(char closest, t_intersect *wall_int, t_ray *ray, t_data *dat
 
 /* Events */
 int			ft_event_close_win(t_data *data);
-int			ft_events_keyboard(int keycode, t_data *data, t_player *player);
+int			ft_events_keyboard(int keycode, t_data *data);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
@@ -71,7 +71,7 @@ void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
 void		ft_refresh_screen(t_data *data);
 long long	ft_get_time(void);
 void		my_pixel_put(t_data *data, int posY, int posX, int color);
-void		calc_pixel(t_data *data, int posY, int posX, int wall_height);
+void		calc_pixel(int side, t_data *data, int posY, int posX, int wall_height);
 
 /* Map Check */
 char		**ft_map_clone(t_config *map);
@@ -103,6 +103,7 @@ int			ft_check_wall(t_intersect *intersection, t_data *data);
 
 /* Print */
 int			get_wall_height(double ray_distance);
+int 		darken_color(int color, double factor);
 
 
 /* Init */
@@ -123,7 +124,8 @@ void		ft_print_config(t_config *config);
 /* Utils */
 int			ft_tab_len(char **tab);
 double		ft_distance(t_intersect *p, t_player *player);
+void 		print_image_info(t_image *image);
 
-void	ft_print_wall2(int pixel, double dis_perp, t_data *data);
+void		ft_print_wall2(int side, int pixel, double dis_perp, t_data *data);
 
 #endif

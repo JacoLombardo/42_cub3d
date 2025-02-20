@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 11:22:22 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:23:09 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	ft_print_wall(char closest, t_intersect *wall_int, t_ray *ray, t_data *data
 	pix_y = 0;
 	while (pix_y < HEIGHT)
 	{
-		calc_pixel(data, pix_y, ray->pixel, wall_height);
+		calc_pixel(closest, data, pix_y, ray->pixel, wall_height);
 		pix_y++;
 	}
 }
 
-void	ft_print_wall2(int pixel, double dis_perp, t_data *data)
+void	ft_print_wall2(int side, int pixel, double dis_perp, t_data *data)
 {
 	int		pix_y;
 	int		wall_height;
@@ -49,21 +49,21 @@ void	ft_print_wall2(int pixel, double dis_perp, t_data *data)
 	pix_y = 0;
 	while (pix_y < HEIGHT)
 	{
-		calc_pixel(data, pix_y, pixel, wall_height);
+		calc_pixel(side, data, pix_y, pixel, wall_height);
 		pix_y++;
 	}
 }
 
-// void ft_textures_init(t_data *data)
-// {
-// 	t_texture	*tex;
+int darken_color(int color, double factor)
+{
+	int	r;
+	int	g;
+	int	b;
+	
+	r = ((color >> 16) & 0xFF) * factor;
+	g = ((color >> 8) & 0xFF) * factor;
+	b = (color & 0xFF) * factor;
+	
+	return (r << 16) | (g << 8) | b;
+}
 
-// 	tex = (t_texture *)malloc(1 * sizeof(t_texture));
-// 	if (!tex)
-// 		ft_game_cleanup(&data, "texture"); //<- needs update
-// 	tex->img = mlx_xpm_file_to_image(data->mlx, "includes/assets/wall.xpm",
-// 			&(tex->width), &(tex->height));
-// 	tex->addr = mlx_get_data_addr(tex->img, tex->bpp, tex->line_length,
-			//tex->endian);
-// 	data->texture = tex;
-// }
