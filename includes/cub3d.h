@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 14:31:48 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:42:28 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		ft_update_image(t_data *data);
 void		ft_refresh_screen(t_data *data);
 long long	ft_get_time(void);
 void		my_pixel_put(t_data *data, int posY, int posX, int color);
-void		calc_pixel(t_data *data, int posY, int posX, int wall_height);
+void		calc_pixel(int side, t_data *data, int posY, int posX, int wall_height);
 
 /* Map Check */
 char		**ft_map_clone(t_config *map);
@@ -89,6 +89,7 @@ int			ft_check_n_player(t_config *config, char **map, int len);
 
 /* Print */
 int			get_wall_height(double ray_distance);
+int 		darken_color(int color, double factor);
 void		ft_print_wall(t_ray *ray, t_data *data);
 
 /* Init */
@@ -113,6 +114,7 @@ void		ft_print_config(t_config *config);
 
 /* Utils */
 int			ft_tab_len(char **tab);
+void 		print_image_info(t_image *image);
 double		ft_distance(int p1_x, int p1_y, int p2_x, int p2_y);
 
 #endif

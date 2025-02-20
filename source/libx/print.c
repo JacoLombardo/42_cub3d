@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 14:32:18 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:44:17 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,36 @@ void	ft_print_wall(t_ray *ray, t_data *data)
 	pix_y = 0;
 	while (pix_y < HEIGHT)
 	{
-		calc_pixel(data, pix_y, ray->pixel, wall_height);
+		calc_pixel(ray->side, data, pix_y, ray->pixel, wall_height);
 		pix_y++;
 	}
 }
 
-// void ft_textures_init(t_data *data)
-// {
-// 	t_texture	*tex;
+void	ft_print_wall2(int side, int pixel, double dis_perp, t_data *data)
+{
+	int		pix_y;
+	int		wall_height;
 
-// 	tex = (t_texture *)malloc(1 * sizeof(t_texture));
-// 	if (!tex)
-// 		ft_game_cleanup(&data, "texture"); //<- needs update
-// 	tex->img = mlx_xpm_file_to_image(data->mlx, "includes/assets/wall.xpm",
-// 			&(tex->width), &(tex->height));
-// 	tex->addr = mlx_get_data_addr(tex->img, tex->bpp, tex->line_length,
-			//tex->endian);
-// 	data->texture = tex;
-// }
+	//wall_height = get_wall_height(dis_perp / GRID);
+	wall_height = (int)(WALL_HEIGHT / (dis_perp / GRID) * WIDTH);
+	pix_y = 0;
+	while (pix_y < HEIGHT)
+	{
+		calc_pixel(side, data, pix_y, pixel, wall_height);
+		pix_y++;
+	}
+}
+
+int darken_color(int color, double factor)
+{
+	int	r;
+	int	g;
+	int	b;
+	
+	r = ((color >> 16) & 0xFF) * factor;
+	g = ((color >> 8) & 0xFF) * factor;
+	b = (color & 0xFF) * factor;
+	
+	return (r << 16) | (g << 8) | b;
+}
+
