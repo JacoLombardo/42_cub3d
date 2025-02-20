@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 16:12:32 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:11:44 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define WALL_HEIGHT 1.0
 # define FOV 1.0471975512
 # define SCALING_FACTOR 0.6
+# define KEYCOUNT 256
 
 # define RED 0xFF0000
 # define BLUE 0x00FF00
@@ -59,13 +60,15 @@ void		ft_create_img(t_config *config, t_data *data);
 
 /* Events */
 int			ft_event_close_win(t_data *data);
-int			ft_events_keyboard(int keycode, t_data *data);
+int			ft_events_keyboard(t_data *data);
 void		ft_rotate_player(t_player *player, double angle_increment);
+int			ft_key_release(int keycode, t_data *data);
+int			ft_key_press(int keycode, t_data *data);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
 char		ft_move_orientation(char direction, t_player *player);
-void		ft_update_image(t_data *data);
+int			ft_update_game(t_data *data);
 
 /* Screen */
 void		ft_refresh_screen(t_data *data);
@@ -73,6 +76,7 @@ long long	ft_get_time(void);
 void		my_pixel_put(t_data *data, int posY, int posX, int color);
 void		calc_pixel(int side, t_data *data, int posY, int posX,
 				int wall_height);
+void		ft_update_image(t_data *data);
 
 /* Map Check */
 char		**ft_map_clone(t_config *map);

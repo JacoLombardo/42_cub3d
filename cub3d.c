@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 16:04:15 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:26:16 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
+
+int	ft_update_game(t_data *data)
+{
+	ft_events_keyboard(data);
+	ft_update_image(data);
+	return (0);
+}
 
 void	ft_cub3d(char *input)
 {
@@ -22,9 +29,10 @@ void	ft_cub3d(char *input)
 	ft_print_config(&config);
 	ft_data_init(&data, &config);
 	ft_libx_init(&data);
-	// ft_textures_init(&data);
 	ft_events_init(&data);
+	// ft_textures_init(&data);
 	ft_update_image(&data);
+	// mlx_loop_hook(data.mlx, ft_update_game, &data);
 	mlx_loop(data.mlx);
 	ft_free_data(&data);
 }

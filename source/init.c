@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 14:32:03 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:23:15 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	ft_plane_init(t_data *data)
 void	ft_data_init(t_data *data, t_config *config)
 {
 	t_image	*image;
-
+	int i;
+	
 	image = (t_image *)malloc(sizeof(t_image));
 	if (!image)
 		ft_init_cleanup(data, NULL, "malloc");
@@ -73,14 +74,18 @@ void	ft_data_init(t_data *data, t_config *config)
 	data->player = NULL;
 	data->image = image;
 	data->player = config->player;
+	i = 0;
+	while (i < 256)
+		data->keys[i++] = 0;
 	ft_plane_init(data);
 }
 
 void	ft_events_init(t_data *data)
 {
-	mlx_hook(data->win, DestroyNotify, 0, ft_event_close_win, data);
-	mlx_key_hook(data->win, ft_events_keyboard, data);
-	// mlx_mouse_hook(data->win_ptr, events_mouse_press, data);
+	mlx_hook(data->win, DestroyNotify, 0, ft_event_close_win, data);	//escape window
+	mlx_hook(data->win, KeyPress, KeyPressMask, ft_key_press, data);
+	mlx_hook(data->win, KeyRelease, KeyReleaseMask, ft_key_release, data);
+	// mlx_key_hook(data->win, ft_events_keyboard, data);	//remove?
 }
 
 void	ft_libx_init(t_data *data)

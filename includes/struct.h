@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 13:32:56 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:40:04 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ typedef struct s_player
 	double		dir_x;
 	double		dir_y;
 	char		orientation;
-	int			mv_forward;
-	int			mv_back;
 }				t_player;
 
 typedef struct s_ray
@@ -85,6 +83,7 @@ typedef struct s_texture
 
 typedef struct s_data
 {
+	int			keys[256];
 	void		*mlx;
 	void		*win;
 	t_image		*image;
