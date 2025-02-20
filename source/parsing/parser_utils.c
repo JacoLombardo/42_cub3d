@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 11:45:20 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 10:43:14 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ int	ft_check_n_player(t_config *config, char **map, int len)
 		{
 			if (config->player->pos_x == -1)
 			{
-				config->player->pos_x = (len + 0.5) * GRID;
-				config->player->pos_y = (i + 0.5) * GRID;
-				/* config->player->pos_x = len;
-				config->player->pos_y = i; */
+				/* config->player->pos_x = (len + 0.5) * GRID;
+				config->player->pos_y = (i + 0.5) * GRID; */
+				config->player->pos_y = (len + 0.5) * GRID;
+				config->player->pos_x = (i + 0.5) * GRID;
 				config->player->orientation = map[len][i];
 			}
 			else

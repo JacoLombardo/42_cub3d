@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 19:10:51 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 11:06:59 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
 # define GRID 64
-# define FOV 60
+# define WALL_HEIGHT 1.0
+//# define FOV 60
+# define FOV 1.0471975512
 //# define FOV 90
 # define M_PI 3.14159265358979323846
 # define ESC 65307
@@ -121,5 +123,7 @@ void		ft_print_config(t_config *config);
 /* Utils */
 int			ft_tab_len(char **tab);
 double		ft_distance(t_intersect *p, t_player *player);
+
+void	ft_print_wall2(int pixel, double dis_perp, t_data *data);
 
 #endif
