@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 19:09:18 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:18:11 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_cub3d(char *input)
 	ft_libx_init(&data);
 	// ft_textures_init(&data);
 	ft_events_init(&data);
+	print_image_info(data.image);
 	ft_init_rays(&data);
 	mlx_clear_window(data.mlx, data.win);
 	mlx_put_image_to_window(data.mlx, data.win, data.image->img, 0, 0);

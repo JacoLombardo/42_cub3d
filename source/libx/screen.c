@@ -6,16 +6,17 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:50:13 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/19 17:11:43 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:13:07 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	calc_pixel(t_data *data, int posY, int posX, int wall_height)
+void	calc_pixel(int side, t_data *data, int posY, int posX, int wall_height)
 {
 	int	wall_top;
 	int	wall_bot;
+	double factor;
 
 	wall_top = (HEIGHT / 2) + (wall_height / 2);
 	wall_bot = (HEIGHT / 2) - (wall_height / 2);
@@ -24,8 +25,12 @@ void	calc_pixel(t_data *data, int posY, int posX, int wall_height)
 	else if (posY > wall_top)
 		my_pixel_put(data, posY, posX, GREEN); // CEILING
 	else
-		my_pixel_put(data, posY, posX, RED); // WALL
-		// make color brightness distinction between walls up/down and left/right to read better
+	{
+		factor = 1;
+		if (side)
+			factor = 1.5;
+		my_pixel_put(data, posY, posX, darken_color(RED, factor)); // WALL
+	}
 }
 
 void	my_pixel_put(t_data *data, int posY, int posX, int color)
