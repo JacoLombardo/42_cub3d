@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 13:38:53 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:31:48 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ void		ft_create_img(t_config *config, t_data *data);
 
 /* Events */
 int			ft_event_close_win(t_data *data);
-int			ft_events_keyboard(int keycode, t_data *data, t_player *player);
+int			ft_events_keyboard(int keycode, t_data *data);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
+void		ft_update_image(t_data *data);
 
 /* Screen */
 void		ft_refresh_screen(t_data *data);

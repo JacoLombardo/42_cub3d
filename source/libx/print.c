@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 13:18:05 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:32:18 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_wall_height(double ray_distance)
 {
 	if (ray_distance <= 0.1)
 		ray_distance = 0.1;
-	return ((int) (HEIGHT / ray_distance));
+	return ((int)(HEIGHT / ray_distance));
 }
 
 void	ft_print_wall(t_ray *ray, t_data *data)
