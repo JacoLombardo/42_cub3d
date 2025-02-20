@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 14:31:24 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:37:53 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_print_wall(t_ray *ray, t_data *data)
 	pix_y = 0;
 	while (pix_y < HEIGHT)
 	{
-		calc_pixel(closest, data, pix_y, ray->pixel, wall_height);
+		calc_pixel(ray->side, data, pix_y, ray->pixel, wall_height);
 		pix_y++;
 	}
 }

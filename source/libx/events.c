@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 14:23:14 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:38:48 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_events_keyboard(int keycode, t_data *data)
 		ft_event_close_win(data);
 	if (keycode == 119)
 	{
-		data->player->pos_x += data->player->dir_x * 5;
-		data->player->pos_y += data->player->dir_y * 5;
+		data->player->pos_x += data->player->dir_x;
+		data->player->pos_y += data->player->dir_y;
 		printf("player position adjusted\n");
 		mlx_clear_window(data->mlx, data->win);
 		ft_init_rays(data);
