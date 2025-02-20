@@ -3,32 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 17:14:02 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:32:56 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
-typedef struct s_2D
-{
-	int		x;
-	int		y;
-}				t_2D;
-
-typedef struct s_intersect
-{
-	double	x;
-	double	y;
-	double	xa;
-	double	ya;
-	double	dis;
-	int		oor;
-	char	type;
-}				t_intersect;
 
 typedef struct s_plane
 {
@@ -41,7 +24,6 @@ typedef struct s_player
 {
 	double		pos_x;
 	double		pos_y;
-	int			view_angle;
 	double		dir_x;
 	double		dir_y;
 	char		orientation;
@@ -51,17 +33,20 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	int			x;
+	int			y;
 	int			pixel;
+	double		angle;
 	double		dir_x;
 	double		dir_y;
-	double		pos;
-	double		xa;
-	double		ya;
-	double		dis;
-	double		dis_perp;
-	double		angle;
-	t_intersect	*hori_int;
-	t_intersect	*vert_int;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	int			step_x;
+	int			step_y;
+	int			side;
+	double		perp_wall_dist;
 }				t_ray;
 
 typedef struct s_config

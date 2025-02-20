@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 11:06:59 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:38:53 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 // # define HEIGHT 200
 /* # define WIDTH 960
 # define HEIGHT 720 */
- # define WIDTH 1280
+# define WIDTH 1280
 # define HEIGHT 720
 /* # define WIDTH 1920
 # define HEIGHT 1080 */
@@ -58,7 +58,6 @@ void		ft_free_data(t_data *data);
 
 /* Draw */
 void		ft_create_img(t_config *config, t_data *data);
-void		ft_print_wall(char closest, t_intersect *wall_int, t_ray *ray, t_data *data);
 
 /* Events */
 int			ft_event_close_win(t_data *data);
@@ -87,23 +86,9 @@ int			ft_strlen2(char *line, int i);
 int			ft_filled(t_config *map);
 int			ft_check_n_player(t_config *config, char **map, int len);
 
-/* Intersections */
-int			ft_check_wall(t_intersect *intersection, t_data *data);
-void		ft_hori_inter_coord(t_ray *ray, t_data *data, int first);
-void		ft_vert_inter_coord(t_ray *ray, t_data *data, int first);
-void		ft_hori_intersection(t_ray *ray, t_data *data);
-void		ft_vert_intersection(t_ray *ray, t_data *data);
-
-/* Raycast */
-void		ft_cast_ray(t_ray *ray, t_data *data);
-void		ft_init_rays(t_data *data);
-
-/* Ray Utils */
-int			ft_check_wall(t_intersect *intersection, t_data *data);
-
 /* Print */
 int			get_wall_height(double ray_distance);
-
+void		ft_print_wall(t_ray *ray, t_data *data);
 
 /* Init */
 void		ft_config_init(t_config *config);
@@ -114,16 +99,19 @@ void		ft_libx_init(t_data *data);
 /* Math */
 double		ft_dtor(double degrees);
 double		ft_get_tan(double degrees);
-double		ft_calc_xa(t_ray *ray);
-double		ft_calc_ya(t_ray *ray);
+
+/* Player */
+void		ft_set_player_dir(char orientation, t_player *player);
+
+/* Raycast */
+void		ft_cast_ray(t_ray *ray, t_data *data);
+void		ft_init_rays(t_data *data);
 
 /* Test */
 void		ft_print_config(t_config *config);
 
 /* Utils */
 int			ft_tab_len(char **tab);
-double		ft_distance(t_intersect *p, t_player *player);
-
-void	ft_print_wall2(int pixel, double dis_perp, t_data *data);
+double		ft_distance(int p1_x, int p1_y, int p2_x, int p2_y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 11:22:22 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:18:05 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,17 @@ int	get_wall_height(double ray_distance)
 	return ((int) (HEIGHT / ray_distance));
 }
 
-void	ft_print_wall(char closest, t_intersect *wall_int, t_ray *ray, t_data *data)
+void	ft_print_wall(t_ray *ray, t_data *data)
 {
 	int		pix_y;
 	int		wall_height;
-	double	dis;
 
-	if (closest == 'v') // closest intersection is vertical
-		ray->dis_perp = fabs((wall_int->x - data->player->pos_x) / ray->dir_x);
-	if (closest == 'h') // closest intersection is horizontal
-		ray->dis_perp = fabs((wall_int->y - data->player->pos_y) / ray->dir_y);
-	dis = wall_int->dis;
-	wall_height = get_wall_height(ray->dis_perp);
+	//wall_height = get_wall_height(ray->perp_wall_dist);
+	wall_height = (int)(WALL_HEIGHT / (ray->perp_wall_dist) * WIDTH);
 	pix_y = 0;
 	while (pix_y < HEIGHT)
 	{
 		calc_pixel(data, pix_y, ray->pixel, wall_height);
-		pix_y++;
-	}
-}
-
-void	ft_print_wall2(int pixel, double dis_perp, t_data *data)
-{
-	int		pix_y;
-	int		wall_height;
-
-	//wall_height = get_wall_height(dis_perp / GRID);
-	wall_height = (int)(WALL_HEIGHT / (dis_perp / GRID) * WIDTH);
-	pix_y = 0;
-	while (pix_y < HEIGHT)
-	{
-		calc_pixel(data, pix_y, pixel, wall_height);
 		pix_y++;
 	}
 }
