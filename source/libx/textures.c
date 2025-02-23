@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/23 17:15:36 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/23 17:25:18 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,18 @@ void ft_textures_init(t_data *data)
 		printf("texture adress not found\n");
 	}
 	data->tex = tex;
+}
+
+void ft_calc_texture(t_ray *ray, t_data *data)
+{
+	double wallX;
+
+	if (ray->side == 0)
+		wallX = data->player->pos_y + ray->perp_wall_dist * ray->dir_y;
+	else
+		wallX = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
+	wallX -= floor(wallX);
+	data->tex->texX = (int)(wallX * (double)(data->tex->width));
+	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
+		data->tex->texX = data->tex->width - data->tex->texX - 1;
 }
