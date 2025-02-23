@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/23 17:08:16 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/23 17:53:12 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void		ft_set_player_dir(char orientation, t_player *player);
 /* Raycast */
 void		ft_cast_ray(t_ray *ray, t_data *data);
 void		ft_init_rays(t_data *data);
+void		ft_calc_wall_hit(t_ray *ray, t_data *data);
 
 /* Textures */
 void		ft_textures_init(t_data *data);
