@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/23 15:10:07 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/23 17:51:22 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_ray
 	int			step_y;
 	int			side;
 	double		perp_wall_dist;
+	double		hit_x;
+	double		hit_y;
 }				t_ray;
 
 typedef struct s_config

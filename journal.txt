@@ -9,3 +9,10 @@ no longer accessible.
 Would be convenient for now to keep the functions for initializing and printing to screen
 as seperate functions in cub3d.c so that we can easily comment out eachothers
 code for debugging.
+
+
+23.02.25
+What is weird with the textures is that at the moment we start the game and walk forward, the textures you face (./cub3d assets/maps/1W.cub)
+are mapped correctly, also when you move forward. The other walls not.
+
+Once you start rotating the view, all textures lose their anchor point and start sliding across the wall.

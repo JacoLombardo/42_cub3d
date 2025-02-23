@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/23 17:25:10 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/23 17:52:37 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ void	ft_calc_perp_wall(t_ray *ray, t_data *data)
 		ray->perp_wall_dist = (ray->y - data->player->pos_y / GRID + (1
 					- ray->step_y) / 2) / ray->dir_y;
 	}
+}
+
+void	ft_calc_wall_hit(t_ray *ray, t_data *data)
+{
+	ray->hit_x = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
+	ray->hit_y = data->player->pos_y + ray->perp_wall_dist * ray->dir_y;
 }
 
 void	ft_cast_ray(t_ray *ray, t_data *data)
@@ -49,6 +55,7 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 			hit = 1;
 	}
 	ft_calc_perp_wall(ray, data);
+	ft_calc_wall_hit(ray, data);
 	ft_calc_texture(ray, data);
 	//printf("wall hit at x: %i, y: %i and perpwall: %f\n", ray->x, ray->y, ray->perp_wall_dist);
 	ft_print_wall(ray, data);
