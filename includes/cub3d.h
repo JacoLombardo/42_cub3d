@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 19:07:57 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/23 17:08:16 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@
 # define KEYCOUNT 256
 
 # define RED 0xFF0000
-# define BLUE 0x00FF00
-# define GREEN 0x0000FF
+# define GREEN 0x00FF00
+# define BLUE 0x0000FF
+# define LIGHTBLUE 0xADD8E6
 
 /* Cleanup */
 void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
@@ -114,6 +115,10 @@ void		ft_set_player_dir(char orientation, t_player *player);
 /* Raycast */
 void		ft_cast_ray(t_ray *ray, t_data *data);
 void		ft_init_rays(t_data *data);
+
+/* Textures */
+void		ft_textures_init(t_data *data);
+void		ft_calc_texture(t_ray *ray, t_data *data);
 
 /* Test */
 void		ft_print_config(t_config *config);

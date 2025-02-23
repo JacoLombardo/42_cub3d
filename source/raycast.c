@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 19:09:44 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/23 16:47:52 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ void	ft_calc_perp_wall(t_ray *ray, t_data *data)
 		ray->perp_wall_dist = (ray->y - data->player->pos_y / GRID + (1
 					- ray->step_y) / 2) / ray->dir_y;
 	}
+}
+
+void ft_calc_texture(t_ray *ray, t_data *data)
+{
+	double wallX;
+
+	if (ray->side == 0)
+		wallX = data->player->pos_y + ray->perp_wall_dist * ray->dir_y;
+	else
+		wallX = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
+	wallX -= floor(wallX);
+	data->tex->texX = (int)(wallX * (double)(data->tex->width));
+	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
+		data->tex->texX = data->tex->width - data->tex->texX - 1;
 }
 
 void	ft_cast_ray(t_ray *ray, t_data *data)
@@ -49,8 +63,8 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 			hit = 1;
 	}
 	ft_calc_perp_wall(ray, data);
-	//printf("wall hit at x: %i, y: %i and perpwall: %f\n", ray->x, ray->y,
-	//	ray->perp_wall_dist);
+	ft_calc_texture(ray, data);
+	//printf("wall hit at x: %i, y: %i and perpwall: %f\n", ray->x, ray->y, ray->perp_wall_dist);
 	ft_print_wall(ray, data);
 }
 

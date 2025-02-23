@@ -22,6 +22,7 @@ SRCS = cub3d.c \
 		source/libx/print.c \
 		source/libx/libx.c \
 		source/libx/screen.c \
+		source/libx/textures.c \
 		source/parsing/map_check.c \
 		source/parsing/parser.c \
 		source/parsing/parser_utils.c \
@@ -32,7 +33,7 @@ SRCS = cub3d.c \
 		source/raycast.c \
 		source/test.c \
 		source/utils.c \
-		
+
 HEADER = cub3d.h
 NAME = cub3d
 LIBFT_PATH = libraries/libft

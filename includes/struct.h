@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 17:40:04 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/23 15:10:07 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_texture
 	int			width;
 	int			height;
 	int			endian;
+	int			texX;
+	int			texY;
 }				t_texture;
 
 typedef struct s_data
@@ -89,7 +91,7 @@ typedef struct s_data
 	t_image		*image;
 	double		ray_angle;
 	t_config	*config;
-	t_texture	*texture;
+	t_texture	*tex;
 	t_player	*player;
 	t_plane		*plane;
 	t_ray		**rays;
