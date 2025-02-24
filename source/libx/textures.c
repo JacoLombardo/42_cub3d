@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/23 17:54:50 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/24 22:30:07 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ void ft_calc_texture(t_ray *ray, t_data *data)
 {
 	double wallX;
 
-	if (ray->side == 0)
-		wallX = ray->hit_y;
-	else
+	if (ray->side == 0) // if vertical wall-> use y-coordinate of ray collision
+		wallX = ray->hit_y; // wallX represents the exact point where the ray hit the wall
+	else // if horizontal wall-> use x-coordinate of collision
 		wallX = ray->hit_x;
-	wallX -= floor(wallX);
-	data->tex->texX = (int)(wallX * (double)(data->tex->width));
+	wallX -= floor(wallX); //tells where exactly in the cell you hit the wall, because your remove the round numbers (for example 2,73 is now 0,73 which tells you what part of the texture to draw)
+	data->tex->texX = (int)(wallX * (double)(data->tex->width)); //translate to the domain of the texture
 	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
-		data->tex->texX = data->tex->width - data->tex->texX - 1;
+		data->tex->texX = data->tex->width - data->tex->texX - 1; // flip the texture horizontally if the ray hits from the right or from the bottom
+	printf("wallX: %f, texX: %d\n", wallX, data->tex->texX);
 }

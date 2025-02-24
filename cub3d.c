@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/23 16:41:48 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/24 22:41:23 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_update_game(t_data *data)
 {
-	ft_events_keyboard(data);
-	ft_update_image(data);
+	if (ft_events_keyboard(data)) //only update image if a key is hit (returns 1 in that case)
+		ft_update_image(data);
 	return (0);
 }
 
