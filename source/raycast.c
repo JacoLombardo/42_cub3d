@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/23 17:52:37 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/24 22:28:06 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 			hit = 1;
 	}
 	ft_calc_perp_wall(ray, data);
-	ft_calc_wall_hit(ray, data);
+	ft_calc_wall_hit(ray, data); // for texturing, i need to know where the ray hit the wall (coordinates)
 	ft_calc_texture(ray, data);
 	//printf("wall hit at x: %i, y: %i and perpwall: %f\n", ray->x, ray->y, ray->perp_wall_dist);
 	ft_print_wall(ray, data);

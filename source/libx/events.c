@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/20 19:06:08 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/24 22:53:04 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_rotate_player(t_player *player, double angle_increment)
 
 int	ft_key_press(int keycode, t_data *data)
 {
-	printf("key pressed: %i\n", keycode);
+	// printf("key pressed: %i\n", keycode);
 	if (keycode == XK_Escape)
 		ft_event_close_win(data);
 	if (keycode < 256)
@@ -39,7 +39,7 @@ int	ft_key_press(int keycode, t_data *data)
 
 int	ft_key_release(int keycode, t_data *data)
 {
-	printf("key released: %i\n", keycode);
+	// printf("key released: %i\n", keycode);
 	if (keycode < 256)
 		data->keys[keycode] = 0;
 	return (0);
