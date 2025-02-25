@@ -6,11 +6,28 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:12:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 13:07:18 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:19:08 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	ft_format_color(char *str, t_config *config)
+{
+	int		r;
+	int		g;
+	int		b;
+	char	**temp;
+
+	temp = ft_split(str, ',');
+	if (!temp)
+		ft_parser_cleanup(config, NULL, -1, "malloc");
+	r = ft_atoi(temp[0]);
+	g = ft_atoi(temp[1]);
+	b = ft_atoi(temp[2]);
+	ft_free_tab(temp);
+	return ((r << 16) | (g << 8) | b);
+}
 
 char	**ft_map_clone(t_config *config)
 {
@@ -39,12 +56,6 @@ char	**ft_map_clone(t_config *config)
 	return (new_map);
 }
 
-int	ft_texture_check(char *texture)
-{
-	if (!texture)
-		return (1);
-	return (0);
-}
 
 int	ft_elements_check(t_config *config, char **map)
 {
@@ -53,10 +64,7 @@ int	ft_elements_check(t_config *config, char **map)
 
 	x = config->player->pos_x / GRID;
 	y = config->player->pos_y / GRID;
-	if (ft_texture_check(config->no) || ft_texture_check(config->so)
-		|| ft_texture_check(config->we) || ft_texture_check(config->ea))
-		return (1);
-	else if (!config->c || !config->f)
+	if (config->c == -1 || config->f == -1)
 		return (1);
 	else if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y
 		+ 1][x] == ' ' || map[y][x + 1] == ' ')

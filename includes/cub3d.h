@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/23 17:53:12 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/25 15:36:55 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,13 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-// # define WIDTH 320
-// # define HEIGHT 200
-/* # define WIDTH 960
-# define HEIGHT 720 */
 # define WIDTH 1280
 # define HEIGHT 720
-/* # define WIDTH 1920
-# define HEIGHT 1080 */
 # define GRID 64
-# define STEP 2
+# define STEP 4
 # define WALL_HEIGHT 1.0
 # define FOV 1.0471975512
 # define SCALING_FACTOR 0.6
-# define KEYCOUNT 256
 
 # define RED 0xFF0000
 # define GREEN 0x00FF00
@@ -56,31 +49,32 @@ void		ft_free_config(t_config *config);
 void		ft_free_rays(t_ray **rays);
 void		ft_free_data(t_data *data);
 
+/* Movements */
+void		ft_move_player_ws(char direction, t_data *data);
+void		ft_move_player_ad(char direction, t_data *data);
+void		ft_rotate_player(t_player *player, double angle_increment);
+
 /* Draw */
 void		ft_create_img(t_config *config, t_data *data);
 
 /* Events */
-int			ft_event_close_win(t_data *data);
-int			ft_events_keyboard(t_data *data);
-void		ft_rotate_player(t_player *player, double angle_increment);
 int			ft_key_release(int keycode, t_data *data);
 int			ft_key_press(int keycode, t_data *data);
+int			ft_event_close_win(t_data *data);
+int			ft_events_keyboard(t_data *data);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_image *image, int x, int y, int color);
-char		ft_move_orientation(char direction, t_player *player);
 int			ft_update_game(t_data *data);
 
 /* Screen */
-void		ft_refresh_screen(t_data *data);
 long long	ft_get_time(void);
 void		my_pixel_put(t_data *data, int posY, int posX, int color);
-void		calc_pixel(int side, t_data *data, int posY, int posX,
-				int wall_height);
 void		ft_update_image(t_data *data);
 
 /* Map Check */
-char		**ft_map_clone(t_config *map);
+int			ft_format_color(char *str, t_config *config);
+char		**ft_map_clone(t_config *config);
 void		ft_map_check(char **map, t_config *config);
 
 /* Parser */
@@ -88,16 +82,16 @@ t_config	*ft_parser(char *input, t_config *config);
 
 /* Parser Utils */
 int			ft_skip(char *line, int i);
-void		ft_element_sort(t_config *map, char *copy, char element);
+void		ft_element_sort(t_config *config, char *copy, char element);
 int			ft_strlen2(char *line, int i);
-int			ft_filled(t_config *map);
+int			ft_filled(t_config *config);
 int			ft_check_n_player(t_config *config, char **map, int len);
 
 /* Print */
-int			get_wall_height(double ray_distance);
-int			darken_color(int color, double factor);
+t_texture	*ft_get_face(t_ray *ray, t_data *data);
+void		ft_calc_pixel(t_seg *seg, t_texture *tex, t_data *data);
 void		ft_print_wall(t_ray *ray, t_data *data);
-void		ft_render_screen(t_data *data);
+int			darken_color(int color, double factor);
 
 /* Init */
 void		ft_config_init(t_config *config);
@@ -115,18 +109,21 @@ void		ft_set_player_dir(char orientation, t_player *player);
 /* Raycast */
 void		ft_cast_ray(t_ray *ray, t_data *data);
 void		ft_init_rays(t_data *data);
+
+/* Raycast Utils */
+void		ft_calc_perp_wall(t_ray *ray, t_data *data);
 void		ft_calc_wall_hit(t_ray *ray, t_data *data);
 
 /* Textures */
+void		ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data);
 void		ft_textures_init(t_data *data);
-void		ft_calc_texture(t_ray *ray, t_data *data);
 
 /* Test */
 void		ft_print_config(t_config *config);
 
 /* Utils */
 int			ft_tab_len(char **tab);
+int			ft_inside_map(int x, int y, char **map);
 void		print_image_info(t_image *image);
-double		ft_distance(int p1_x, int p1_y, int p2_x, int p2_y);
 
 #endif

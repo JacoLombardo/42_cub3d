@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/23 17:51:22 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/25 13:56:02 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+typedef struct s_seg
+{
+	int			x;
+	int			y;
+	int			wall_height;
+	int			wall_top;
+	int			wall_bot;
+}				t_seg;
 
 typedef struct s_plane
 {
@@ -55,10 +64,9 @@ typedef struct s_config
 	char		*so;
 	char		*we;
 	char		*ea;
-	char		*f;
-	char		*c;
+	int			f;
+	int			c;
 	char		**map;
-	int			map_height;
 	t_player	*player;
 }				t_config;
 
@@ -81,19 +89,20 @@ typedef struct s_texture
 	int			width;
 	int			height;
 	int			endian;
-	int			texX;
-	int			texY;
+	int			x;
+	int			y;
 }				t_texture;
 
 typedef struct s_data
 {
-	int			keys[256];
+	int			keys[6];
 	void		*mlx;
 	void		*win;
 	t_image		*image;
 	double		ray_angle;
 	t_config	*config;
 	t_texture	*tex;
+	t_texture	*texs[4];
 	t_player	*player;
 	t_plane		*plane;
 	t_ray		**rays;

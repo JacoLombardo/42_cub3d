@@ -17,6 +17,7 @@ MINILIBX_FLAGS	= -L$(MINILIBX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 SRCS = cub3d.c \
 		source/cleanup/cleanup.c \
 		source/cleanup/cleanup_utils.c \
+		source/gameplay/movements.c \
 		source/libx/draw.c \
 		source/libx/events.c \
 		source/libx/print.c \
@@ -31,6 +32,7 @@ SRCS = cub3d.c \
 		source/math.c \
 		source/player.c \
 		source/raycast.c \
+		source/raycast_utils.c \
 		source/test.c \
 		source/utils.c \
 

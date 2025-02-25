@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/24 22:28:06 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/25 15:36:23 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	ft_calc_perp_wall(t_ray *ray, t_data *data)
-{
-	if (ray->side == 0)
-	{
-		ray->perp_wall_dist = (ray->x - data->player->pos_x / GRID + (1
-					- ray->step_x) / 2) / ray->dir_x;
-	}
-	else
-	{
-		ray->perp_wall_dist = (ray->y - data->player->pos_y / GRID + (1
-					- ray->step_y) / 2) / ray->dir_y;
-	}
-}
-
-void	ft_calc_wall_hit(t_ray *ray, t_data *data)
-{
-	ray->hit_x = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
-	ray->hit_y = data->player->pos_y + ray->perp_wall_dist * ray->dir_y;
-}
 
 void	ft_cast_ray(t_ray *ray, t_data *data)
 {
@@ -55,9 +35,7 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 			hit = 1;
 	}
 	ft_calc_perp_wall(ray, data);
-	ft_calc_wall_hit(ray, data); // for texturing, i need to know where the ray hit the wall (coordinates)
-	ft_calc_texture(ray, data);
-	//printf("wall hit at x: %i, y: %i and perpwall: %f\n", ray->x, ray->y, ray->perp_wall_dist);
+	ft_calc_wall_hit(ray, data);
 	ft_print_wall(ray, data);
 }
 
@@ -121,7 +99,6 @@ void	ft_init_rays(t_data *data)
 		ray = (t_ray *)malloc(1 * sizeof(t_ray));
 		if (!ray)
 			ft_game_cleanup(data, "malloc");
-		//printf("%i-", i);
 		ft_set_ray(i, ray, data);
 		rays[i] = ray;
 		ft_cast_ray(rays[i], data);

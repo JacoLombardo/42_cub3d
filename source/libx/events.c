@@ -3,31 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/24 22:53:04 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/25 15:00:13 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_rotate_player(t_player *player, double angle_increment)
+int	ft_key_press(int keycode, t_data *data)
 {
-	double	old_dir_x;
-	double	old_dir_y;
-	double	cos_incr_angle;
-	double	sin_incr_angle;
-
-	old_dir_x = player->dir_x;
-	old_dir_y = player->dir_y;
-	cos_incr_angle = cos(angle_increment);
-	sin_incr_angle = sin(angle_increment);
-	player->dir_x = old_dir_x * cos_incr_angle - old_dir_y * sin_incr_angle;
-	player->dir_y = old_dir_x * sin_incr_angle + old_dir_y * cos_incr_angle;
+	//printf("key pressed: %i\n", keycode);
+	if (keycode == XK_Escape)
+		ft_event_close_win(data);
+	if (keycode == 119)
+		data->keys[0] = 1;
+	else if (keycode == 115)
+		data->keys[1] = 1;
+	else if (keycode == 97)
+		data->keys[2] = 1;
+	else if (keycode == 100)
+		data->keys[3] = 1;
+	else if (keycode == 65361)
+		data->keys[4] = 1;
+	else if (keycode == 65363)
+		data->keys[5] = 1;
+	return (0);
 }
 
-int	ft_key_press(int keycode, t_data *data)
+int	ft_key_release(int keycode, t_data *data)
+{
+	//printf("key released: %i\n", keycode);
+	if (keycode == 119)
+		data->keys[0] = 0;
+	else if (keycode == 115)
+		data->keys[1] = 0;
+	else if (keycode == 97)
+		data->keys[2] = 0;
+	else if (keycode == 100)
+		data->keys[3] = 0;
+	else if (keycode == 65361)
+		data->keys[4] = 0;
+	else if (keycode == 65363)
+		data->keys[5] = 0;
+	return (0);
+}
+
+/* int	ft_key_press(int keycode, t_data *data)
 {
 	// printf("key pressed: %i\n", keycode);
 	if (keycode == XK_Escape)
@@ -43,7 +66,7 @@ int	ft_key_release(int keycode, t_data *data)
 	if (keycode < 256)
 		data->keys[keycode] = 0;
 	return (0);
-}
+} */
 
 int	ft_event_close_win(t_data *data)
 {
@@ -51,56 +74,26 @@ int	ft_event_close_win(t_data *data)
 	return (0);
 }
 
-void	ft_render_screen(t_data *data)
+int	ft_events_keyboard(t_data *data)
 {
-	mlx_clear_window(data->mlx, data->win);
-	ft_init_rays(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->image->img, 0, 0);
-}
-
-int	ft_inside_map(int x, int y, char **map)
-{
-	if (x < 0 || y < 0)
-		return (1);
-	else if (y > ft_tab_len(map) - 1)
-		return (1);
-	else if (x > (int)ft_strlen(map[y]) - 1)
-		return (1);
+	if (data->keys[0]) // XK_W
+		ft_move_player_ws('w', data);
+	else if (data->keys[1]) // XK_S
+		ft_move_player_ws('s', data);
+	else if (data->keys[2]) //  XK_A
+		ft_move_player_ad('a', data);
+	else if (data->keys[3]) // XK_D
+		ft_move_player_ad('d', data);
+	else if (data->keys[4]) // XK_Left
+		ft_rotate_player(data->player, ft_dtor(-1.0));
+	else if (data->keys[5]) // XK_Right
+		ft_rotate_player(data->player, ft_dtor(1.0));
 	else
 		return (0);
+	return (1);
 }
 
-void	ft_move_player(char direction, t_data *data, char **map)
-{
-	int	pos_x;
-	int	pos_y;
-
-	if (direction == 'u')
-	{
-		pos_x = (data->player->pos_x + (data->player->dir_x * STEP)) / GRID;
-		pos_y = (data->player->pos_y + (data->player->dir_y * STEP)) / GRID;
-		printf("x: %i, y: %i, and map value: %c\n", pos_x, pos_y, map[pos_y][pos_x]);
-		if (!ft_inside_map(pos_x, pos_y, map) && map[pos_y][pos_x] == '0')
-		{
-			data->player->pos_x += data->player->dir_x * STEP;
-			data->player->pos_y += data->player->dir_y * STEP;
-			ft_render_screen(data);
-		}
-	}
-	else if (direction == 'd')
-	{
-		pos_x = (data->player->pos_x - data->player->dir_x * STEP) / GRID;
-		pos_y = (data->player->pos_y - data->player->dir_y * STEP) / GRID;
-		if (!ft_inside_map(pos_x, pos_y, map) && map[pos_y][pos_x] == '0')
-		{
-			data->player->pos_x -= data->player->dir_x * STEP;
-			data->player->pos_y -= data->player->dir_y * STEP;
-			ft_render_screen(data);
-		}
-	}
-}
-
-int	ft_events_keyboard(t_data *data)
+/* int	ft_events_keyboard(t_data *data)
 {
 	if (data->keys[XK_w]) // || data->keys[XK_Up]
 		ft_move_player('u', data, data->config->map);
@@ -113,4 +106,4 @@ int	ft_events_keyboard(t_data *data)
 	else
 		return (0);
 	return (1);
-}
+} */

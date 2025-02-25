@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/19 12:17:03 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:26:44 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	ft_map(t_config *config, char *line, int fd)
 		ft_parser_cleanup(config, line, fd, "malloc");
 	else if (ft_check_n_player(config, config->map, len - 1))
 		ft_parser_cleanup(config, line, fd, "map");
-	config->map_height = len;
 }
 
 /* ft_handle_line checks if the config elements are not filled,
@@ -89,9 +88,6 @@ void	ft_map(t_config *config, char *line, int fd)
 
 void	ft_handle_line(t_config *config, char *line, int fd)
 {
-	// int	i;
-
-	// i = 0
 	if (line[0] == '\n')
 		return ;
 	if (!ft_filled(config))

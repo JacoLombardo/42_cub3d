@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 18:23:15 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/25 12:11:54 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_config_init(t_config *config)
 	config->so = NULL;
 	config->we = NULL;
 	config->ea = NULL;
-	config->c = NULL;
-	config->f = NULL;
+	config->c = -1;
+	config->f = -1;
 }
 
 void	ft_plane_init(t_data *data)
@@ -56,8 +56,8 @@ void	ft_plane_init(t_data *data)
 void	ft_data_init(t_data *data, t_config *config)
 {
 	t_image	*image;
-	int i;
-	
+	int		i;
+
 	image = (t_image *)malloc(sizeof(t_image));
 	if (!image)
 		ft_init_cleanup(data, NULL, "malloc");
@@ -75,7 +75,7 @@ void	ft_data_init(t_data *data, t_config *config)
 	data->image = image;
 	data->player = config->player;
 	i = 0;
-	while (i < 256)
+	while (i < 6)
 		data->keys[i++] = 0;
 	ft_plane_init(data);
 }

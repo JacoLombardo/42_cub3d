@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:05:14 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/18 16:29:56 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:47:46 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_init_cleanup(t_data *data, t_config *config, char *type)
 		ft_putendl_fd("[Error] Minilibx init failed", 2);
 	else if (!ft_strcmp(type, "malloc"))
 		ft_putendl_fd("[Error] Malloc failed", 2);
+	else if (!ft_strcmp(type, "texture"))
+		ft_putendl_fd("[Error] Invalid texture", 2);
 	if (data)
 		ft_free_data(data);
 	else if (config)

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:45:26 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 13:39:14 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:12:57 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ void	ft_free_config(t_config *config)
 		free(config->we);
 	if (config->ea)
 		free(config->ea);
-	if (config->c)
-		free(config->c);
-	if (config->f)
-		free(config->f);
 	ft_free_tab(config->map);
 	if (config->player)
 		free(config->player);

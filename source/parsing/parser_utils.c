@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 16:03:14 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:15:15 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ int	ft_skip(char *line, int i)
 	return (i);
 }
 
-void	ft_element_sort(t_config *map, char *copy, char element)
+void	ft_element_sort(t_config *config, char *copy, char element)
 {
 	if (element == 'N')
-		map->no = copy;
+		config->no = copy;
 	else if (element == 'S')
-		map->so = copy;
+		config->so = copy;
 	else if (element == 'W')
-		map->we = copy;
+		config->we = copy;
 	else if (element == 'E')
-		map->ea = copy;
+		config->ea = copy;
 	else if (element == 'F')
-		map->f = copy;
+		config->f = ft_format_color(copy, config);
 	else if (element == 'C')
-		map->c = copy;
+		config->c = ft_format_color(copy, config);
 }
 
 int	ft_strlen2(char *line, int i)
@@ -48,9 +48,10 @@ int	ft_strlen2(char *line, int i)
 	return (len);
 }
 
-int	ft_filled(t_config *map)
+int	ft_filled(t_config *config)
 {
-	if (map->no && map->so && map->we && map->ea && map->c && map->f)
+	if (config->no && config->so && config->we && config->ea && config->c != -1
+		&& config->f != -1)
 		return (1);
 	else
 		return (0);

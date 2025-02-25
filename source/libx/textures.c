@@ -3,53 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/24 22:30:07 by nick             ###   ########.fr       */
+/*   Updated: 2025/02/25 15:21:14 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void ft_textures_init(t_data *data)
+char	*ft_get_texture(int i, t_data *data)
 {
-	t_texture	*tex;
-
-	tex = (t_texture *)malloc(1 * sizeof(t_texture));
-	if (!tex)
-	{
-		printf("texture malloc failure\n");
-		// ft_game_cleanup(&data, "texture"); //<- needs update
-		return ; 
-	}
-	tex->img = mlx_xpm_file_to_image(data->mlx, "assets/textures/orca.xpm",
-			&(tex->width), &(tex->height));
-	if (!tex->img)
-	{
-		printf("texture not found\n");
-		return ;
-	}
-	tex->addr = mlx_get_data_addr(tex->img, &(tex->bpp), &(tex->line_length),
-			&(tex->endian));
-	if (!tex->addr)
-	{
-		printf("texture adress not found\n");
-	}
-	data->tex = tex;
+	if (i == 0)
+		return (data->config->no);
+	else if (i == 1)
+		return (data->config->so);
+	else if (i == 2)
+		return (data->config->we);
+	else if (i == 3)
+		return (data->config->ea);
+	else
+		return (NULL);
 }
 
-void ft_calc_texture(t_ray *ray, t_data *data)
+void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 {
-	double wallX;
+	double	wall_x;
 
-	if (ray->side == 0) // if vertical wall-> use y-coordinate of ray collision
-		wallX = ray->hit_y; // wallX represents the exact point where the ray hit the wall
-	else // if horizontal wall-> use x-coordinate of collision
-		wallX = ray->hit_x;
-	wallX -= floor(wallX); //tells where exactly in the cell you hit the wall, because your remove the round numbers (for example 2,73 is now 0,73 which tells you what part of the texture to draw)
-	data->tex->texX = (int)(wallX * (double)(data->tex->width)); //translate to the domain of the texture
+	(void)data;
+	if (ray->side == 0)
+		wall_x = data->player->pos_y + ray->perp_wall_dist * ray->dir_y;
+	else
+		wall_x = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
+	wall_x -= floor(wall_x);
+	
+	tex->x = (int)(wall_x * (double)(tex->width));
 	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
-		data->tex->texX = data->tex->width - data->tex->texX - 1; // flip the texture horizontally if the ray hits from the right or from the bottom
-	printf("wallX: %f, texX: %d\n", wallX, data->tex->texX);
+    	tex->x = tex->width - tex->x - 1;
+}
+
+/* void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
+{
+	double	wall_x;
+
+	(void)data;
+	if (ray->side == 0) // if vertical wall-> use y-coordinate of ray collision
+		wall_x = ray->hit_y; // wallX represents the exact point where the ray hit the wall
+	else // if horizontal wall-> use x-coordinate of collision
+		wall_x = ray->hit_x;
+	wall_x -= floor(wall_x); //tells where exactly in the cell you hit the wall, because your remove the round numbers (for example 2,73 is now 0,73 which tells you what part of the texture to draw)
+	tex->x = (int)(wall_x * (double)(tex->width)); //translate to the domain of the texture
+	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
+		tex->x = tex->width - tex->x - 1; // flip the texture horizontally if the ray hits from the right or from the bottom
+} */
+
+void	ft_textures_init(t_data *data)
+{
+	int			i;
+	t_texture	*tex;
+
+	i = 0;
+	while (i < 4)
+	{
+		tex = (t_texture *)malloc(1 * sizeof(t_texture));
+		if (!tex)
+			ft_init_cleanup(data, NULL, "malloc");
+		tex->img = mlx_xpm_file_to_image(data->mlx, ft_get_texture(i, data),
+				&tex->width, &tex->height);
+		if (!tex->img)
+			ft_init_cleanup(data, NULL, "texture");
+		tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->line_length,
+				&tex->endian);
+		if (!tex->addr)
+			ft_init_cleanup(data, NULL, "texture");
+		data->texs[i] = tex;
+		i++;
+	}
 }

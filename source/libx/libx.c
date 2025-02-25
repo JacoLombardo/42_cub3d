@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:02:43 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/20 14:46:38 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:22:21 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_mlx_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-char	ft_move_orientation(char direction, t_player *player)
+/* char	ft_move_orientation(char direction, t_player *player)
 {
 	if (player->orientation == 'N' && direction == 'l')
 		return ('W');
@@ -39,7 +39,7 @@ char	ft_move_orientation(char direction, t_player *player)
 	else if (player->orientation == 'E' && direction == 'r')
 		return ('S');
 	return ('I');
-}
+} */
 
 void	ft_update_image(t_data *data)
 {
@@ -51,7 +51,6 @@ void	ft_update_image(t_data *data)
 // void	init_textures()
 // {
 // 	mlx_texture_t *texture;
-	
 // 	mlx_load_png("./temp/sus.png");
 // 	if (!texture)
 // 		error();
