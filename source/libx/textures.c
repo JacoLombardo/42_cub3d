@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/25 15:21:14 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:31:21 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_get_texture(int i, t_data *data)
 		return (NULL);
 }
 
-void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
+/* void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 {
 	double	wall_x;
 
@@ -36,13 +36,12 @@ void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 	else
 		wall_x = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
 	wall_x -= floor(wall_x);
-	
 	tex->x = (int)(wall_x * (double)(tex->width));
 	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
     	tex->x = tex->width - tex->x - 1;
-}
+} */
 
-/* void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
+void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 {
 	double	wall_x;
 
@@ -55,28 +54,28 @@ void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 	tex->x = (int)(wall_x * (double)(tex->width)); //translate to the domain of the texture
 	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
 		tex->x = tex->width - tex->x - 1; // flip the texture horizontally if the ray hits from the right or from the bottom
-} */
+}
 
 void	ft_textures_init(t_data *data)
 {
 	int			i;
-	t_texture	*tex;
+	t_texture	*text;
 
 	i = 0;
 	while (i < 4)
 	{
-		tex = (t_texture *)malloc(1 * sizeof(t_texture));
-		if (!tex)
+		text = (t_texture *)malloc(1 * sizeof(t_texture));
+		if (!text)
 			ft_init_cleanup(data, NULL, "malloc");
-		tex->img = mlx_xpm_file_to_image(data->mlx, ft_get_texture(i, data),
-				&tex->width, &tex->height);
-		if (!tex->img)
+		text->img = mlx_xpm_file_to_image(data->mlx, ft_get_texture(i, data),
+				&text->width, &text->height);
+		if (!text->img)
 			ft_init_cleanup(data, NULL, "texture");
-		tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->line_length,
-				&tex->endian);
-		if (!tex->addr)
+		text->addr = mlx_get_data_addr(text->img, &text->bpp,
+				&text->line_length, &text->endian);
+		if (!text->addr)
 			ft_init_cleanup(data, NULL, "texture");
-		data->texs[i] = tex;
+		data->texts[i] = text;
 		i++;
 	}
 }

@@ -18,11 +18,9 @@ SRCS = cub3d.c \
 		source/cleanup/cleanup.c \
 		source/cleanup/cleanup_utils.c \
 		source/gameplay/movements.c \
-		source/libx/draw.c \
 		source/libx/events.c \
 		source/libx/print.c \
 		source/libx/libx.c \
-		source/libx/screen.c \
 		source/libx/textures.c \
 		source/parsing/map_check.c \
 		source/parsing/parser.c \
@@ -37,7 +35,7 @@ SRCS = cub3d.c \
 		source/utils.c \
 
 HEADER = cub3d.h
-NAME = cub3d
+NAME = cub3D
 LIBFT_PATH = libraries/libft
 LIBFT = $(LIBFT_PATH)/libft.a
 MINILIBX_PATH = libraries/minilibx

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:45:26 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/25 12:12:57 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:49:09 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,41 @@ void	ft_free_rays(t_ray **rays)
 	int	i;
 
 	i = 0;
-	while (rays[i])
+	while (i < WIDTH)
 	{
-		free(rays[i]);
+		if (rays[i])
+			free(rays[i]);
 		i++;
 	}
 	free(rays);
 }
 
+void	ft_free_textures(t_texture **texts, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (texts[i])
+		{
+			if (texts[i]->img)
+				mlx_destroy_image(data->mlx, texts[i]->img);
+			free(texts[i]);
+		}
+		i++;
+	}
+}
+
 void	ft_free_data(t_data *data)
 {
+	if (data->config)
+		ft_free_config(data->config);
 	if (data->player)
 		free(data->player);
 	if (data->plane)
 		free(data->plane);
-	if (data->rays)
-		ft_free_rays(data->rays);
+	ft_free_textures(data->texts, data);
 	if (data->image->img)
 		mlx_destroy_image(data->mlx, data->image->img);
 	if (data->image)

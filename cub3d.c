@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:40 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/25 15:35:00 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 14:45:08 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_cub3d(char *input)
 
 	ft_config_init(&config);
 	ft_parser(input, &config);
-	ft_print_config(&config);
+	//ft_print_config(&config);
 	ft_data_init(&data, &config);
 	ft_libx_init(&data);
 	ft_events_init(&data);

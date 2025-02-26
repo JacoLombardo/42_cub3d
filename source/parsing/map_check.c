@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:12:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/25 12:19:08 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 14:39:19 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_format_color(char *str, t_config *config)
 	g = ft_atoi(temp[1]);
 	b = ft_atoi(temp[2]);
 	ft_free_tab(temp);
+	free(str);
 	return ((r << 16) | (g << 8) | b);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/25 14:26:44 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:51:23 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ void	ft_elements(t_config *config, char *line, int fd)
 			ft_parser_cleanup(config, line, fd, "malloc");
 	}
 }
-
-/* ft_map first checks how many rows of map we have parsed already,
-	to calcuale the len. Then reallocate the memory to add one more row and duplicate the line,
-	while checking if the player is in the line. */
 
 void	ft_map(t_config *config, char *line, int fd)
 {

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/25 15:36:23 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 14:06:49 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	ft_init_rays(t_data *data)
 	rays = (t_ray **)malloc(WIDTH * sizeof(t_ray *));
 	if (!rays)
 		ft_game_cleanup(data, "malloc");
-	data->rays = rays;
 	while (i < WIDTH)
 	{
 		ray = (t_ray *)malloc(1 * sizeof(t_ray));
@@ -104,6 +103,5 @@ void	ft_init_rays(t_data *data)
 		ft_cast_ray(rays[i], data);
 		i++;
 	}
-	// ft_free_rays(rays);
-	data->rays = NULL;
+	ft_free_rays(rays);
 }

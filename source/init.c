@@ -6,13 +6,12 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:01:06 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/25 12:11:54 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 14:43:13 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-/* Init of both main structures and minilibx */
 void	ft_config_init(t_config *config)
 {
 	char		**map;
@@ -69,11 +68,11 @@ void	ft_data_init(t_data *data, t_config *config)
 	data->image = image;
 	data->mlx = NULL;
 	data->win = NULL;
-	data->ray_angle = (double)FOV / WIDTH;
 	data->config = config;
 	data->player = NULL;
 	data->image = image;
 	data->player = config->player;
+	config->player = NULL;
 	i = 0;
 	while (i < 6)
 		data->keys[i++] = 0;
@@ -82,10 +81,9 @@ void	ft_data_init(t_data *data, t_config *config)
 
 void	ft_events_init(t_data *data)
 {
-	mlx_hook(data->win, DestroyNotify, 0, ft_event_close_win, data);	//escape window
+	mlx_hook(data->win, DestroyNotify, 0, ft_event_close_win, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, ft_key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, ft_key_release, data);
-	// mlx_key_hook(data->win, ft_events_keyboard, data);	//remove?
 }
 
 void	ft_libx_init(t_data *data)

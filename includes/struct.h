@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/25 13:56:02 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/26 14:14:17 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,10 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	t_image		*image;
-	double		ray_angle;
 	t_config	*config;
-	t_texture	*tex;
-	t_texture	*texs[4];
+	t_texture	*texts[4];
 	t_player	*player;
 	t_plane		*plane;
-	t_ray		**rays;
 }				t_data;
 
 #endif
