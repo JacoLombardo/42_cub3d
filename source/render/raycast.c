@@ -6,11 +6,11 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/27 11:46:40 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:11:04 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	ft_cast_ray(t_ray *ray, t_data *data)
 {
@@ -67,6 +67,34 @@ void	ft_set_ray_utils(t_ray *ray, t_data *data)
 		ray->step_y = 1;
 	}
 }
+
+/* void	ft_set_ray_utils(t_ray *ray, t_data *data)
+{
+	if (ray->dir_x < 0)
+	{
+		ray->side_dist_x = ((data->player->pos_x / GRID) - (ray->x + 0.5))
+			* ray->delta_dist_x;
+		ray->step_x = -1;
+	}
+	else
+	{
+		ray->side_dist_x = ((ray->x + 1.5) - (data->player->pos_x / GRID))
+			* ray->delta_dist_x;
+		ray->step_x = 1;
+	}
+	if (ray->dir_y < 0)
+	{
+		ray->side_dist_y = ((data->player->pos_y / GRID) - (ray->y + 0.5))
+			* ray->delta_dist_y;
+		ray->step_y = -1;
+	}
+	else
+	{
+		ray->side_dist_y = ((ray->y + 1.5) - (data->player->pos_y / GRID))
+			* ray->delta_dist_y;
+		ray->step_y = 1;
+	}
+} */
 
 void	ft_set_ray(int pixel, t_ray *ray, t_data *data)
 {

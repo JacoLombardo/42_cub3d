@@ -25,12 +25,11 @@ SRCS = cub3d.c \
 		source/parsing/map_check.c \
 		source/parsing/parser.c \
 		source/parsing/parser_utils.c \
-		source/error.c \
+		source/render/raycast.c \
+		source/render/raycast_utils.c \
 		source/init.c \
+		source/init_utils.c \
 		source/math.c \
-		source/player.c \
-		source/raycast.c \
-		source/raycast_utils.c \
 		source/test.c \
 		source/utils.c \
 
