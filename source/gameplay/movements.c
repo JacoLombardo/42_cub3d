@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 11:02:36 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/27 21:09:50 by nboer            ###   ########.fr       */
+/*   Updated: 2025/02/27 21:18:38 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_check_move(double move_x, double move_y, t_data *data)
 	map = data->config->map;
 	pos_x = data->player->pos_x + move_x;
 	pos_y = data->player->pos_y + move_y;
-	// Adding a little collision margin
 	if (move_x > 0)
 		pos_x += GRID / 6;
 	else if (move_x < 0)

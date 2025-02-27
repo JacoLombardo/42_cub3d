@@ -1,12 +1,12 @@
 
-NO      ./path_to_the_north_texture   
+NO      assets/textures/wall.xpm
 
 
-        SO ./path_to_the_south_texture    
+        SO assets/textures/wall.xpm   
 
-WE                   ./path_to_the_west_texture
+WE                   assets/textures/wall.xpm
 
-EA ./path_to_the_east_texture                      
+EA assets/textures/wall.xpm                    
 
 F 220,100,0
 
@@ -25,7 +25,7 @@ C 225,30,0
 11110111111111011100000010001
 11110111111111011101010010001
 11000000110101011100000010001
- 0000000000000001100000010001
+10000000000000001100000010001
 10000000000000001101010010001
 11000001110101011111011110N0111
 11110111 1110101 101111010001

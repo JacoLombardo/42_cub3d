@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/26 14:22:38 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 15:13:32 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ void	ft_print_wall(t_ray *ray, t_data *data)
 	t_seg		seg;
 	t_texture	*text;
 
-	seg.wall_height = (int)(WALL_HEIGHT / (ray->perp_wall_dist) * WIDTH)
-		*SCALING_FACTOR;
+	seg.wall_height = (WIDTH / (ray->perp_wall_dist)) * SCALING_FACTOR;
 	seg.wall_top = (HEIGHT / 2) + (seg.wall_height / 2);
 	seg.wall_bot = (HEIGHT / 2) - (seg.wall_height / 2);
 	text = ft_get_face(ray, data);
