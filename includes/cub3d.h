@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/27 15:13:37 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:18:19 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-# define WIDTH 1280
-# define HEIGHT 720
-/* # define WIDTH 100
-# define HEIGHT 50 */
+# define WIDTH 1000
+# define HEIGHT 600
 # define GRID 64
-# define STEP 4
+# define STEP 1
+# define WALL_HEIGHT 1.0
 # define FOV 1.0471975512
 # define SCALING_FACTOR 0.6
 
@@ -52,9 +51,9 @@ void		ft_free_textures(t_texture **texts, t_data *data);
 void		ft_free_data(t_data *data);
 
 /* Movements */
-void		ft_move_player_ws(char direction, t_data *data);
-void		ft_move_player_ad(char direction, t_data *data);
-void		ft_rotate_player(t_player *player, double angle_increment);
+int			ft_move_player_ws(char direction, t_data *data);
+int			ft_move_player_ad(char direction, t_data *data);
+int			ft_rotate_player(t_player *player, double angle_increment);
 
 /* Events */
 int			ft_key_release(int keycode, t_data *data);
@@ -102,6 +101,7 @@ void		ft_libx_init(t_data *data);
 /* Math */
 double		ft_dtor(double degrees);
 double		ft_get_tan(double degrees);
+void		normalize_vector(t_ray *ray);
 
 /* Player */
 void		ft_set_player_dir(char orientation, t_player *player);
@@ -112,7 +112,6 @@ void		ft_init_rays(t_data *data);
 
 /* Raycast Utils */
 void		ft_calc_perp_wall(t_ray *ray, t_data *data);
-void		ft_calc_wall_hit(t_ray *ray, t_data *data);
 
 /* Test */
 void		ft_print_config(t_config *config);

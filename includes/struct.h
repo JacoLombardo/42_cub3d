@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:29:33 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/26 14:14:17 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:34:01 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_ray
 	double		angle;
 	double		dir_x;
 	double		dir_y;
+	double		norm_dir_x;
+	double		norm_dir_y;
 	double		delta_dist_x;
 	double		delta_dist_y;
 	double		side_dist_x;

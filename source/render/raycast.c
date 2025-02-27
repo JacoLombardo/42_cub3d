@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/27 14:11:04 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:18:58 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 			hit = 1;
 	}
 	ft_calc_perp_wall(ray, data);
-	ft_calc_wall_hit(ray, data);
-	//printf("ray_x %d, ray_y %d, dir_x %f, dir_y %f, perp_wall %f, hit_x %f, hit_y %f\n", ray->x, ray->y, ray->dir_x, ray->dir_y, ray->perp_wall_dist, ray->hit_x, ray->hit_y);
 	ft_print_wall(ray, data);
 }
 
@@ -105,8 +103,11 @@ void	ft_set_ray(int pixel, t_ray *ray, t_data *data)
 			/ (double)WIDTH - 0.5f) * FOV;
 	ray->dir_x = cos(ray->angle);
 	ray->dir_y = sin(ray->angle);
-	ray->delta_dist_x = fabs(1 / ray->dir_x);
-	ray->delta_dist_y = fabs(1 / ray->dir_y);
+	normalize_vector(ray);
+	if (ray->dir_x != 0)
+		ray->delta_dist_x = fabs(1 / ray->norm_dir_x);
+	if (ray->dir_y != 0)
+		ray->delta_dist_y = fabs(1 / ray->norm_dir_y);
 	ray->side = 0;
 	ray->perp_wall_dist = 0;
 	ft_set_ray_utils(ray, data);

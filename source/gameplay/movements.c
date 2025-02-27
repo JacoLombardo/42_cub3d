@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 11:02:36 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/27 12:38:26 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:18:38 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_check_move(double move_x, double move_y, t_data *data)
 		return (0);
 }
 
-void	ft_move_player_ws(char direction, t_data *data)
+int	ft_move_player_ws(char direction, t_data *data)
 {
 	double	move_x;
 	double	move_y;
@@ -61,9 +61,10 @@ void	ft_move_player_ws(char direction, t_data *data)
 		data->player->pos_x += move_x;
 		data->player->pos_y += move_y;
 	}
+	return (1);
 }
 
-void	ft_move_player_ad(char direction, t_data *data)
+int	ft_move_player_ad(char direction, t_data *data)
 {
 	double	move_x;
 	double	move_y;
@@ -85,9 +86,10 @@ void	ft_move_player_ad(char direction, t_data *data)
 		data->player->pos_x += move_x;
 		data->player->pos_y += move_y;
 	}
+	return (1);
 }
 
-void	ft_rotate_player(t_player *player, double angle_increment)
+int	ft_rotate_player(t_player *player, double angle_increment)
 {
 	double	old_dir_x;
 	double	old_dir_y;
@@ -100,4 +102,5 @@ void	ft_rotate_player(t_player *player, double angle_increment)
 	sin_incr_angle = sin(angle_increment);
 	player->dir_x = old_dir_x * cos_incr_angle - old_dir_y * sin_incr_angle;
 	player->dir_y = old_dir_x * sin_incr_angle + old_dir_y * cos_incr_angle;
+	return (1);
 }
