@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/26 14:06:49 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:46:40 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_cast_ray(t_ray *ray, t_data *data)
 	}
 	ft_calc_perp_wall(ray, data);
 	ft_calc_wall_hit(ray, data);
+	//printf("ray_x %d, ray_y %d, dir_x %f, dir_y %f, perp_wall %f, hit_x %f, hit_y %f\n", ray->x, ray->y, ray->dir_x, ray->dir_y, ray->perp_wall_dist, ray->hit_x, ray->hit_y);
 	ft_print_wall(ray, data);
 }
 

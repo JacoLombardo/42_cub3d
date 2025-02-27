@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/27 10:31:47 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:26:23 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 	tex->x = (int)(wall_x * (double)(tex->width)); //translate to the domain of the texture
 	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
 		tex->x = tex->width - tex->x - 1; // flip the texture horizontally if the ray hits from the right or from the bottom
+	printf("text_x %i, wall_x %f, text_width %i\n", tex->x, wall_x, tex->width);
 }
 
 void	ft_textures_init(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/26 14:29:17 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:10:47 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
+/* # define WIDTH 100
+# define HEIGHT 50 */
 # define GRID 64
 # define STEP 4
 # define WALL_HEIGHT 1.0
