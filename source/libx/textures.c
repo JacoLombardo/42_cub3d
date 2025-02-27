@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/26 15:31:21 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:31:47 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,14 @@ void	ft_textures_init(t_data *data)
 
 	i = 0;
 	while (i < 4)
+		data->texts[i++] = NULL;
+	i = 0;
+	while (i < 4)
 	{
 		text = (t_texture *)malloc(1 * sizeof(t_texture));
 		if (!text)
 			ft_init_cleanup(data, NULL, "malloc");
+		data->texts[i] = text;
 		text->img = mlx_xpm_file_to_image(data->mlx, ft_get_texture(i, data),
 				&text->width, &text->height);
 		if (!text->img)
@@ -75,7 +79,6 @@ void	ft_textures_init(t_data *data)
 				&text->line_length, &text->endian);
 		if (!text->addr)
 			ft_init_cleanup(data, NULL, "texture");
-		data->texts[i] = text;
 		i++;
 	}
 }
