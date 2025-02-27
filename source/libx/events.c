@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/25 15:00:13 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:09:05 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,25 @@ int	ft_event_close_win(t_data *data)
 	return (0);
 }
 
+
 int	ft_events_keyboard(t_data *data)
 {
+	int	result;
+	
+	result = 0;
 	if (data->keys[0]) // XK_W
-		ft_move_player_ws('w', data);
-	else if (data->keys[1]) // XK_S
-		ft_move_player_ws('s', data);
-	else if (data->keys[2]) //  XK_A
-		ft_move_player_ad('a', data);
-	else if (data->keys[3]) // XK_D
-		ft_move_player_ad('d', data);
-	else if (data->keys[4]) // XK_Left
-		ft_rotate_player(data->player, ft_dtor(-1.0));
-	else if (data->keys[5]) // XK_Right
-		ft_rotate_player(data->player, ft_dtor(1.0));
-	else
+		result += ft_move_player_ws('w', data);
+	if (data->keys[1]) // XK_S
+		result += ft_move_player_ws('s', data);
+	if (data->keys[2]) //  XK_A
+		result += ft_move_player_ad('a', data);
+	if (data->keys[3]) // XK_D
+		result += ft_move_player_ad('d', data);
+	if (data->keys[4]) // XK_Left
+		result += ft_rotate_player(data->player, ft_dtor(-1.0));
+	if (data->keys[5]) // XK_Right
+		result += ft_rotate_player(data->player, ft_dtor(1.0));
+	if (result == 0)
 		return (0);
 	return (1);
 }
