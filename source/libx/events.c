@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/27 21:09:05 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:26:38 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	ft_events_keyboard(t_data *data)
 		result += ft_rotate_player(data->player, ft_dtor(1.0));
 	if (result == 0)
 		return (0);
-	return (1);
+	return (result);
 }
 
 /* int	ft_events_keyboard(t_data *data)
