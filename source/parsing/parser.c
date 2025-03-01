@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:13:48 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/26 13:51:23 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:37:06 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	ft_map(t_config *config, char *line, int fd)
 
 /* ft_handle_line checks if the config elements are not filled,
 	and in that case keeps filling them, otherwise it starts parsing the map */
-
 void	ft_handle_line(t_config *config, char *line, int fd)
 {
 	if (line[0] == '\n')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/27 14:11:58 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:37:21 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	ft_filled(t_config *config)
 
 /* ft_check_n_player checks if the map is invalid (if contains chars not allowed) and also if there is the player in it,
 	adding and extra check if the player was already set before */
-
 int	ft_check_n_player(t_config *config, char **map, int len)
 {
 	int	i;
@@ -74,8 +73,6 @@ int	ft_check_n_player(t_config *config, char **map, int len)
 		{
 			if (config->player->pos_x == -1)
 			{
-				/* config->player->pos_x = (i + 0.5) * GRID;
-				config->player->pos_y = (len + 0.5) * GRID; */
 				config->player->pos_x = i * GRID;
 				config->player->pos_y = len * GRID;
 				ft_set_player_dir(map[len][i], config->player);

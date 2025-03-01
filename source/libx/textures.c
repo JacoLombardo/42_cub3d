@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/27 21:17:40 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:50:24 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,6 @@ char	*ft_get_texture(int i, t_data *data)
 		return (NULL);
 }
 
-/* void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
-{
-	double	wall_x;
-
-	(void)data;
-	if (ray->side == 0)
-		wall_x = data->player->pos_y + ray->perp_wall_dist * ray->dir_y;
-	else
-		wall_x = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
-	wall_x -= floor(wall_x);
-	tex->x = (int)(wall_x * (double)(tex->width));
-	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
-    	tex->x = tex->width - tex->x - 1;
-} */
-
 void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 {
 	double	wall_x;
@@ -49,10 +34,10 @@ void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 		wall_x = (1.0 * data->player->pos_y / GRID) + ray->perp_wall_dist * ray->dir_y;
 	else
 		wall_x = (1.0 * data->player->pos_x / GRID) + ray->perp_wall_dist * ray->dir_x;
-	wall_x -= floor(wall_x); //tells where exactly in the cell you hit the wall, because your remove the round numbers (for example 2,73 is now 0,73 which tells you what part of the texture to draw)
-	tex->x = (int)(wall_x * (double)(tex->width)); //translate to the domain of the texture
+	wall_x -= floor(wall_x);
+	tex->x = (int)(wall_x * (double)(tex->width));
 	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
-		tex->x = tex->width - tex->x - 1; // flip the texture horizontally if the ray hits from the right or from the bottom
+		tex->x = tex->width - tex->x - 1;
 }
 
 void	ft_textures_init(t_data *data)
