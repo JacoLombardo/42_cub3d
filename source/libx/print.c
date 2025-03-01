@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/03/01 11:30:57 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:51:05 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ t_texture	*ft_get_face(t_ray *ray, t_data *data)
 	if (ray->side == 0)
 	{
 		if (ray->dir_x > 0)
-			return (data->texts[2]); // Wall facing west
+			return (data->texts[2]);
 		else
-			return (data->texts[3]); // Wall facing east
+			return (data->texts[3]);
 	}
 	else
 	{
 		if (ray->dir_y > 0)
-			return (data->texts[0]); // Wall facing north
+			return (data->texts[0]);
 		else
-			return (data->texts[1]); // Wall facing south
+			return (data->texts[1]);
 	}
 }
 
@@ -36,9 +36,9 @@ void	ft_calc_pixel(t_seg *seg, t_texture *text, t_data *data)
 
 	color = 0;
 	if (seg->y < seg->wall_bot)
-		ft_mlx_pixel_put(data, seg->y, seg->x, data->config->f); // Floor
+		ft_mlx_pixel_put(data, seg->y, seg->x, data->config->f);
 	else if (seg->y > seg->wall_top)
-		ft_mlx_pixel_put(data, seg->y, seg->x, data->config->c); // Ceiling
+		ft_mlx_pixel_put(data, seg->y, seg->x, data->config->c);
 	else
 	{
 		text->y = (int)(((seg->y - seg->wall_bot) / (double)seg->wall_height)
