@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:06:30 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/27 21:18:58 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:29:18 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	ft_set_ray(int pixel, t_ray *ray, t_data *data)
 {
 	ray->x = (int)(data->player->pos_x / GRID);
 	ray->y = (int)(data->player->pos_y / GRID);
-	ray->pixel = pixel + 1;
+	ray->pixel = pixel;
 	ray->angle = atan2(data->player->dir_y, data->player->dir_x) + (pixel
 			/ (double)WIDTH - 0.5f) * FOV;
 	ray->dir_x = cos(ray->angle);

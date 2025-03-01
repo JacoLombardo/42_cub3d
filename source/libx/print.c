@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/02/27 15:13:32 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:30:57 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_print_wall(t_ray *ray, t_data *data)
 
 	seg.wall_height = (WIDTH / (ray->perp_wall_dist)) * SCALING_FACTOR;
 	seg.wall_top = (HEIGHT / 2) + (seg.wall_height / 2);
-	seg.wall_bot = (HEIGHT / 2) - (seg.wall_height / 2);
+	seg.wall_bot = (HEIGHT / 2) - (seg.wall_height / 2) + 1;
 	text = ft_get_face(ray, data);
 	seg.x = ray->pixel;
 	ft_calc_texture(ray, text, data);
