@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:34:45 by nboer             #+#    #+#             */
-/*   Updated: 2025/03/01 11:26:38 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:57:37 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_key_press(int keycode, t_data *data)
 {
-	//printf("key pressed: %i\n", keycode);
 	if (keycode == XK_Escape)
 		ft_event_close_win(data);
 	if (keycode == 119)
@@ -34,7 +33,6 @@ int	ft_key_press(int keycode, t_data *data)
 
 int	ft_key_release(int keycode, t_data *data)
 {
-	//printf("key released: %i\n", keycode);
 	if (keycode == 119)
 		data->keys[0] = 0;
 	else if (keycode == 115)
@@ -50,64 +48,28 @@ int	ft_key_release(int keycode, t_data *data)
 	return (0);
 }
 
-/* int	ft_key_press(int keycode, t_data *data)
-{
-	// printf("key pressed: %i\n", keycode);
-	if (keycode == XK_Escape)
-		ft_event_close_win(data);
-	if (keycode < 256)
-		data->keys[keycode] = 1;
-	return (0);
-}
-
-int	ft_key_release(int keycode, t_data *data)
-{
-	// printf("key released: %i\n", keycode);
-	if (keycode < 256)
-		data->keys[keycode] = 0;
-	return (0);
-} */
-
 int	ft_event_close_win(t_data *data)
 {
 	mlx_loop_end(data->mlx);
 	return (0);
 }
 
-
 int	ft_events_keyboard(t_data *data)
 {
 	int	result;
-	
+
 	result = 0;
-	if (data->keys[0]) // XK_W
+	if (data->keys[0])
 		result += ft_move_player_ws('w', data);
-	if (data->keys[1]) // XK_S
+	if (data->keys[1])
 		result += ft_move_player_ws('s', data);
-	if (data->keys[2]) //  XK_A
+	if (data->keys[2])
 		result += ft_move_player_ad('a', data);
-	if (data->keys[3]) // XK_D
+	if (data->keys[3])
 		result += ft_move_player_ad('d', data);
-	if (data->keys[4]) // XK_Left
+	if (data->keys[4])
 		result += ft_rotate_player(data->player, ft_dtor(-1.0));
-	if (data->keys[5]) // XK_Right
+	if (data->keys[5])
 		result += ft_rotate_player(data->player, ft_dtor(1.0));
-	if (result == 0)
-		return (0);
 	return (result);
 }
-
-/* int	ft_events_keyboard(t_data *data)
-{
-	if (data->keys[XK_w]) // || data->keys[XK_Up]
-		ft_move_player('u', data, data->config->map);
-	else if (data->keys[XK_s]) // || data->keys[XK_Down]
-		ft_move_player('d', data, data->config->map);
-	else if (data->keys[XK_d]) // || data->keys[XK_Right]
-		ft_rotate_player(data->player, ft_dtor(1.0));
-	else if (data->keys[XK_a]) //  || data->keys[XK_Left]
-		ft_rotate_player(data->player, ft_dtor(-1.0));
-	else
-		return (0);
-	return (1);
-} */

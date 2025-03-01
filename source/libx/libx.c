@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:02:43 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/26 14:04:21 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/03/01 12:04:37 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@ void	ft_mlx_pixel_put(t_data *data, int posY, int posX, int color)
 	*(unsigned int *)(data->image->addr + offset) = color;
 }
 
-long long	ft_get_time(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-}
-
 void	ft_update_image(t_data *data)
 {
 	ft_init_rays(data);
@@ -36,3 +28,9 @@ void	ft_update_image(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->image->img, 0, 0);
 }
 
+int	ft_update_game(t_data *data)
+{
+	if (ft_events_keyboard(data))
+		ft_update_image(data);
+	return (0);
+}

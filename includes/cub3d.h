@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:05:56 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/27 21:18:19 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 12:13:11 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,14 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
-# include <sys/time.h>
-# include <sys/wait.h>
 # include <unistd.h>
 
 # define WIDTH 1000
 # define HEIGHT 600
 # define GRID 64
 # define STEP 1
-# define WALL_HEIGHT 1.0
 # define FOV 1.0471975512
 # define SCALING_FACTOR 0.6
-
-# define RED 0xFF0000
-# define GREEN 0x00FF00
-# define BLUE 0x0000FF
-# define LIGHTBLUE 0xADD8E6
 
 /* Cleanup */
 void		ft_parser_cleanup(t_config *config, char *line, int fd, char *type);
@@ -63,14 +55,18 @@ int			ft_events_keyboard(t_data *data);
 
 /* Libx */
 void		ft_mlx_pixel_put(t_data *data, int posY, int posX, int color);
-long long	ft_get_time(void);
 void		ft_update_image(t_data *data);
+int			ft_update_game(t_data *data);
 
 /* Print */
 t_texture	*ft_get_face(t_ray *ray, t_data *data);
 void		ft_calc_pixel(t_seg *seg, t_texture *tex, t_data *data);
 void		ft_print_wall(t_ray *ray, t_data *data);
-int			ft_darken_color(int color, double factor);
+
+/* Raycast */
+void		ft_calc_perp_wall(t_ray *ray, t_data *data);
+void		ft_cast_ray(t_ray *ray, t_data *data);
+void		ft_init_rays(t_data *data);
 
 /* Textures */
 char		*ft_get_texture(int i, t_data *data);
@@ -98,27 +94,16 @@ void		ft_data_init(t_data *data, t_config *config);
 void		ft_events_init(t_data *data);
 void		ft_libx_init(t_data *data);
 
+/* Init utils */
+void		ft_set_player_dir(char orientation, t_player *player);
+
 /* Math */
 double		ft_dtor(double degrees);
 double		ft_get_tan(double degrees);
 void		normalize_vector(t_ray *ray);
 
-/* Player */
-void		ft_set_player_dir(char orientation, t_player *player);
-
-/* Raycast */
-void		ft_cast_ray(t_ray *ray, t_data *data);
-void		ft_init_rays(t_data *data);
-
-/* Raycast Utils */
-void		ft_calc_perp_wall(t_ray *ray, t_data *data);
-
-/* Test */
-void		ft_print_config(t_config *config);
-
 /* Utils */
 int			ft_tab_len(char **tab);
 int			ft_inside_map(int x, int y, char **map);
-void		print_image_info(t_image *image);
 
 #endif

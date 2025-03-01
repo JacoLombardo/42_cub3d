@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:37:52 by nboer             #+#    #+#             */
-/*   Updated: 2025/03/01 11:51:05 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:56:27 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,4 @@ void	ft_print_wall(t_ray *ray, t_data *data)
 		ft_calc_pixel(&seg, text, data);
 		pix_y++;
 	}
-}
-
-int	ft_darken_color(int color, double factor)
-{
-	int	r;
-	int	g;
-	int	b;
-
-	r = ((color >> 16) & 0xFF) * factor;
-	g = ((color >> 8) & 0xFF) * factor;
-	b = (color & 0xFF) * factor;
-	return ((r << 16) | (g << 8) | b);
 }

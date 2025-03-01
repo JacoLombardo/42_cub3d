@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:07:18 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/27 20:45:02 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 12:01:53 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ double	ft_get_tan(double degrees)
 }
 
 /* get the normalized direction of a ray*/
-void normalize_vector(t_ray *ray)
+void	normalize_vector(t_ray *ray)
 {
-	double length = sqrt(ray->dir_x * ray->dir_x + ray->dir_y * ray->dir_y);
+	double	length;
+
+	length = sqrt(ray->dir_x * ray->dir_x + ray->dir_y * ray->dir_y);
 	if (length > 0.0)
 	{
 		ray->norm_dir_x = ray->dir_x / length;

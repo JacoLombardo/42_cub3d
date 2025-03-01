@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:48:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/03/01 11:37:21 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:56:37 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ int	ft_filled(t_config *config)
 		return (0);
 }
 
-/* ft_check_n_player checks if the map is invalid (if contains chars not allowed) and also if there is the player in it,
-	adding and extra check if the player was already set before */
 int	ft_check_n_player(t_config *config, char **map, int len)
 {
 	int	i;

@@ -19,18 +19,16 @@ SRCS = cub3d.c \
 		source/cleanup/cleanup_utils.c \
 		source/gameplay/movements.c \
 		source/libx/events.c \
-		source/libx/print.c \
 		source/libx/libx.c \
+		source/libx/print.c \
+		source/libx/raycast.c \
 		source/libx/textures.c \
 		source/parsing/map_check.c \
 		source/parsing/parser.c \
 		source/parsing/parser_utils.c \
-		source/render/raycast.c \
-		source/render/raycast_utils.c \
 		source/init.c \
 		source/init_utils.c \
 		source/math.c \
-		source/test.c \
 		source/utils.c \
 
 HEADER = cub3d.h

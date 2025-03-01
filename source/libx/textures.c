@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:23:17 by nboer             #+#    #+#             */
-/*   Updated: 2025/03/01 11:50:24 by nboer            ###   ########.fr       */
+/*   Updated: 2025/03/01 11:58:17 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ void	ft_calc_texture(t_ray *ray, t_texture *tex, t_data *data)
 	double	wall_x;
 
 	if (ray->side == 0)
-		wall_x = (1.0 * data->player->pos_y / GRID) + ray->perp_wall_dist * ray->dir_y;
+		wall_x = (1.0 * data->player->pos_y / GRID) + ray->perp_wall_dist
+			* ray->dir_y;
 	else
-		wall_x = (1.0 * data->player->pos_x / GRID) + ray->perp_wall_dist * ray->dir_x;
+		wall_x = (1.0 * data->player->pos_x / GRID) + ray->perp_wall_dist
+			* ray->dir_x;
 	wall_x -= floor(wall_x);
 	tex->x = (int)(wall_x * (double)(tex->width));
-	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
+	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1
+			&& ray->dir_y < 0))
 		tex->x = tex->width - tex->x - 1;
 }
 

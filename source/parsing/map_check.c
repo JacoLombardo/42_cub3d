@@ -6,7 +6,7 @@
 /*   By: jalombar <jalombar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:12:51 by jalombar          #+#    #+#             */
-/*   Updated: 2025/02/26 14:39:19 by jalombar         ###   ########.fr       */
+/*   Updated: 2025/03/01 12:16:31 by jalombar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char	**ft_map_clone(t_config *config)
 	new_map[height] = NULL;
 	return (new_map);
 }
-
 
 int	ft_elements_check(t_config *config, char **map)
 {
